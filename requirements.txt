@@ -4,3 +4,4 @@ numpy
 ghp-import
 ase
 pydotplus
+jupyter_black

@@ -1,5 +1,7 @@
 build:
 	jupyter book build dsmles
+
+open:
 	open dsmles/_build/html/index.html
 
 clean:
