@@ -6,3 +6,4 @@ ase
 pydotplus
 jupyter_black
 pandas
+scikit-learn
