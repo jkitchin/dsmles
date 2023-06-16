@@ -1,0 +1,1510 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Using Pandas DataFrames as a small database &#8212; Data science and machine learning in science and engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04-pandas-database/pandas-database';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to data-driven model development" href="../05-linear-regression/linear-regression.html" />
+    <link rel="prev" title="Intermediate Pandas" href="../03-intermediate-pandas/intermediate-pandas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data science and machine learning in engineering and science
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00-introduction/introduction.html">Data science and machine learning in engineering and science</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-numpy/numpy.html">Introduction to data files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-pandas-intro/pandas-intro.html">Introduction to Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-intermediate-pandas/intermediate-pandas.html">Intermediate Pandas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using Pandas DataFrames as a small database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-linear-regression/linear-regression.html">Introduction to data-driven model development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-intermediate-sklearn/intermediate-sklearn.html">Intermediate scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-nonlinear-sklearn/nonlinear-sklearn.html">Nonlinear models in sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-random-forests/random-forests.html">Decision Trees and Random Forests Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-custom-estimators/custom-estimators.html">Building custom estimators in sklearn</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jkitchin/dsmles" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jkitchin/dsmles/issues/new?title=Issue%20on%20page%20%2F04-pandas-database/pandas-database.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/04-pandas-database/pandas-database.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Using Pandas DataFrames as a small database</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-table-for-the-chemical-elements-and-their-atomic-masses">A Table for the chemical elements and their atomic masses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-table-for-some-molecules">A Table for some molecules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-molecules-are-in-the-database">What molecules are in the database?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-molecules-have-three-h-atoms">Which molecules have three H atoms?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-molecular-weight">Getting the molecular weight</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chaining-commands-in-pandas">Chaining commands in Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subtle-points">Subtle points</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="using-pandas-dataframes-as-a-small-database">
+<h1>Using Pandas DataFrames as a small database<a class="headerlink" href="#using-pandas-dataframes-as-a-small-database" title="Permalink to this headline">#</a></h1>
+<p>Pandas DataFrames can serve as small databases. You can use them to construct tables from which you can run queries to compute things. In this example, we will explore a database of molecules and atomic element properties.</p>
+<section id="a-table-for-the-chemical-elements-and-their-atomic-masses">
+<h2>A Table for the chemical elements and their atomic masses<a class="headerlink" href="#a-table-for-the-chemical-elements-and-their-atomic-masses" title="Permalink to this headline">#</a></h2>
+<p>We will use the Atomic Simulation Environment library for this. It is already installed in Deepnote.</p>
+<p>We will use it because it has data about the chemical elements, and some molecules we will use.</p>
+<p>First, we make a DataFrame containing the chemical elements, and their atomic masses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ase</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">dtypes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;symbol&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;atomic mass&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">)])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="p">)</span>
+
+<span class="n">elements</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">elements</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">chemical_symbols</span>
+<span class="n">elements</span><span class="p">[</span><span class="s1">&#39;atomic mass&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">atomic_masses</span>
+<span class="n">elements</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 119 entries, 0 to 118
+Data columns (total 2 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   symbol       119 non-null    object 
+ 1   atomic mass  119 non-null    float64
+dtypes: float64(1), object(1)
+memory usage: 2.0+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can use a <code class="docutils literal notranslate"><span class="pre">query</span></code> function to select rows from the database that meet some criteria.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>elements.query
+</pre></div>
+</div>
+</div>
+</div>
+<p>For example, to get Carbon we can use a query like this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;symbol == &quot;C&quot;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>atomic mass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6</th>
+      <td>C</td>
+      <td>12.011</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can do some things with python variables like this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sym</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span>
+<span class="n">elements</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;symbol == @sym&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>atomic mass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Although, f-strings also work for this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sym</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span>
+<span class="n">elements</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;symbol == &quot;</span><span class="si">{</span><span class="n">sym</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>atomic mass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The atomic mass is trickier to work with because it has a space in it. We have to use back-ticks to “quote” this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`atomic mass` &lt; 4&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbol</th>
+      <th>atomic mass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>X</td>
+      <td>1.000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note it does not appear you can use the &#64; or f-string on column names. Also note the mysterious element X in the table. We can ignore that.</p>
+</section>
+<section id="a-table-for-some-molecules">
+<h2>A Table for some molecules<a class="headerlink" href="#a-table-for-some-molecules" title="Permalink to this headline">#</a></h2>
+<p>Next, let’s build the molecule database. This will be a table where each row  corresponds to an atom in a molecule. We will be able to get the atoms in a molecule by aggregating these on a <code class="docutils literal notranslate"><span class="pre">Molecule-ID</span></code>. We build this table up row by row, by first getting a molecule, and then iterating over each atom in the molecule. It is conventional to use an integer for an ID, but we will just use the molecular formula in this example. That has some limitations for larger databases (e.g. isomers have different properties, but the same molecular formula), but we will not have that problem here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Atom symbol&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">])</span>
+
+<span class="kn">from</span> <span class="nn">ase.build</span> <span class="kn">import</span> <span class="n">molecule</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">mlc</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;H2O&#39;</span><span class="p">,</span> <span class="s1">&#39;NH3&#39;</span><span class="p">,</span> <span class="s1">&#39;CH4&#39;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">molecule</span><span class="p">(</span><span class="n">mlc</span><span class="p">):</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mlc</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">z</span><span class="p">]</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Molecule-ID</th>
+      <th>Atom symbol</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>H2O</td>
+      <td>O</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.119262</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>H2O</td>
+      <td>H</td>
+      <td>0.000000</td>
+      <td>0.763239</td>
+      <td>-0.477047</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>H2O</td>
+      <td>H</td>
+      <td>0.000000</td>
+      <td>-0.763239</td>
+      <td>-0.477047</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NH3</td>
+      <td>N</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.116489</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NH3</td>
+      <td>H</td>
+      <td>0.000000</td>
+      <td>0.939731</td>
+      <td>-0.271808</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NH3</td>
+      <td>H</td>
+      <td>0.813831</td>
+      <td>-0.469865</td>
+      <td>-0.271808</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>NH3</td>
+      <td>H</td>
+      <td>-0.813831</td>
+      <td>-0.469865</td>
+      <td>-0.271808</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>CH4</td>
+      <td>C</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>CH4</td>
+      <td>H</td>
+      <td>0.629118</td>
+      <td>0.629118</td>
+      <td>0.629118</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>CH4</td>
+      <td>H</td>
+      <td>-0.629118</td>
+      <td>-0.629118</td>
+      <td>0.629118</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>CH4</td>
+      <td>H</td>
+      <td>0.629118</td>
+      <td>-0.629118</td>
+      <td>-0.629118</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>CH4</td>
+      <td>H</td>
+      <td>-0.629118</td>
+      <td>0.629118</td>
+      <td>-0.629118</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="what-molecules-are-in-the-database">
+<h3>What molecules are in the database?<a class="headerlink" href="#what-molecules-are-in-the-database" title="Permalink to this headline">#</a></h3>
+<p>Ok, now we are ready to do some queries. First, let’s see what molecules we have in our database. We want the unique values of the ‘Molecule-ID’ column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;H2O&#39;, &#39;NH3&#39;, &#39;CH4&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="which-molecules-have-three-h-atoms">
+<h3>Which molecules have three H atoms?<a class="headerlink" href="#which-molecules-have-three-h-atoms" title="Permalink to this headline">#</a></h3>
+<p>Now, how do we find molecules that have 3 H atoms? We need to do some grouping. First, we select the H rows, and then we group by the Molecule-ID Then, we need a count of each sub group. I prefer the <code class="docutils literal notranslate"><span class="pre">size</span></code> function for this over <code class="docutils literal notranslate"><span class="pre">count</span></code>. <code class="docutils literal notranslate"><span class="pre">size</span></code> returns a Series, while <code class="docutils literal notranslate"><span class="pre">count</span></code> seems to return a DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">tf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecule-ID
+CH4    4
+H2O    2
+NH3    3
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we can select the rows that have 3 hydrogen atoms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="p">[</span><span class="n">tf</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecule-ID
+NH3    3
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-the-molecular-weight">
+<h3>Getting the molecular weight<a class="headerlink" href="#getting-the-molecular-weight" title="Permalink to this headline">#</a></h3>
+<p>Getting the molecular weight requires us to combine information from two DataFrames. To do this, we need to merge them, aligning the rows on a common key. That key is the <code class="docutils literal notranslate"><span class="pre">Atom</span> <span class="pre">symbol</span></code> in the molecule DataFrame, and <code class="docutils literal notranslate"><span class="pre">symbol</span></code> in the elements DataFrame. Then we have to do the right grouping, and use the sum aggregation method on each group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Atom symbol&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;symbol&#39;</span><span class="p">)</span>
+<span class="n">mf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Molecule-ID</th>
+      <th>Atom symbol</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>symbol</th>
+      <th>atomic mass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>H2O</td>
+      <td>O</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.119262</td>
+      <td>O</td>
+      <td>15.999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>H2O</td>
+      <td>H</td>
+      <td>0.000000</td>
+      <td>0.763239</td>
+      <td>-0.477047</td>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>H2O</td>
+      <td>H</td>
+      <td>0.000000</td>
+      <td>-0.763239</td>
+      <td>-0.477047</td>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NH3</td>
+      <td>H</td>
+      <td>0.000000</td>
+      <td>0.939731</td>
+      <td>-0.271808</td>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NH3</td>
+      <td>H</td>
+      <td>0.813831</td>
+      <td>-0.469865</td>
+      <td>-0.271808</td>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NH3</td>
+      <td>H</td>
+      <td>-0.813831</td>
+      <td>-0.469865</td>
+      <td>-0.271808</td>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CH4</td>
+      <td>H</td>
+      <td>0.629118</td>
+      <td>0.629118</td>
+      <td>0.629118</td>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>CH4</td>
+      <td>H</td>
+      <td>-0.629118</td>
+      <td>-0.629118</td>
+      <td>0.629118</td>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>CH4</td>
+      <td>H</td>
+      <td>0.629118</td>
+      <td>-0.629118</td>
+      <td>-0.629118</td>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>CH4</td>
+      <td>H</td>
+      <td>-0.629118</td>
+      <td>0.629118</td>
+      <td>-0.629118</td>
+      <td>H</td>
+      <td>1.008</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>NH3</td>
+      <td>N</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.116489</td>
+      <td>N</td>
+      <td>14.007</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>CH4</td>
+      <td>C</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>C</td>
+      <td>12.011</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now, we group by the <code class="docutils literal notranslate"><span class="pre">Molecule-ID</span></code>, select the <code class="docutils literal notranslate"><span class="pre">atomic</span> <span class="pre">mass</span></code> column, and aggregate with the sum.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MW</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">)[</span><span class="s1">&#39;atomic mass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">MW</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecule-ID
+CH4    16.043
+H2O    18.015
+NH3    17.031
+Name: atomic mass, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is one of many ways to print this in a different format:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">mlc</span><span class="p">,</span> <span class="n">mw</span> <span class="ow">in</span> <span class="n">MW</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The molecular weight of </span><span class="si">{</span><span class="n">mlc</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">mw</span><span class="si">}</span><span class="s1"> gm/mol&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The molecular weight of CH4 is 16.043 gm/mol
+The molecular weight of H2O is 18.015 gm/mol
+The molecular weight of NH3 is 17.031 gm/mol
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="chaining-commands-in-pandas">
+<h2>Chaining commands in Pandas<a class="headerlink" href="#chaining-commands-in-pandas" title="Permalink to this headline">#</a></h2>
+<p>So far, we have mostly seen sequential commands in Pandas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">tf</span><span class="p">[</span><span class="n">tf</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecule-ID
+NH3    3
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">query</span></code> lets us chain these all into one line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Atom symbol</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+    <tr>
+      <th>Molecule-ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NH3</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>It is common to see this syntax where parentheses allow us to separate these into multiple lines. This may enhance readability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
+ <span class="o">.</span><span class="n">count</span><span class="p">()</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Atom symbol</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+    <tr>
+      <th>Molecule-ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NH3</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The main benefit of chaining is that you do not have to define temporary variables that exist only so you can reuse them in subsequent lines. The downside is it is more challenging to debug them, and it is common to build them iteratively in a notebook.</p>
+<p>Here is another example of chaining to get the molecular weight of water.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span>
+          <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Atom symbol&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;symbol&#39;</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">)[</span><span class="s1">&#39;atomic mass&#39;</span><span class="p">]</span>
+ <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+ <span class="p">[</span><span class="s1">&#39;H2O&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.015
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="subtle-points">
+<h2>Subtle points<a class="headerlink" href="#subtle-points" title="Permalink to this headline">#</a></h2>
+<p>Pandas offers many ways to do what appear to be the same thing, but they are not. For example, this works:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
+ <span class="o">.</span><span class="n">count</span><span class="p">()</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Atom symbol</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+    </tr>
+    <tr>
+      <th>Molecule-ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NH3</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And this doesn’t.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
+ <span class="o">.</span><span class="n">size</span><span class="p">()</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [19],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">(</span><span class="n">df</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>  <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>  <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>  <span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>  <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">))</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/generic.py:5575,</span> in <span class="ni">NDFrame.__getattr__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5568</span> <span class="k">if</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">5569</span>     <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_internal_names_set</span>
+<span class="g g-Whitespace">   </span><span class="mi">5570</span>     <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span>
+<span class="g g-Whitespace">   </span><span class="mi">5571</span>     <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessors</span>
+<span class="g g-Whitespace">   </span><span class="mi">5572</span>     <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info_axis</span><span class="o">.</span><span class="n">_can_hold_identifiers_and_holds_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5573</span> <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">5574</span>     <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">5575</span> <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;Series&#39; object has no attribute &#39;query&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The problem is the <code class="docutils literal notranslate"><span class="pre">size</span></code> function here returns Series, and you cannot query a series. We can get back to this with some acrobatics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
+ <span class="o">.</span><span class="n">size</span><span class="p">()</span>  <span class="c1"># This is a series</span>
+ <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;counts&#39;</span><span class="p">)</span> <span class="c1"># we give the Series a name</span>
+ <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span> <span class="c1"># Convert to dataframe so we can query</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;counts == 3&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>counts</th>
+    </tr>
+    <tr>
+      <th>Molecule-ID</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NH3</th>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In the beginning, it will be challenging to remember all of this, and figure out how to debug it. With practice, it will get easier!</p>
+<p>The Pandas manual (<a class="reference external" href="https://pandas.pydata.org/docs/pandas.pdf">https://pandas.pydata.org/docs/pandas.pdf</a>) is ~3000 pages long! You cannot learn it all, and most likely you don’t need to as it covers a lot of use cases that may fall outside your needs.</p>
+<p>It is also challenging that there are many ways to do the same thing. For example, here we solve this problem in a different way that has a subtly different syntax. You cannot just cut and paste bits of code between these two examples without knowing what each one does.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
+ <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;Atom symbol&#39;</span> <span class="p">:</span><span class="s1">&#39;size&#39;</span><span class="p">})</span> <span class="c1"># Now this is dataframe</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == 3&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Atom symbol</th>
+    </tr>
+    <tr>
+      <th>Molecule-ID</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NH3</th>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>How do you learn/remember these? One way is reading lots of code, and running lots of code. You can read code in the manual. You can also use the notebook to access documentation on these methods.</p>
+<p>Here are some of the commands we used today,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>pd.DataFrame.query
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>pd.DataFrame.groupby
+</pre></div>
+</div>
+</div>
+</div>
+<p>Getting help on the <code class="docutils literal notranslate"><span class="pre">agg</span></code> command is a little trickier. There are several <code class="docutils literal notranslate"><span class="pre">agg</span></code> functions, so we want to make sure we get the one that is relevant to the result from a <code class="docutils literal notranslate"><span class="pre">groupby</span></code> call. First, we get the type of things that is returned:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span>
+ <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+ <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.groupby.generic.DataFrameGroupBy
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we get the help for that thing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>pd.core.groupby.generic.DataFrameGroupBy.agg
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>pd.Series.to_frame
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>pd.Series.rename
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./04-pandas-database"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../03-intermediate-pandas/intermediate-pandas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Intermediate Pandas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../05-linear-regression/linear-regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to data-driven model development</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-table-for-the-chemical-elements-and-their-atomic-masses">A Table for the chemical elements and their atomic masses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-table-for-some-molecules">A Table for some molecules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-molecules-are-in-the-database">What molecules are in the database?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-molecules-have-three-h-atoms">Which molecules have three H atoms?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-the-molecular-weight">Getting the molecular weight</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chaining-commands-in-pandas">Chaining commands in Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subtle-points">Subtle points</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By John Kitchin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

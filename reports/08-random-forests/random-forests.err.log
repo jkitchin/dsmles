@@ -1,0 +1,70 @@
+Traceback (most recent call last):
+  File "/Users/jkitchin/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/jkitchin/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/jkitchin/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jkitchin/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jkitchin/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/jkitchin/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/jkitchin/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jkitchin/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from io import StringIO
+from IPython.display import Image
+from sklearn.tree import export_graphviz
+import pydotplus
+
+dot_data = StringIO()
+
+export_graphviz(tree2, out_file=dot_data,
+                filled=True, rounded=True,
+                special_characters=True)
+
+graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
+
+Image(graph.create_png());
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mInvocationException[0m                       Traceback (most recent call last)
+Input [0;32mIn [8][0m, in [0;36m<cell line: 14>[0;34m()[0m
+[1;32m      8[0m export_graphviz(tree2, out_file[38;5;241m=[39mdot_data,
+[1;32m      9[0m                 filled[38;5;241m=[39m[38;5;28;01mTrue[39;00m, rounded[38;5;241m=[39m[38;5;28;01mTrue[39;00m,
+[1;32m     10[0m                 special_characters[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+[1;32m     12[0m graph [38;5;241m=[39m pydotplus[38;5;241m.[39mgraph_from_dot_data(dot_data[38;5;241m.[39mgetvalue())
+[0;32m---> 14[0m Image([43mgraph[49m[38;5;241;43m.[39;49m[43mcreate_png[49m[43m([49m[43m)[49m)
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/pydotplus/graphviz.py:1797[0m, in [0;36mDot.__init__.<locals>.<lambda>[0;34m(f, prog)[0m
+[1;32m   1792[0m [38;5;66;03m# Automatically creates all the methods enabling the creation[39;00m
+[1;32m   1793[0m [38;5;66;03m# of output in any of the supported formats.[39;00m
+[1;32m   1794[0m [38;5;28;01mfor[39;00m frmt [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mformats:
+[1;32m   1795[0m     [38;5;28mself[39m[38;5;241m.[39m[38;5;21m__setattr__[39m(
+[1;32m   1796[0m         [38;5;124m'[39m[38;5;124mcreate_[39m[38;5;124m'[39m [38;5;241m+[39m frmt,
+[0;32m-> 1797[0m         [38;5;28;01mlambda[39;00m f[38;5;241m=[39mfrmt, prog[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mprog: [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcreate[49m[43m([49m[38;5;28;43mformat[39;49m[38;5;241;43m=[39;49m[43mf[49m[43m,[49m[43m [49m[43mprog[49m[38;5;241;43m=[39;49m[43mprog[49m[43m)[49m
+[1;32m   1798[0m     )
+[1;32m   1799[0m     f [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m[38;5;18m__dict__[39m[[38;5;124m'[39m[38;5;124mcreate_[39m[38;5;124m'[39m [38;5;241m+[39m frmt]
+[1;32m   1800[0m     f[38;5;241m.[39m[38;5;18m__doc__[39m [38;5;241m=[39m (
+[1;32m   1801[0m         [38;5;124;03m'''Refer to the docstring accompanying the'''[39;00m
+[1;32m   1802[0m         [38;5;124;03m''''create' method for more information.'''[39;00m
+[1;32m   1803[0m     )
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/pydotplus/graphviz.py:1959[0m, in [0;36mDot.create[0;34m(self, prog, format)[0m
+[1;32m   1957[0m     [38;5;28mself[39m[38;5;241m.[39mprogs [38;5;241m=[39m find_graphviz()
+[1;32m   1958[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mprogs [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m-> 1959[0m         [38;5;28;01mraise[39;00m InvocationException(
+[1;32m   1960[0m             [38;5;124m'[39m[38;5;124mGraphViz[39m[38;5;130;01m\'[39;00m[38;5;124ms executables not found[39m[38;5;124m'[39m)
+[1;32m   1962[0m [38;5;28;01mif[39;00m prog [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mprogs:
+[1;32m   1963[0m     [38;5;28;01mraise[39;00m InvocationException(
+[1;32m   1964[0m         [38;5;124m'[39m[38;5;124mGraphViz[39m[38;5;130;01m\'[39;00m[38;5;124ms executable [39m[38;5;124m"[39m[38;5;132;01m%s[39;00m[38;5;124m"[39m[38;5;124m not found[39m[38;5;124m'[39m [38;5;241m%[39m prog)
+
+[0;31mInvocationException[0m: GraphViz's executables not found
+InvocationException: GraphViz's executables not found
+
