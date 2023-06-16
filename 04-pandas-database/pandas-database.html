@@ -441,16 +441,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">ase</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">dtypes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;symbol&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;atomic mass&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">)])</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 119 entries, 0 to 118
+Data columns (total 2 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   symbol       119 non-null    object 
+ 1   atomic mass  119 non-null    float64
+dtypes: float64(1), object(1)
+memory usage: 2.0+ KB
 </pre></div>
 </div>
 </div>
@@ -459,154 +458,6 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>elements.query
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> elements<span class=" -Color -Color-Blue">.</span>query<span class=" -Color -Color-Blue">(</span>expr<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;str&#39;,</span> inplace<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Blue">**</span>kwargs<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-&gt;</span> <span class=" -Color -Color-Blue">&#39;DataFrame | None&#39;</span>
-<span class=" -Color -Color-Red">Docstring:</span>
-Query the columns of a DataFrame with a boolean expression.
-
-Parameters
-----------
-expr : str
-    The query string to evaluate.
-
-    You can refer to variables
-    in the environment by prefixing them with an &#39;@&#39; character like
-    ``@a + b``.
-
-    You can refer to column names that are not valid Python variable names
-    by surrounding them in backticks. Thus, column names containing spaces
-    or punctuations (besides underscores) or starting with digits must be
-    surrounded by backticks. (For example, a column named &quot;Area (cm^2)&quot; would
-    be referenced as ```Area (cm^2)```). Column names which are Python keywords
-    (like &quot;list&quot;, &quot;for&quot;, &quot;import&quot;, etc) cannot be used.
-
-    For example, if one of your columns is called ``a a`` and you want
-    to sum it with ``b``, your query should be ```a a` + b``.
-
-    .. versionadded:: 0.25.0
-        Backtick quoting introduced.
-
-    .. versionadded:: 1.0.0
-        Expanding functionality of backtick quoting for more than only spaces.
-
-inplace : bool
-    Whether to modify the DataFrame rather than creating a new one.
-**kwargs
-    See the documentation for :func:`eval` for complete details
-    on the keyword arguments accepted by :meth:`DataFrame.query`.
-
-Returns
--------
-DataFrame or None
-    DataFrame resulting from the provided query expression or
-    None if ``inplace=True``.
-
-See Also
---------
-eval : Evaluate a string describing operations on
-    DataFrame columns.
-DataFrame.eval : Evaluate a string describing operations on
-    DataFrame columns.
-
-Notes
------
-The result of the evaluation of this expression is first passed to
-:attr:`DataFrame.loc` and if that fails because of a
-multidimensional key (e.g., a DataFrame) then the result will be passed
-to :meth:`DataFrame.__getitem__`.
-
-This method uses the top-level :func:`eval` function to
-evaluate the passed query.
-
-The :meth:`~pandas.DataFrame.query` method uses a slightly
-modified Python syntax by default. For example, the ``&amp;`` and ``|``
-(bitwise) operators have the precedence of their boolean cousins,
-:keyword:`and` and :keyword:`or`. This *is* syntactically valid Python,
-however the semantics are different.
-
-You can change the semantics of the expression by passing the keyword
-argument ``parser=&#39;python&#39;``. This enforces the same semantics as
-evaluation in Python space. Likewise, you can pass ``engine=&#39;python&#39;``
-to evaluate an expression using Python itself as a backend. This is not
-recommended as it is inefficient compared to using ``numexpr`` as the
-engine.
-
-The :attr:`DataFrame.index` and
-:attr:`DataFrame.columns` attributes of the
-:class:`~pandas.DataFrame` instance are placed in the query namespace
-by default, which allows you to treat both the index and columns of the
-frame as a column in the frame.
-The identifier ``index`` is used for the frame index; you can also
-use the name of the index to identify it in a query. Please note that
-Python keywords may not be used as identifiers.
-
-For further details and examples see the ``query`` documentation in
-:ref:`indexing &lt;indexing.query&gt;`.
-
-*Backtick quoted variables*
-
-Backtick quoted variables are parsed as literal Python code and
-are converted internally to a Python valid identifier.
-This can lead to the following problems.
-
-During parsing a number of disallowed characters inside the backtick
-quoted string are replaced by strings that are allowed as a Python identifier.
-These characters include all operators in Python, the space character, the
-question mark, the exclamation mark, the dollar sign, and the euro sign.
-For other characters that fall outside the ASCII range (U+0001..U+007F)
-and those that are not further specified in PEP 3131,
-the query parser will raise an error.
-This excludes whitespace different than the space character,
-but also the hashtag (as it is used for comments) and the backtick
-itself (backtick can also not be escaped).
-
-In a special case, quotes that make a pair around a backtick can
-confuse the parser.
-For example, ```it&#39;s` &gt; `that&#39;s``` will raise an error,
-as it forms a quoted string (``&#39;s &gt; `that&#39;``) with a backtick inside.
-
-See also the Python documentation about lexical analysis
-(https://docs.python.org/3/reference/lexical_analysis.html)
-in combination with the source code in :mod:`pandas.core.computation.parsing`.
-
-Examples
---------
-&gt;&gt;&gt; df = pd.DataFrame({&#39;A&#39;: range(1, 6),
-...                    &#39;B&#39;: range(10, 0, -2),
-...                    &#39;C C&#39;: range(10, 5, -1)})
-&gt;&gt;&gt; df
-   A   B  C C
-0  1  10   10
-1  2   8    9
-2  3   6    8
-3  4   4    7
-4  5   2    6
-&gt;&gt;&gt; df.query(&#39;A &gt; B&#39;)
-   A  B  C C
-4  5  2    6
-
-The previous expression is equivalent to
-
-&gt;&gt;&gt; df[df.A &gt; df.B]
-   A  B  C C
-4  5  2    6
-
-For columns with spaces in their name, you can use backtick quoting.
-
-&gt;&gt;&gt; df.query(&#39;B == `C C`&#39;)
-   A   B  C C
-0  1  10   10
-
-The previous expression is equivalent to
-
-&gt;&gt;&gt; df[df.B == df[&#39;C C&#39;]]
-   A   B  C C
-0  1  10   10
-<span class=" -Color -Color-Red">File:</span>      /opt/conda/lib/python3.9/site-packages/pandas/core/frame.py
-<span class=" -Color -Color-Red">Type:</span>      method
 </pre></div>
 </div>
 </div>
@@ -1167,13 +1018,20 @@ Name: atomic mass, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The molecular weight of CH4 is 16.043 gm/mol
-The molecular weight of H2O is 18.015 gm/mol
-The molecular weight of NH3 is 17.031 gm/mol
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_25448/1960597735.py:1: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
-  for mlc, mw in MW.iteritems():
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipykernel_1989/1960597735.py</span> in <span class="ni">?</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">for</span> <span class="n">mlc</span><span class="p">,</span> <span class="n">mw</span> <span class="ow">in</span> <span class="n">MW</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The molecular weight of </span><span class="si">{</span><span class="n">mlc</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">mw</span><span class="si">}</span><span class="s1"> gm/mol&#39;</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/core/generic.py</span> in <span class="ni">?</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5985</span>             <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessors</span>
+<span class="g g-Whitespace">   </span><span class="mi">5986</span>             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info_axis</span><span class="o">.</span><span class="n">_can_hold_identifiers_and_holds_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5987</span>         <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">5988</span>             <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">5989</span>         <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;Series&#39; object has no attribute &#39;iteritems&#39;
 </pre></div>
 </div>
 </div>

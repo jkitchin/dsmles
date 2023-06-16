@@ -426,19 +426,437 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;p-t.dat&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>                  <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Run order&#39;</span><span class="p">,</span> <span class="s1">&#39;Day&#39;</span><span class="p">,</span> <span class="s1">&#39;Ambient Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>                         <span class="s1">&#39;Pressure&#39;</span><span class="p">,</span> <span class="s1">&#39;Fitted Value&#39;</span><span class="p">,</span> <span class="s1">&#39;Residual&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Run order</th>
+      <th>Day</th>
+      <th>Ambient Temperature</th>
+      <th>Temperature</th>
+      <th>Pressure</th>
+      <th>Fitted Value</th>
+      <th>Residual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>23.820</td>
+      <td>54.749</td>
+      <td>225.066</td>
+      <td>222.920</td>
+      <td>2.146</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>24.120</td>
+      <td>23.323</td>
+      <td>100.331</td>
+      <td>99.411</td>
+      <td>0.920</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>23.434</td>
+      <td>58.775</td>
+      <td>230.863</td>
+      <td>238.744</td>
+      <td>-7.881</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>23.993</td>
+      <td>25.854</td>
+      <td>106.160</td>
+      <td>109.359</td>
+      <td>-3.199</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>1</td>
+      <td>23.375</td>
+      <td>68.297</td>
+      <td>277.502</td>
+      <td>276.165</td>
+      <td>1.336</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>1</td>
+      <td>23.233</td>
+      <td>37.481</td>
+      <td>148.314</td>
+      <td>155.056</td>
+      <td>-6.741</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>1</td>
+      <td>24.162</td>
+      <td>49.542</td>
+      <td>197.562</td>
+      <td>202.456</td>
+      <td>-4.895</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>1</td>
+      <td>23.667</td>
+      <td>34.101</td>
+      <td>138.537</td>
+      <td>141.770</td>
+      <td>-3.232</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>1</td>
+      <td>24.056</td>
+      <td>33.901</td>
+      <td>137.969</td>
+      <td>140.983</td>
+      <td>-3.014</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>1</td>
+      <td>22.786</td>
+      <td>29.242</td>
+      <td>117.410</td>
+      <td>122.674</td>
+      <td>-5.263</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>2</td>
+      <td>23.785</td>
+      <td>39.506</td>
+      <td>164.442</td>
+      <td>163.013</td>
+      <td>1.429</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>2</td>
+      <td>22.987</td>
+      <td>43.004</td>
+      <td>181.044</td>
+      <td>176.759</td>
+      <td>4.285</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>2</td>
+      <td>23.799</td>
+      <td>53.226</td>
+      <td>222.179</td>
+      <td>216.933</td>
+      <td>5.246</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>2</td>
+      <td>23.661</td>
+      <td>54.467</td>
+      <td>227.010</td>
+      <td>221.813</td>
+      <td>5.198</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>2</td>
+      <td>23.852</td>
+      <td>57.549</td>
+      <td>232.496</td>
+      <td>233.925</td>
+      <td>-1.429</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>2</td>
+      <td>23.379</td>
+      <td>61.204</td>
+      <td>253.557</td>
+      <td>248.288</td>
+      <td>5.269</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>2</td>
+      <td>24.146</td>
+      <td>31.489</td>
+      <td>139.894</td>
+      <td>131.506</td>
+      <td>8.388</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>2</td>
+      <td>24.187</td>
+      <td>68.476</td>
+      <td>273.931</td>
+      <td>276.871</td>
+      <td>-2.940</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>2</td>
+      <td>24.159</td>
+      <td>51.144</td>
+      <td>207.969</td>
+      <td>208.753</td>
+      <td>-0.784</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>2</td>
+      <td>23.803</td>
+      <td>68.774</td>
+      <td>280.205</td>
+      <td>278.040</td>
+      <td>2.165</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>3</td>
+      <td>24.381</td>
+      <td>55.350</td>
+      <td>227.060</td>
+      <td>225.282</td>
+      <td>1.779</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>3</td>
+      <td>24.027</td>
+      <td>44.692</td>
+      <td>180.605</td>
+      <td>183.396</td>
+      <td>-2.791</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>3</td>
+      <td>24.342</td>
+      <td>50.995</td>
+      <td>206.229</td>
+      <td>208.167</td>
+      <td>-1.938</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>3</td>
+      <td>23.670</td>
+      <td>21.602</td>
+      <td>91.464</td>
+      <td>92.649</td>
+      <td>-1.186</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25</td>
+      <td>3</td>
+      <td>24.246</td>
+      <td>54.673</td>
+      <td>223.869</td>
+      <td>222.622</td>
+      <td>1.247</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26</td>
+      <td>3</td>
+      <td>25.082</td>
+      <td>41.449</td>
+      <td>172.910</td>
+      <td>170.651</td>
+      <td>2.259</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>27</td>
+      <td>3</td>
+      <td>24.575</td>
+      <td>35.451</td>
+      <td>152.073</td>
+      <td>147.075</td>
+      <td>4.998</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>3</td>
+      <td>23.803</td>
+      <td>42.989</td>
+      <td>169.427</td>
+      <td>176.703</td>
+      <td>-7.276</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>29</td>
+      <td>3</td>
+      <td>24.660</td>
+      <td>48.599</td>
+      <td>192.561</td>
+      <td>198.748</td>
+      <td>-6.188</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>30</td>
+      <td>3</td>
+      <td>24.097</td>
+      <td>21.448</td>
+      <td>94.448</td>
+      <td>92.042</td>
+      <td>2.406</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>31</td>
+      <td>4</td>
+      <td>22.816</td>
+      <td>56.982</td>
+      <td>222.794</td>
+      <td>231.697</td>
+      <td>-8.902</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>32</td>
+      <td>4</td>
+      <td>24.167</td>
+      <td>47.901</td>
+      <td>199.003</td>
+      <td>196.008</td>
+      <td>2.996</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>33</td>
+      <td>4</td>
+      <td>22.712</td>
+      <td>40.285</td>
+      <td>168.668</td>
+      <td>166.077</td>
+      <td>2.592</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>34</td>
+      <td>4</td>
+      <td>23.611</td>
+      <td>25.609</td>
+      <td>109.387</td>
+      <td>108.397</td>
+      <td>0.990</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>35</td>
+      <td>4</td>
+      <td>23.354</td>
+      <td>22.971</td>
+      <td>98.445</td>
+      <td>98.029</td>
+      <td>0.416</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>36</td>
+      <td>4</td>
+      <td>23.669</td>
+      <td>25.838</td>
+      <td>110.987</td>
+      <td>109.295</td>
+      <td>1.692</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>37</td>
+      <td>4</td>
+      <td>23.965</td>
+      <td>49.127</td>
+      <td>202.662</td>
+      <td>200.826</td>
+      <td>1.835</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>38</td>
+      <td>4</td>
+      <td>22.917</td>
+      <td>54.936</td>
+      <td>224.773</td>
+      <td>223.653</td>
+      <td>1.120</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>39</td>
+      <td>4</td>
+      <td>23.546</td>
+      <td>50.917</td>
+      <td>216.058</td>
+      <td>207.859</td>
+      <td>8.199</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>40</td>
+      <td>4</td>
+      <td>24.450</td>
+      <td>41.976</td>
+      <td>171.469</td>
+      <td>172.720</td>
+      <td>-1.251</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>The first aggregation we will look at is how to make groups of data that are related by values in a column.  We use the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> function (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby</a>), and specify a column to group on. The result is a <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object, which we next have to work with.</p>
 <div class="cell docutils container">
@@ -809,7 +1227,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/971612646682b865c270c76367d9439a697c989684c33165a6630cff3c90b9ba.png" src="../_images/971612646682b865c270c76367d9439a697c989684c33165a6630cff3c90b9ba.png" />
+<img alt="../_images/73b677362e935e4f56101ae985ff528a874d4ae614f7fcc3398ee2c907866cd9.png" src="../_images/73b677362e935e4f56101ae985ff528a874d4ae614f7fcc3398ee2c907866cd9.png" />
 </div>
 </div>
 <p>the point of this is we cannot see a visual clustering of the groups by day. That is important, because if we did it could suggest something was different that day.</p>
@@ -828,171 +1246,71 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/compat/_optional.py:142,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">142</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/importlib/__init__.py:127,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">127</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Stress</th>
-      <th>Shear rate</th>
-      <th>Viscosity</th>
-      <th>Step time</th>
-      <th>Temperature</th>
-      <th>Normal stress</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Pa</td>
-      <td>1/s</td>
-      <td>Pa.s</td>
-      <td>s</td>
-      <td>°C</td>
-      <td>Pa</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.009981</td>
-      <td>0.04953</td>
-      <td>0.201504</td>
-      <td>35.1469</td>
-      <td>25.001</td>
-      <td>-0.001263</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.015817</td>
-      <td>0.079875</td>
-      <td>0.198028</td>
-      <td>70.1689</td>
-      <td>25.001</td>
-      <td>-0.000835</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.025071</td>
-      <td>0.127313</td>
-      <td>0.196926</td>
-      <td>105.253</td>
-      <td>25</td>
-      <td>-0.000913</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.039734</td>
-      <td>0.204094</td>
-      <td>0.194685</td>
-      <td>140.26</td>
-      <td>25</td>
-      <td>-0.001132</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.062977</td>
-      <td>0.327253</td>
-      <td>0.192442</td>
-      <td>175.313</td>
-      <td>25</td>
-      <td>-0.002026</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.099806</td>
-      <td>0.530364</td>
-      <td>0.188183</td>
-      <td>210.32</td>
-      <td>24.998</td>
-      <td>-0.002429</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0.158165</td>
-      <td>0.875494</td>
-      <td>0.180658</td>
-      <td>245.373</td>
-      <td>25</td>
-      <td>-0.001837</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>0.250637</td>
-      <td>1.49135</td>
-      <td>0.168061</td>
-      <td>280.426</td>
-      <td>25.002</td>
-      <td>-0.001655</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>0.397131</td>
-      <td>2.64707</td>
-      <td>0.150027</td>
-      <td>315.433</td>
-      <td>25.001</td>
-      <td>-0.001889</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>0.629111</td>
-      <td>5.00904</td>
-      <td>0.125595</td>
-      <td>350.501</td>
-      <td>25.003</td>
-      <td>-0.002233</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>0.996153</td>
-      <td>10.3993</td>
-      <td>0.09579</td>
-      <td>385.508</td>
-      <td>24.996</td>
-      <td>-0.001807</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>1.57528</td>
-      <td>24.5624</td>
-      <td>0.064134</td>
-      <td>420.608</td>
-      <td>24.998</td>
-      <td>-0.001823</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>2.47652</td>
-      <td>67.2972</td>
-      <td>0.0368</td>
-      <td>455.63</td>
-      <td>25.003</td>
-      <td>-0.00182</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>3.75092</td>
-      <td>210.991</td>
-      <td>0.017778</td>
-      <td>490.668</td>
-      <td>25</td>
-      <td>-0.002939</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1014,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:991,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:973,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;xlrd&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">couette</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;couette.xls&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>                    <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Flow sweep - 1&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>                    <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># sheet name is case sensitive, excel file name is not</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">couette</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/io/excel/_base.py:478,</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">    </span><span class="mi">476</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">477</span>     <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">478</span>     <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">479</span> <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">481</span>         <span class="s2">&quot;Engine should not be specified when passing &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">482</span>         <span class="s2">&quot;an ExcelFile - ExcelFile already has the engine set&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span>     <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/io/excel/_base.py:1513,</span> in <span class="ni">ExcelFile.__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1510</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
+<span class="g g-Whitespace">   </span><span class="mi">1511</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span> <span class="o">=</span> <span class="n">storage_options</span>
+<span class="ne">-&gt; </span><span class="mi">1513</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engines</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/io/excel/_xlrd.py:34,</span> in <span class="ni">XlrdReader.__init__</span><span class="nt">(self, filepath_or_buffer, storage_options)</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span><span class="sd"> Reader using xlrd engine.</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span><span class="sd"> {storage_options}</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;Install xlrd &gt;= 2.0.1 for xls Excel support&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">34</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;xlrd&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="n">err_msg</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/compat/_optional.py:145,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">145</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span>     <span class="k">return</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">148</span> <span class="c1"># Handle submodules: if we have submodule, grab parent module from sys.modules</span>
+
+<span class="ne">ImportError</span>: Missing optional dependency &#39;xlrd&#39;. Install xlrd &gt;= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can drop the row at index 0, it just has the units in it. With this syntax, we have to save the resulting DataFrame back into the variable, or it will not be changed.</p>
 <div class="cell docutils container">

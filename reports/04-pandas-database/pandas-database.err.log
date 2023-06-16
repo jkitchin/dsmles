@@ -15,28 +15,23 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import ase
-import numpy as np
-import pandas as pd
-
-dtypes = np.dtype([('symbol', str), ('atomic mass', float)])
-data = np.empty(0, dtype=dtypes)
-
-elements = pd.DataFrame(data)
-elements['symbol'] = ase.data.chemical_symbols
-elements['atomic mass'] = ase.data.atomic_masses
-elements.info()
+for mlc, mw in MW.iteritems():
+    print(f'The molecular weight of {mlc} is {mw} gm/mol')
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 3[0m
-[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mase[39;00m
-[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
-[0;32m----> 3[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[1;32m      5[0m dtypes [38;5;241m=[39m np[38;5;241m.[39mdtype([([38;5;124m'[39m[38;5;124msymbol[39m[38;5;124m'[39m, [38;5;28mstr[39m), ([38;5;124m'[39m[38;5;124matomic mass[39m[38;5;124m'[39m, [38;5;28mfloat[39m)])
-[1;32m      6[0m data [38;5;241m=[39m np[38;5;241m.[39mempty([38;5;241m0[39m, dtype[38;5;241m=[39mdtypes)
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+[0;32m/tmp/ipykernel_1989/1960597735.py[0m in [0;36m?[0;34m()[0m
+[0;32m----> 1[0;31m [0;32mfor[0m [0mmlc[0m[0;34m,[0m [0mmw[0m [0;32min[0m [0mMW[0m[0;34m.[0m[0miteritems[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m     [0mprint[0m[0;34m([0m[0;34mf'The molecular weight of {mlc} is {mw} gm/mol'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mModuleNotFoundError[0m: No module named 'pandas'
+[0;32m/opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/core/generic.py[0m in [0;36m?[0;34m(self, name)[0m
+[1;32m   5985[0m             [0;32mand[0m [0mname[0m [0;32mnot[0m [0;32min[0m [0mself[0m[0;34m.[0m[0m_accessors[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   5986[0m             [0;32mand[0m [0mself[0m[0;34m.[0m[0m_info_axis[0m[0;34m.[0m[0m_can_hold_identifiers_and_holds_name[0m[0;34m([0m[0mname[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   5987[0m         ):
+[1;32m   5988[0m             [0;32mreturn[0m [0mself[0m[0;34m[[0m[0mname[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 5989[0;31m         [0;32mreturn[0m [0mobject[0m[0;34m.[0m[0m__getattribute__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mname[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mAttributeError[0m: 'Series' object has no attribute 'iteritems'
 
