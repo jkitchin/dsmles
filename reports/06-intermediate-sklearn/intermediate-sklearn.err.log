@@ -15,28 +15,24 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import ase
 import numpy as np
-import pandas as pd
 
-dtypes = np.dtype([('symbol', str), ('atomic mass', float)])
-data = np.empty(0, dtype=dtypes)
+X = np.array([data['distance']]).T
 
-elements = pd.DataFrame(data)
-elements['symbol'] = ase.data.chemical_symbols
-elements['atomic mass'] = ase.data.atomic_masses
-elements.info()
+from sklearn.preprocessing import PolynomialFeatures
+poly = PolynomialFeatures(2)
+poly.fit_transform(X)
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 3[0m
-[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mase[39;00m
-[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
-[0;32m----> 3[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[1;32m      5[0m dtypes [38;5;241m=[39m np[38;5;241m.[39mdtype([([38;5;124m'[39m[38;5;124msymbol[39m[38;5;124m'[39m, [38;5;28mstr[39m), ([38;5;124m'[39m[38;5;124matomic mass[39m[38;5;124m'[39m, [38;5;28mfloat[39m)])
-[1;32m      6[0m data [38;5;241m=[39m np[38;5;241m.[39mempty([38;5;241m0[39m, dtype[38;5;241m=[39mdtypes)
+Cell [0;32mIn[2], line 5[0m
+[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m      3[0m X [38;5;241m=[39m np[38;5;241m.[39marray([data[[38;5;124m'[39m[38;5;124mdistance[39m[38;5;124m'[39m]])[38;5;241m.[39mT
+[0;32m----> 5[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpreprocessing[39;00m [38;5;28;01mimport[39;00m PolynomialFeatures
+[1;32m      6[0m poly [38;5;241m=[39m PolynomialFeatures([38;5;241m2[39m)
+[1;32m      7[0m poly[38;5;241m.[39mfit_transform(X)
 
-[0;31mModuleNotFoundError[0m: No module named 'pandas'
+[0;31mModuleNotFoundError[0m: No module named 'sklearn'
 

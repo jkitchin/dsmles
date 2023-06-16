@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to Pandas &#8212; Data science and machine learning in science and engineering</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Intermediate Pandas" href="../03-intermediate-pandas/intermediate-pandas.html" />
     <link rel="prev" title="Introduction to data files" href="../01-numpy/numpy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -390,7 +391,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pandas">
-<h1>Introduction to Pandas<a class="headerlink" href="#introduction-to-pandas" title="Permalink to this headline">#</a></h1>
+<h1>Introduction to Pandas<a class="headerlink" href="#introduction-to-pandas" title="Permalink to this heading">#</a></h1>
 <p>Before we jump into Pandas, let us review what we have considered so far.</p>
 <p>First, we learned how to read data from files into numpy arrays. We learned how to use variables to store that data, and to either slice the array into a few variables, or use slices themselves for something. We also learned how to make a <em>record</em> array that enabled us to access columns of the array by a <em>name</em>.</p>
 <p>When we loaded a json file, we got a <em>dictionary</em> data structure, which also allowed us to access data by a <em>name</em>.</p>
@@ -398,45 +399,82 @@ document.write(`
 <p>For “small” data sets, i.e. not too many columns, this is a perfectly reasonable thing to do. For larger datasets, however, it can be tedious to create a lot of variable names, and it is also hard to remember what is in each column.</p>
 <p>Many tasks are pretty standard, e.g. read a data set, summarize and visualize it. It would be nice if we had a simple way to do this, with few lines of code, since those lines will be the same every time.</p>
 <p>The <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> library was developed to address all these issues. From the website: “<strong>pandas</strong> is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.”</p>
-<section id="review-of-the-numpy-array-way">
-<h2>Review of the numpy array way<a class="headerlink" href="#review-of-the-numpy-array-way" title="Permalink to this headline">#</a></h2>
-<p>Let’s review what we learned already.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;raman.txt&#39;</span><span class="p">)</span>
-
-<span class="n">wavenumber</span><span class="p">,</span> <span class="n">intensity</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># the transpose has data in rows for unpacking</span>
-<span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavenumber</span> <span class="o">&gt;=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">wavenumber</span> <span class="o">&lt;</span> <span class="mi">1500</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavenumber</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">intensity</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavenumber&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> jupyter_black
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/47580010cc6fbfba898ff53187382c6a23431920ee48323be9756049cf988128.png" src="../_images/47580010cc6fbfba898ff53187382c6a23431920ee48323be9756049cf988128.png" />
+<div class="output text_html">
+                <script type="application/javascript" id="jupyter_black">
+                (function() {
+                    if (window.IPython === undefined) {
+                        return
+                    }
+                    var msg = "WARNING: it looks like you might have loaded " +
+                        "jupyter_black in a non-lab notebook with " +
+                        "`is_lab=True`. Please double check, and if " +
+                        "loading with `%load_ext` please review the README!"
+                    console.log(msg)
+                    alert(msg)
+                })()
+                </script>
+                </div></div>
+</div>
+<section id="review-of-the-numpy-array-way">
+<h2>Review of the numpy array way<a class="headerlink" href="#review-of-the-numpy-array-way" title="Permalink to this heading">#</a></h2>
+<p>Let’s review what we learned already.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;raman.txt&quot;</span><span class="p">)</span>
+
+<span class="n">wavenumber</span><span class="p">,</span> <span class="n">intensity</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># the transpose has data in rows for unpacking</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavenumber</span> <span class="o">&gt;=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">wavenumber</span> <span class="o">&lt;</span> <span class="mi">1500</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavenumber</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">intensity</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wavenumber&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Intensity&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f73928426b31817b30c6712d6d42938bd20f9e06981e58aca82e06bf07862e05.png" src="../_images/f73928426b31817b30c6712d6d42938bd20f9e06981e58aca82e06bf07862e05.png" />
 </div>
 </div>
 </section>
 <section id="now-with-pandas">
-<h2>Now, with Pandas<a class="headerlink" href="#now-with-pandas" title="Permalink to this headline">#</a></h2>
+<h2>Now, with Pandas<a class="headerlink" href="#now-with-pandas" title="Permalink to this heading">#</a></h2>
 <p>We will unpack this code shortly. For now, look how short it is to create this plot. Note that we have condensed all the code in the example above basically into three lines of code. That is pretty remarkable, but should give you some pause. We now have to learn how to use such a dense syntax!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;raman.txt&#39;</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                 <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;wavenumber&#39;</span><span class="p">,</span> <span class="s1">&#39;intensity&#39;</span><span class="p">])</span>
-<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">&lt;</span><span class="mi">1500</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;raman.txt&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wavenumber&quot;</span><span class="p">,</span> <span class="s2">&quot;intensity&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="mi">1500</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9a2f88c90cd8dde1817eb3a4e38e0218b94b643cfa07276f1fb529017760d1d3.png" src="../_images/9a2f88c90cd8dde1817eb3a4e38e0218b94b643cfa07276f1fb529017760d1d3.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="s2">&quot;raman.txt&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wavenumber&quot;</span><span class="p">,</span> <span class="s2">&quot;intensity&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="mi">1500</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
 </div>
 </div>
 <p>And to summarize.</p>
@@ -509,7 +547,7 @@ document.write(`
 <p>The downside is that it is like learning a whole new language within Python, and a new mental model for how the data is stored and accessed. You have to decide if it is worthwhile doing that. If you do this a lot, it is probably worthwhile.</p>
 </section>
 <section id="pandas">
-<h2>Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h2>
+<h2>Pandas<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h2>
 <p>The main object we will work with is called a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -609,7 +647,7 @@ document.write(`
 <p>The dataframe combines a few ideas we used from arrays and dictionaries. First, we can access a column by name. When we do this, we get a <code class="docutils literal notranslate"><span class="pre">Series</span></code> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;intensity&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;intensity&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -622,7 +660,7 @@ document.write(`
 <p>You can extract the values into a numpy array like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;intensity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;intensity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 </pre></div>
 </div>
 </div>
@@ -636,7 +674,7 @@ document.write(`
 <p>A Series (and DataFrame) are like numpy arrays in some ways, and different in others. Suppose we want to see the first five entries of the intensity. If we want to use <em>integer-based</em> indexing like we have so far, you have to use the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> attribute on the series like this. <code class="docutils literal notranslate"><span class="pre">iloc</span></code> is for integer location.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;intensity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;intensity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -686,7 +724,7 @@ Name: intensity, dtype: float64
 <p>Finally, you can combine these so that you index a column with a slice of the index like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;intensity&#39;</span><span class="p">][</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;intensity&quot;</span><span class="p">][</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -704,7 +742,7 @@ Name: intensity, dtype: float64
 </div>
 <p>In summary, we can think of a dataframe as a hybrid array/dictionary where we have an index which is like the independent variable, and a set of columns that are like dependent variables. You can access the columns like a dictionary.</p>
 <section id="dataframes-and-visualization">
-<h3>Dataframes and visualization<a class="headerlink" href="#dataframes-and-visualization" title="Permalink to this headline">#</a></h3>
+<h3>Dataframes and visualization<a class="headerlink" href="#dataframes-and-visualization" title="Permalink to this heading">#</a></h3>
 <p>Dataframes also provide easy access to <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">visualization</a>. The simplest method is to just call the plot method on a dataframe. Note this automatically makes the plot with labels and a legend. If there are many columns, you will have a curve for each one of them. We will see that later.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -718,20 +756,16 @@ Name: intensity, dtype: float64
 </div>
 </section>
 <section id="reading-data-in-pandas">
-<h3>Reading data in Pandas<a class="headerlink" href="#reading-data-in-pandas" title="Permalink to this headline">#</a></h3>
+<h3>Reading data in Pandas<a class="headerlink" href="#reading-data-in-pandas" title="Permalink to this heading">#</a></h3>
 <p>Let’s get back to how we got the data into Pandas. Let’s retrieve the data file we used before with several columns in it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;p-t.dat&#39;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.itl.nist.gov/div898/handbook/datasets/MODEL-4_4_4.DAT&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;p-t.dat&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.itl.nist.gov/div898/handbook/datasets/MODEL-4_4_4.DAT&quot;</span>
 
 <span class="kn">import</span> <span class="nn">urllib.request</span>
-<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;p-t.dat&#39;, &lt;http.client.HTTPMessage at 0x12f967250&gt;)
+
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fname</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -739,29 +773,20 @@ Name: intensity, dtype: float64
 <p>Let’s refresh our memory of what is in this file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> head p-t.dat
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>head<span class="w"> </span>p-t.dat
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Run          Ambient                            Fitted
-
 Order  Day  Temperature  Temperature  Pressure    Value    Residual
-
  1      1      23.820      54.749      225.066   222.920     2.146
-
  2      1      24.120      23.323      100.331    99.411     0.920
-
  3      1      23.434      58.775      230.863   238.744    -7.881
-
  4      1      23.993      25.854      106.160   109.359    -3.199
-
  5      1      23.375      68.297      277.502   276.165     1.336
-
  6      1      23.233      37.481      148.314   155.056    -6.741
-
  7      1      24.162      49.542      197.562   202.456    -4.895
-
  8      1      23.667      34.101      138.537   141.770    -3.232
 </pre></div>
 </div>
@@ -770,9 +795,20 @@ Order  Day  Temperature  Temperature  Pressure    Value    Residual
 <p>We use <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html">Pandas.read_csv</a> to read this, similar to how we used <code class="docutils literal notranslate"><span class="pre">numpy.loadtxt</span></code>. It also takes a lot of arguments to fine-tune the output. We use spaces as the delimiter here. <code class="docutils literal notranslate"><span class="pre">'\s+'</span></code> is a <em>regular expression</em> for multiple spaces. We still skip two rows, and we have to manually define the column names. We <em>do not</em> specify an index column here, we get a default one based on integers. Pandas is smart enough to recognize the first two columns are integers, so we do not have to do anything special here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;p-t.dat&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                 <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Run order&#39;</span><span class="p">,</span> <span class="s1">&#39;Day&#39;</span><span class="p">,</span> <span class="s1">&#39;Ambient Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;Pressure&#39;</span><span class="p">,</span> <span class="s1">&#39;Fitted Value&#39;</span><span class="p">,</span> <span class="s1">&#39;Residual&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;p-t.dat&quot;</span><span class="p">,</span>
+    <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span>
+    <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;Run order&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Day&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Ambient Temperature&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Pressure&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Fitted Value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Residual&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -1224,7 +1260,7 @@ Order  Day  Temperature  Temperature  Pressure    Value    Residual
 <p>The default is to plot each column vs the index, which is not that helpful for us. Say we just want to plot the pressure vs. the temperature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Pressure&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;b.&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Pressure&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;b.&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1235,10 +1271,10 @@ Order  Day  Temperature  Temperature  Pressure    Value    Residual
 <p>We can add multiple plots to a figure, but we have to tell the subsequent calls which axes to put them on. To do that, save the first one, and pass it as an argument in subsequent plots.  That also allows you to fine-tune the plot appearance, e.g. add a y-label. See the <a class="reference external" href="https://matplotlib.org/contents.html">matplotlib documentation</a> to learn how to set all of these.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Pressure&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;b.&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Fitted Value&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">p1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Pressure&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;b.&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Fitted Value&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">p1</span><span class="p">)</span>
 
-<span class="n">p1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;values&#39;</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;values&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1250,7 +1286,7 @@ Order  Day  Temperature  Temperature  Pressure    Value    Residual
 </section>
 </section>
 <section id="another-real-life-example">
-<h2>Another real-life example<a class="headerlink" href="#another-real-life-example" title="Permalink to this headline">#</a></h2>
+<h2>Another real-life example<a class="headerlink" href="#another-real-life-example" title="Permalink to this heading">#</a></h2>
 <p>LAMMPS is a molecular simulation code used to run molecular dynamics. It outputs a text file that is somewhat challenging to read. There are variable numbers of time steps that depend on how the simulation was setup.</p>
 <p>Start by downloading and opening this file. It is a molecular dynamics trajectory at constant volume, where the pressure, temperature and energy fluctuate.</p>
 <p>Open this file <a class="reference download internal" download="" href="../_downloads/4d873fa6b80f316d3c5a9bd37c55b029/log1.lammps"><span class="xref download myst">log1.lammps</span></a>to get a sense for what is in it. The data starts around:</p>
@@ -1271,11 +1307,11 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;log1.lammps&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;log1.lammps&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Step v_mytime&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Step v_mytime&quot;</span><span class="p">):</span>
             <span class="n">start</span> <span class="o">=</span> <span class="n">i</span>
-        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Loop time of &#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Loop time of &quot;</span><span class="p">):</span>
             <span class="n">stop</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># stop on the previous line</span>
             <span class="k">break</span>
 <span class="n">start</span><span class="p">,</span> <span class="n">stop</span>
@@ -1291,14 +1327,21 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 <p>This gets tricky. We want to skip the rows up to the starting line. At that point, the line numbers restart as far as Pandas is concerned, so the header is in line 0 then, and the number of rows to read is defined by the stop line minus the start line. The values are separated by multiple spaces, so we use a <em>pattern</em> to indicate multiple spaces. Finally, we prevent the first column from being the index column by setting index_col to be False. See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html%3E">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html&gt;</a>for all the details.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;log1.lammps&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="n">stop</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;log1.lammps&quot;</span><span class="p">,</span>
+    <span class="n">skiprows</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">nrows</span><span class="o">=</span><span class="n">stop</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span>
+    <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span>
+    <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/sj/cb6cr7_s45d67mqjmsfx8mt80000gn/T/ipykernel_30122/1679147768.py:1: ParserWarning: Length of header or names does not match length of data. This leads to a loss of data with index_col=False.
-  df = pd.read_csv(&#39;log1.lammps&#39;, skiprows=start, header=0, nrows=stop - start, delimiter=&#39;\s+&#39;, index_col=False)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/sj/cb6cr7_s45d67mqjmsfx8mt80000gn/T/ipykernel_35948/86227813.py:1: ParserWarning: Length of header or names does not match length of data. This leads to a loss of data with index_col=False.
+  df = pd.read_csv(
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1572,13 +1615,13 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 </pre></div>
 </div>
 <section id="visualizing-the-data">
-<h3>Visualizing the data<a class="headerlink" href="#visualizing-the-data" title="Permalink to this headline">#</a></h3>
+<h3>Visualizing the data<a class="headerlink" href="#visualizing-the-data" title="Permalink to this heading">#</a></h3>
 <section id="plot-a-column">
-<h4>Plot a column<a class="headerlink" href="#plot-a-column" title="Permalink to this headline">#</a></h4>
+<h4>Plot a column<a class="headerlink" href="#plot-a-column" title="Permalink to this heading">#</a></h4>
 <p>The effort was worth it though; look how easy it is to plot the data!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Step&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Press&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Step&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Press&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1589,10 +1632,11 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Temp&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PotEng&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Press&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PotEng&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Temp&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;PotEng&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;b.&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Press&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;PotEng&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;b.&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -1602,11 +1646,11 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 </div>
 </section>
 <section id="plot-distributions-of-a-column">
-<h4>Plot distributions of a column<a class="headerlink" href="#plot-distributions-of-a-column" title="Permalink to this headline">#</a></h4>
+<h4>Plot distributions of a column<a class="headerlink" href="#plot-distributions-of-a-column" title="Permalink to this heading">#</a></h4>
 <p>We can look at histograms of properties as easily.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s1">&#39;PotEng&#39;</span><span class="p">,</span> <span class="n">xrot</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s2">&quot;PotEng&quot;</span><span class="p">,</span> <span class="n">xrot</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1616,7 +1660,7 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 </div>
 </section>
 <section id="plot-column-correlations">
-<h4>Plot column correlations<a class="headerlink" href="#plot-column-correlations" title="Permalink to this headline">#</a></h4>
+<h4>Plot column correlations<a class="headerlink" href="#plot-column-correlations" title="Permalink to this heading">#</a></h4>
 <p>This is just the beginning of using Pandas. Suppose we want to see which columns are correlated (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.corr.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.corr.html</a>). With variables this would be tedious.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1637,12 +1681,12 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">13</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
-        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">j</span><span class="p">]],</span> <span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">j</span><span class="p">]],</span> <span class="s2">&quot;b.&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="c1"># remove axes so it is easier to read</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">);</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1653,11 +1697,11 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 </section>
 </section>
 <section id="getting-parts-of-a-pandas-dataframe">
-<h3>Getting parts of a Pandas DataFrame<a class="headerlink" href="#getting-parts-of-a-pandas-dataframe" title="Permalink to this headline">#</a></h3>
+<h3>Getting parts of a Pandas DataFrame<a class="headerlink" href="#getting-parts-of-a-pandas-dataframe" title="Permalink to this heading">#</a></h3>
 <p>We have seen how to get a column from a DataFrame like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Press&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Press&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1681,7 +1725,7 @@ Name: Press, Length: 2501, dtype: float64
 <p>In this context, the DataFrame is acting like a dictionary. You can get a few columns by using a list of column names.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Press&#39;</span><span class="p">,</span> <span class="s1">&#39;PotEng&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Press&quot;</span><span class="p">,</span> <span class="s2">&quot;PotEng&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1770,6 +1814,10 @@ Name: Press, Length: 2501, dtype: float64
 </div></div></div>
 </div>
 <p>What about a row? This is what we would have done with a numpy array, but it just doesn’t work here.</p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>You get a KeyError here.</p>
+</div>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1797,7 +1845,7 @@ Name: Press, Length: 2501, dtype: float64
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">Input In [28],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [30],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py:3505,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
@@ -2170,7 +2218,7 @@ Name: 0, dtype: float64
 <p>And a slice of a column like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Press&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Press&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2188,7 +2236,7 @@ Name: Press, dtype: float64
 <p>We can access a value in a row and column with the <code class="docutils literal notranslate"><span class="pre">at</span></code> function on a DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Press&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Press&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2213,7 +2261,7 @@ Name: Press, dtype: float64
 </div>
 </section>
 <section id="operating-on-columns-in-the-dataframe">
-<h3>Operating on columns in the DataFrame<a class="headerlink" href="#operating-on-columns-in-the-dataframe" title="Permalink to this headline">#</a></h3>
+<h3>Operating on columns in the DataFrame<a class="headerlink" href="#operating-on-columns-in-the-dataframe" title="Permalink to this heading">#</a></h3>
 <p>Some functions just work across the columns. For example, DataFrames have statistics functions like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2244,8 +2292,7 @@ dtype: float64
 <p>We should tread carefully with other functions that work on arrays. For example consider this example that computes the mean of an entire array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-              <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
 <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2261,7 +2308,7 @@ dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="c1"># takes mean along axis 0</span>
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>  <span class="c1"># takes mean along axis 0</span>
 </pre></div>
 </div>
 </div>
@@ -2797,6 +2844,7 @@ dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">minmax</span><span class="p">(</span><span class="n">roworcolumn</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">roworcolumn</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">roworcolumn</span><span class="p">)</span>
 
+
 <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">minmax</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2902,7 +2950,7 @@ Length: 2501, dtype: object
 </section>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>Pandas is a multipurpose data science tool. In many ways it is like a numpy array, and in many ways it is different. In some ways it is like a dictionary.</p>
 <p>The similarities include the ability to do some indexing and slicing. This is only a partial similarity though.</p>
 <p>The differences include integrated plotting.</p>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Using Pandas DataFrames as a small database &#8212; Data science and machine learning in science and engineering</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Introduction to data-driven model development" href="../05-linear-regression/linear-regression.html" />
     <link rel="prev" title="Intermediate Pandas" href="../03-intermediate-pandas/intermediate-pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -380,10 +381,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="using-pandas-dataframes-as-a-small-database">
-<h1>Using Pandas DataFrames as a small database<a class="headerlink" href="#using-pandas-dataframes-as-a-small-database" title="Permalink to this headline">#</a></h1>
+<h1>Using Pandas DataFrames as a small database<a class="headerlink" href="#using-pandas-dataframes-as-a-small-database" title="Permalink to this heading">#</a></h1>
 <p>Pandas DataFrames can serve as small databases. You can use them to construct tables from which you can run queries to compute things. In this example, we will explore a database of molecules and atomic element properties.</p>
 <section id="a-table-for-the-chemical-elements-and-their-atomic-masses">
-<h2>A Table for the chemical elements and their atomic masses<a class="headerlink" href="#a-table-for-the-chemical-elements-and-their-atomic-masses" title="Permalink to this headline">#</a></h2>
+<h2>A Table for the chemical elements and their atomic masses<a class="headerlink" href="#a-table-for-the-chemical-elements-and-their-atomic-masses" title="Permalink to this heading">#</a></h2>
 <p>We will use the Atomic Simulation Environment library for this. It is already installed in Deepnote.</p>
 <p>We will use it because it has data about the chemical elements, and some molecules we will use.</p>
 <p>First, we make a DataFrame containing the chemical elements, and their atomic masses.</p>
@@ -404,15 +405,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 119 entries, 0 to 118
-Data columns (total 2 columns):
- #   Column       Non-Null Count  Dtype  
----  ------       --------------  -----  
- 0   symbol       119 non-null    object 
- 1   atomic mass  119 non-null    float64
-dtypes: float64(1), object(1)
-memory usage: 2.0+ KB
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">ase</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">dtypes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;symbol&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;atomic mass&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">)])</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
 </pre></div>
 </div>
 </div>
@@ -421,6 +423,154 @@ memory usage: 2.0+ KB
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>elements.query
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> elements<span class=" -Color -Color-Blue">.</span>query<span class=" -Color -Color-Blue">(</span>expr<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;str&#39;,</span> inplace<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Blue">**</span>kwargs<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-&gt;</span> <span class=" -Color -Color-Blue">&#39;DataFrame | None&#39;</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Query the columns of a DataFrame with a boolean expression.
+
+Parameters
+----------
+expr : str
+    The query string to evaluate.
+
+    You can refer to variables
+    in the environment by prefixing them with an &#39;@&#39; character like
+    ``@a + b``.
+
+    You can refer to column names that are not valid Python variable names
+    by surrounding them in backticks. Thus, column names containing spaces
+    or punctuations (besides underscores) or starting with digits must be
+    surrounded by backticks. (For example, a column named &quot;Area (cm^2)&quot; would
+    be referenced as ```Area (cm^2)```). Column names which are Python keywords
+    (like &quot;list&quot;, &quot;for&quot;, &quot;import&quot;, etc) cannot be used.
+
+    For example, if one of your columns is called ``a a`` and you want
+    to sum it with ``b``, your query should be ```a a` + b``.
+
+    .. versionadded:: 0.25.0
+        Backtick quoting introduced.
+
+    .. versionadded:: 1.0.0
+        Expanding functionality of backtick quoting for more than only spaces.
+
+inplace : bool
+    Whether to modify the DataFrame rather than creating a new one.
+**kwargs
+    See the documentation for :func:`eval` for complete details
+    on the keyword arguments accepted by :meth:`DataFrame.query`.
+
+Returns
+-------
+DataFrame or None
+    DataFrame resulting from the provided query expression or
+    None if ``inplace=True``.
+
+See Also
+--------
+eval : Evaluate a string describing operations on
+    DataFrame columns.
+DataFrame.eval : Evaluate a string describing operations on
+    DataFrame columns.
+
+Notes
+-----
+The result of the evaluation of this expression is first passed to
+:attr:`DataFrame.loc` and if that fails because of a
+multidimensional key (e.g., a DataFrame) then the result will be passed
+to :meth:`DataFrame.__getitem__`.
+
+This method uses the top-level :func:`eval` function to
+evaluate the passed query.
+
+The :meth:`~pandas.DataFrame.query` method uses a slightly
+modified Python syntax by default. For example, the ``&amp;`` and ``|``
+(bitwise) operators have the precedence of their boolean cousins,
+:keyword:`and` and :keyword:`or`. This *is* syntactically valid Python,
+however the semantics are different.
+
+You can change the semantics of the expression by passing the keyword
+argument ``parser=&#39;python&#39;``. This enforces the same semantics as
+evaluation in Python space. Likewise, you can pass ``engine=&#39;python&#39;``
+to evaluate an expression using Python itself as a backend. This is not
+recommended as it is inefficient compared to using ``numexpr`` as the
+engine.
+
+The :attr:`DataFrame.index` and
+:attr:`DataFrame.columns` attributes of the
+:class:`~pandas.DataFrame` instance are placed in the query namespace
+by default, which allows you to treat both the index and columns of the
+frame as a column in the frame.
+The identifier ``index`` is used for the frame index; you can also
+use the name of the index to identify it in a query. Please note that
+Python keywords may not be used as identifiers.
+
+For further details and examples see the ``query`` documentation in
+:ref:`indexing &lt;indexing.query&gt;`.
+
+*Backtick quoted variables*
+
+Backtick quoted variables are parsed as literal Python code and
+are converted internally to a Python valid identifier.
+This can lead to the following problems.
+
+During parsing a number of disallowed characters inside the backtick
+quoted string are replaced by strings that are allowed as a Python identifier.
+These characters include all operators in Python, the space character, the
+question mark, the exclamation mark, the dollar sign, and the euro sign.
+For other characters that fall outside the ASCII range (U+0001..U+007F)
+and those that are not further specified in PEP 3131,
+the query parser will raise an error.
+This excludes whitespace different than the space character,
+but also the hashtag (as it is used for comments) and the backtick
+itself (backtick can also not be escaped).
+
+In a special case, quotes that make a pair around a backtick can
+confuse the parser.
+For example, ```it&#39;s` &gt; `that&#39;s``` will raise an error,
+as it forms a quoted string (``&#39;s &gt; `that&#39;``) with a backtick inside.
+
+See also the Python documentation about lexical analysis
+(https://docs.python.org/3/reference/lexical_analysis.html)
+in combination with the source code in :mod:`pandas.core.computation.parsing`.
+
+Examples
+--------
+&gt;&gt;&gt; df = pd.DataFrame({&#39;A&#39;: range(1, 6),
+...                    &#39;B&#39;: range(10, 0, -2),
+...                    &#39;C C&#39;: range(10, 5, -1)})
+&gt;&gt;&gt; df
+   A   B  C C
+0  1  10   10
+1  2   8    9
+2  3   6    8
+3  4   4    7
+4  5   2    6
+&gt;&gt;&gt; df.query(&#39;A &gt; B&#39;)
+   A  B  C C
+4  5  2    6
+
+The previous expression is equivalent to
+
+&gt;&gt;&gt; df[df.A &gt; df.B]
+   A  B  C C
+4  5  2    6
+
+For columns with spaces in their name, you can use backtick quoting.
+
+&gt;&gt;&gt; df.query(&#39;B == `C C`&#39;)
+   A   B  C C
+0  1  10   10
+
+The previous expression is equivalent to
+
+&gt;&gt;&gt; df[df.B == df[&#39;C C&#39;]]
+   A   B  C C
+0  1  10   10
+<span class=" -Color -Color-Red">File:</span>      /opt/conda/lib/python3.9/site-packages/pandas/core/frame.py
+<span class=" -Color -Color-Red">Type:</span>      method
 </pre></div>
 </div>
 </div>
@@ -595,7 +745,7 @@ memory usage: 2.0+ KB
 <p>Note it does not appear you can use the &#64; or f-string on column names. Also note the mysterious element X in the table. We can ignore that.</p>
 </section>
 <section id="a-table-for-some-molecules">
-<h2>A Table for some molecules<a class="headerlink" href="#a-table-for-some-molecules" title="Permalink to this headline">#</a></h2>
+<h2>A Table for some molecules<a class="headerlink" href="#a-table-for-some-molecules" title="Permalink to this heading">#</a></h2>
 <p>Next, let’s build the molecule database. This will be a table where each row  corresponds to an atom in a molecule. We will be able to get the atoms in a molecule by aggregating these on a <code class="docutils literal notranslate"><span class="pre">Molecule-ID</span></code>. We build this table up row by row, by first getting a molecule, and then iterating over each atom in the molecule. It is conventional to use an integer for an ID, but we will just use the molecular formula in this example. That has some limitations for larger databases (e.g. isomers have different properties, but the same molecular formula), but we will not have that problem here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -740,7 +890,7 @@ memory usage: 2.0+ KB
 </div></div></div>
 </div>
 <section id="what-molecules-are-in-the-database">
-<h3>What molecules are in the database?<a class="headerlink" href="#what-molecules-are-in-the-database" title="Permalink to this headline">#</a></h3>
+<h3>What molecules are in the database?<a class="headerlink" href="#what-molecules-are-in-the-database" title="Permalink to this heading">#</a></h3>
 <p>Ok, now we are ready to do some queries. First, let’s see what molecules we have in our database. We want the unique values of the ‘Molecule-ID’ column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -756,7 +906,7 @@ memory usage: 2.0+ KB
 </div>
 </section>
 <section id="which-molecules-have-three-h-atoms">
-<h3>Which molecules have three H atoms?<a class="headerlink" href="#which-molecules-have-three-h-atoms" title="Permalink to this headline">#</a></h3>
+<h3>Which molecules have three H atoms?<a class="headerlink" href="#which-molecules-have-three-h-atoms" title="Permalink to this heading">#</a></h3>
 <p>Now, how do we find molecules that have 3 H atoms? We need to do some grouping. First, we select the H rows, and then we group by the Molecule-ID Then, we need a count of each sub group. I prefer the <code class="docutils literal notranslate"><span class="pre">size</span></code> function for this over <code class="docutils literal notranslate"><span class="pre">count</span></code>. <code class="docutils literal notranslate"><span class="pre">size</span></code> returns a Series, while <code class="docutils literal notranslate"><span class="pre">count</span></code> seems to return a DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -792,7 +942,7 @@ dtype: int64
 </div>
 </section>
 <section id="getting-the-molecular-weight">
-<h3>Getting the molecular weight<a class="headerlink" href="#getting-the-molecular-weight" title="Permalink to this headline">#</a></h3>
+<h3>Getting the molecular weight<a class="headerlink" href="#getting-the-molecular-weight" title="Permalink to this heading">#</a></h3>
 <p>Getting the molecular weight requires us to combine information from two DataFrames. To do this, we need to merge them, aligning the rows on a common key. That key is the <code class="docutils literal notranslate"><span class="pre">Atom</span> <span class="pre">symbol</span></code> in the molecule DataFrame, and <code class="docutils literal notranslate"><span class="pre">symbol</span></code> in the elements DataFrame. Then we have to do the right grouping, and use the sum aggregation method on each group.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -986,12 +1136,16 @@ The molecular weight of H2O is 18.015 gm/mol
 The molecular weight of NH3 is 17.031 gm/mol
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_25448/1960597735.py:1: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+  for mlc, mw in MW.iteritems():
+</pre></div>
+</div>
 </div>
 </div>
 </section>
 </section>
 <section id="chaining-commands-in-pandas">
-<h2>Chaining commands in Pandas<a class="headerlink" href="#chaining-commands-in-pandas" title="Permalink to this headline">#</a></h2>
+<h2>Chaining commands in Pandas<a class="headerlink" href="#chaining-commands-in-pandas" title="Permalink to this heading">#</a></h2>
 <p>So far, we have mostly seen sequential commands in Pandas</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1134,7 +1288,7 @@ dtype: int64
 </div>
 </section>
 <section id="subtle-points">
-<h2>Subtle points<a class="headerlink" href="#subtle-points" title="Permalink to this headline">#</a></h2>
+<h2>Subtle points<a class="headerlink" href="#subtle-points" title="Permalink to this heading">#</a></h2>
 <p>Pandas offers many ways to do what appear to be the same thing, but they are not. For example, this works:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1204,22 +1358,22 @@ dtype: int64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">Input In [19],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">(</span><span class="n">df</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>  <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>  <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>  <span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>  <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">))</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/generic.py:5575,</span> in <span class="ni">NDFrame.__getattr__</span><span class="nt">(self, name)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5568</span> <span class="k">if</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">5569</span>     <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_internal_names_set</span>
-<span class="g g-Whitespace">   </span><span class="mi">5570</span>     <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span>
-<span class="g g-Whitespace">   </span><span class="mi">5571</span>     <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessors</span>
-<span class="g g-Whitespace">   </span><span class="mi">5572</span>     <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info_axis</span><span class="o">.</span><span class="n">_can_hold_identifiers_and_holds_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5573</span> <span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">5574</span>     <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
-<span class="ne">-&gt; </span><span class="mi">5575</span> <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/pandas/core/generic.py:5907,</span> in <span class="ni">NDFrame.__getattr__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5900</span> <span class="k">if</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">5901</span>     <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_internal_names_set</span>
+<span class="g g-Whitespace">   </span><span class="mi">5902</span>     <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span>
+<span class="g g-Whitespace">   </span><span class="mi">5903</span>     <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessors</span>
+<span class="g g-Whitespace">   </span><span class="mi">5904</span>     <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info_axis</span><span class="o">.</span><span class="n">_can_hold_identifiers_and_holds_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5905</span> <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">5906</span>     <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">5907</span> <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
 <span class="ne">AttributeError</span>: &#39;Series&#39; object has no attribute &#39;query&#39;
 </pre></div>
@@ -1330,10 +1484,360 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> pd<span class=" -Color -Color-Blue">.</span>DataFrame<span class=" -Color -Color-Blue">.</span>query<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">,</span> expr<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;str&#39;,</span> inplace<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Blue">**</span>kwargs<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-&gt;</span> <span class=" -Color -Color-Blue">&#39;DataFrame | None&#39;</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Query the columns of a DataFrame with a boolean expression.
+
+Parameters
+----------
+expr : str
+    The query string to evaluate.
+
+    You can refer to variables
+    in the environment by prefixing them with an &#39;@&#39; character like
+    ``@a + b``.
+
+    You can refer to column names that are not valid Python variable names
+    by surrounding them in backticks. Thus, column names containing spaces
+    or punctuations (besides underscores) or starting with digits must be
+    surrounded by backticks. (For example, a column named &quot;Area (cm^2)&quot; would
+    be referenced as ```Area (cm^2)```). Column names which are Python keywords
+    (like &quot;list&quot;, &quot;for&quot;, &quot;import&quot;, etc) cannot be used.
+
+    For example, if one of your columns is called ``a a`` and you want
+    to sum it with ``b``, your query should be ```a a` + b``.
+
+    .. versionadded:: 0.25.0
+        Backtick quoting introduced.
+
+    .. versionadded:: 1.0.0
+        Expanding functionality of backtick quoting for more than only spaces.
+
+inplace : bool
+    Whether to modify the DataFrame rather than creating a new one.
+**kwargs
+    See the documentation for :func:`eval` for complete details
+    on the keyword arguments accepted by :meth:`DataFrame.query`.
+
+Returns
+-------
+DataFrame or None
+    DataFrame resulting from the provided query expression or
+    None if ``inplace=True``.
+
+See Also
+--------
+eval : Evaluate a string describing operations on
+    DataFrame columns.
+DataFrame.eval : Evaluate a string describing operations on
+    DataFrame columns.
+
+Notes
+-----
+The result of the evaluation of this expression is first passed to
+:attr:`DataFrame.loc` and if that fails because of a
+multidimensional key (e.g., a DataFrame) then the result will be passed
+to :meth:`DataFrame.__getitem__`.
+
+This method uses the top-level :func:`eval` function to
+evaluate the passed query.
+
+The :meth:`~pandas.DataFrame.query` method uses a slightly
+modified Python syntax by default. For example, the ``&amp;`` and ``|``
+(bitwise) operators have the precedence of their boolean cousins,
+:keyword:`and` and :keyword:`or`. This *is* syntactically valid Python,
+however the semantics are different.
+
+You can change the semantics of the expression by passing the keyword
+argument ``parser=&#39;python&#39;``. This enforces the same semantics as
+evaluation in Python space. Likewise, you can pass ``engine=&#39;python&#39;``
+to evaluate an expression using Python itself as a backend. This is not
+recommended as it is inefficient compared to using ``numexpr`` as the
+engine.
+
+The :attr:`DataFrame.index` and
+:attr:`DataFrame.columns` attributes of the
+:class:`~pandas.DataFrame` instance are placed in the query namespace
+by default, which allows you to treat both the index and columns of the
+frame as a column in the frame.
+The identifier ``index`` is used for the frame index; you can also
+use the name of the index to identify it in a query. Please note that
+Python keywords may not be used as identifiers.
+
+For further details and examples see the ``query`` documentation in
+:ref:`indexing &lt;indexing.query&gt;`.
+
+*Backtick quoted variables*
+
+Backtick quoted variables are parsed as literal Python code and
+are converted internally to a Python valid identifier.
+This can lead to the following problems.
+
+During parsing a number of disallowed characters inside the backtick
+quoted string are replaced by strings that are allowed as a Python identifier.
+These characters include all operators in Python, the space character, the
+question mark, the exclamation mark, the dollar sign, and the euro sign.
+For other characters that fall outside the ASCII range (U+0001..U+007F)
+and those that are not further specified in PEP 3131,
+the query parser will raise an error.
+This excludes whitespace different than the space character,
+but also the hashtag (as it is used for comments) and the backtick
+itself (backtick can also not be escaped).
+
+In a special case, quotes that make a pair around a backtick can
+confuse the parser.
+For example, ```it&#39;s` &gt; `that&#39;s``` will raise an error,
+as it forms a quoted string (``&#39;s &gt; `that&#39;``) with a backtick inside.
+
+See also the Python documentation about lexical analysis
+(https://docs.python.org/3/reference/lexical_analysis.html)
+in combination with the source code in :mod:`pandas.core.computation.parsing`.
+
+Examples
+--------
+&gt;&gt;&gt; df = pd.DataFrame({&#39;A&#39;: range(1, 6),
+...                    &#39;B&#39;: range(10, 0, -2),
+...                    &#39;C C&#39;: range(10, 5, -1)})
+&gt;&gt;&gt; df
+   A   B  C C
+0  1  10   10
+1  2   8    9
+2  3   6    8
+3  4   4    7
+4  5   2    6
+&gt;&gt;&gt; df.query(&#39;A &gt; B&#39;)
+   A  B  C C
+4  5  2    6
+
+The previous expression is equivalent to
+
+&gt;&gt;&gt; df[df.A &gt; df.B]
+   A  B  C C
+4  5  2    6
+
+For columns with spaces in their name, you can use backtick quoting.
+
+&gt;&gt;&gt; df.query(&#39;B == `C C`&#39;)
+   A   B  C C
+0  1  10   10
+
+The previous expression is equivalent to
+
+&gt;&gt;&gt; df[df.B == df[&#39;C C&#39;]]
+   A   B  C C
+0  1  10   10
+<span class=" -Color -Color-Red">File:</span>      /opt/conda/lib/python3.9/site-packages/pandas/core/frame.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>pd.DataFrame.groupby
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+pd<span class=" -Color -Color-Blue">.</span>DataFrame<span class=" -Color -Color-Blue">.</span>groupby<span class=" -Color -Color-Blue">(</span>
+    self<span class=" -Color -Color-Blue">,</span>
+    by<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    axis<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;Axis&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
+    level<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;IndexLabel | None&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    as_index<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    sort<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    group_keys<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool | lib.NoDefault&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">&lt;</span>no_default<span class=" -Color -Color-Blue">&gt;,</span>
+    squeeze<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool | lib.NoDefault&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">&lt;</span>no_default<span class=" -Color -Color-Blue">&gt;,</span>
+    observed<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    dropna<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-&gt;</span> <span class=" -Color -Color-Blue">&#39;DataFrameGroupBy&#39;</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Group DataFrame using a mapper or by a Series of columns.
+
+A groupby operation involves some combination of splitting the
+object, applying a function, and combining the results. This can be
+used to group large amounts of data and compute operations on these
+groups.
+
+Parameters
+----------
+by : mapping, function, label, or list of labels
+    Used to determine the groups for the groupby.
+    If ``by`` is a function, it&#39;s called on each value of the object&#39;s
+    index. If a dict or Series is passed, the Series or dict VALUES
+    will be used to determine the groups (the Series&#39; values are first
+    aligned; see ``.align()`` method). If a list or ndarray of length
+    equal to the selected axis is passed (see the `groupby user guide
+    &lt;https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#splitting-an-object-into-groups&gt;`_),
+    the values are used as-is to determine the groups. A label or list
+    of labels may be passed to group by the columns in ``self``.
+    Notice that a tuple is interpreted as a (single) key.
+axis : {0 or &#39;index&#39;, 1 or &#39;columns&#39;}, default 0
+    Split along rows (0) or columns (1). For `Series` this parameter
+    is unused and defaults to 0.
+level : int, level name, or sequence of such, default None
+    If the axis is a MultiIndex (hierarchical), group by a particular
+    level or levels. Do not specify both ``by`` and ``level``.
+as_index : bool, default True
+    For aggregated output, return object with group labels as the
+    index. Only relevant for DataFrame input. as_index=False is
+    effectively &quot;SQL-style&quot; grouped output.
+sort : bool, default True
+    Sort group keys. Get better performance by turning this off.
+    Note this does not influence the order of observations within each
+    group. Groupby preserves the order of rows within each group.
+group_keys : bool, optional
+    When calling apply and the ``by`` argument produces a like-indexed
+    (i.e. :ref:`a transform &lt;groupby.transform&gt;`) result, add group keys to
+    index to identify pieces. By default group keys are not included
+    when the result&#39;s index (and column) labels match the inputs, and
+    are included otherwise. This argument has no effect if the result produced
+    is not like-indexed with respect to the input.
+
+    .. versionchanged:: 1.5.0
+
+       Warns that `group_keys` will no longer be ignored when the
+       result from ``apply`` is a like-indexed Series or DataFrame.
+       Specify ``group_keys`` explicitly to include the group keys or
+       not.
+squeeze : bool, default False
+    Reduce the dimensionality of the return type if possible,
+    otherwise return a consistent type.
+
+    .. deprecated:: 1.1.0
+
+observed : bool, default False
+    This only applies if any of the groupers are Categoricals.
+    If True: only show observed values for categorical groupers.
+    If False: show all values for categorical groupers.
+dropna : bool, default True
+    If True, and if group keys contain NA values, NA values together
+    with row/column will be dropped.
+    If False, NA values will also be treated as the key in groups.
+
+    .. versionadded:: 1.1.0
+
+Returns
+-------
+DataFrameGroupBy
+    Returns a groupby object that contains information about the groups.
+
+See Also
+--------
+resample : Convenience method for frequency conversion and resampling
+    of time series.
+
+Notes
+-----
+See the `user guide
+&lt;https://pandas.pydata.org/pandas-docs/stable/groupby.html&gt;`__ for more
+detailed usage and examples, including splitting an object into groups,
+iterating through groups, selecting a group, aggregation, and more.
+
+Examples
+--------
+&gt;&gt;&gt; df = pd.DataFrame({&#39;Animal&#39;: [&#39;Falcon&#39;, &#39;Falcon&#39;,
+...                               &#39;Parrot&#39;, &#39;Parrot&#39;],
+...                    &#39;Max Speed&#39;: [380., 370., 24., 26.]})
+&gt;&gt;&gt; df
+   Animal  Max Speed
+0  Falcon      380.0
+1  Falcon      370.0
+2  Parrot       24.0
+3  Parrot       26.0
+&gt;&gt;&gt; df.groupby([&#39;Animal&#39;]).mean()
+        Max Speed
+Animal
+Falcon      375.0
+Parrot       25.0
+
+**Hierarchical Indexes**
+
+We can groupby different levels of a hierarchical index
+using the `level` parameter:
+
+&gt;&gt;&gt; arrays = [[&#39;Falcon&#39;, &#39;Falcon&#39;, &#39;Parrot&#39;, &#39;Parrot&#39;],
+...           [&#39;Captive&#39;, &#39;Wild&#39;, &#39;Captive&#39;, &#39;Wild&#39;]]
+&gt;&gt;&gt; index = pd.MultiIndex.from_arrays(arrays, names=(&#39;Animal&#39;, &#39;Type&#39;))
+&gt;&gt;&gt; df = pd.DataFrame({&#39;Max Speed&#39;: [390., 350., 30., 20.]},
+...                   index=index)
+&gt;&gt;&gt; df
+                Max Speed
+Animal Type
+Falcon Captive      390.0
+       Wild         350.0
+Parrot Captive       30.0
+       Wild          20.0
+&gt;&gt;&gt; df.groupby(level=0).mean()
+        Max Speed
+Animal
+Falcon      370.0
+Parrot       25.0
+&gt;&gt;&gt; df.groupby(level=&quot;Type&quot;).mean()
+         Max Speed
+Type
+Captive      210.0
+Wild         185.0
+
+We can also choose to include NA in group keys or not by setting
+`dropna` parameter, the default setting is `True`.
+
+&gt;&gt;&gt; l = [[1, 2, 3], [1, None, 4], [2, 1, 3], [1, 2, 2]]
+&gt;&gt;&gt; df = pd.DataFrame(l, columns=[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
+
+&gt;&gt;&gt; df.groupby(by=[&quot;b&quot;]).sum()
+    a   c
+b
+1.0 2   3
+2.0 2   5
+
+&gt;&gt;&gt; df.groupby(by=[&quot;b&quot;], dropna=False).sum()
+    a   c
+b
+1.0 2   3
+2.0 2   5
+NaN 1   4
+
+&gt;&gt;&gt; l = [[&quot;a&quot;, 12, 12], [None, 12.3, 33.], [&quot;b&quot;, 12.3, 123], [&quot;a&quot;, 1, 1]]
+&gt;&gt;&gt; df = pd.DataFrame(l, columns=[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
+
+&gt;&gt;&gt; df.groupby(by=&quot;a&quot;).sum()
+    b     c
+a
+a   13.0   13.0
+b   12.3  123.0
+
+&gt;&gt;&gt; df.groupby(by=&quot;a&quot;, dropna=False).sum()
+    b     c
+a
+a   13.0   13.0
+b   12.3  123.0
+NaN 12.3   33.0
+
+When using ``.apply()``, use ``group_keys`` to include or exclude the group keys.
+The ``group_keys`` argument defaults to ``True`` (include).
+
+&gt;&gt;&gt; df = pd.DataFrame({&#39;Animal&#39;: [&#39;Falcon&#39;, &#39;Falcon&#39;,
+...                               &#39;Parrot&#39;, &#39;Parrot&#39;],
+...                    &#39;Max Speed&#39;: [380., 370., 24., 26.]})
+&gt;&gt;&gt; df.groupby(&quot;Animal&quot;, group_keys=True).apply(lambda x: x)
+          Animal  Max Speed
+Animal
+Falcon 0  Falcon      380.0
+       1  Falcon      370.0
+Parrot 2  Parrot       24.0
+       3  Parrot       26.0
+
+&gt;&gt;&gt; df.groupby(&quot;Animal&quot;, group_keys=False).apply(lambda x: x)
+   Animal  Max Speed
+0  Falcon      380.0
+1  Falcon      370.0
+2  Parrot       24.0
+3  Parrot       26.0
+<span class=" -Color -Color-Red">File:</span>      /opt/conda/lib/python3.9/site-packages/pandas/core/frame.py
+<span class=" -Color -Color-Red">Type:</span>      function
 </pre></div>
 </div>
 </div>
@@ -1360,6 +1864,184 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+pd<span class=" -Color -Color-Blue">.</span>core<span class=" -Color -Color-Blue">.</span>groupby<span class=" -Color -Color-Blue">.</span>generic<span class=" -Color -Color-Blue">.</span>DataFrameGroupBy<span class=" -Color -Color-Blue">.</span>agg<span class=" -Color -Color-Blue">(</span>
+    self<span class=" -Color -Color-Blue">,</span>
+    func<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    <span class=" -Color -Color-Blue">*</span>args<span class=" -Color -Color-Blue">,</span>
+    engine<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    engine_kwargs<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    <span class=" -Color -Color-Blue">**</span>kwargs<span class=" -Color -Color-Blue">,</span>
+<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Aggregate using one or more operations over the specified axis.
+
+Parameters
+----------
+func : function, str, list or dict
+    Function to use for aggregating the data. If a function, must either
+    work when passed a DataFrame or when passed to DataFrame.apply.
+
+    Accepted combinations are:
+
+    - function
+    - string function name
+    - list of functions and/or function names, e.g. ``[np.sum, &#39;mean&#39;]``
+    - dict of axis labels -&gt; functions, function names or list of such.
+
+    Can also accept a Numba JIT function with
+    ``engine=&#39;numba&#39;`` specified. Only passing a single function is supported
+    with this engine.
+
+    If the ``&#39;numba&#39;`` engine is chosen, the function must be
+    a user defined function with ``values`` and ``index`` as the
+    first and second arguments respectively in the function signature.
+    Each group&#39;s index will be passed to the user defined function
+    and optionally available for use.
+
+    .. versionchanged:: 1.1.0
+*args
+    Positional arguments to pass to func.
+engine : str, default None
+    * ``&#39;cython&#39;`` : Runs the function through C-extensions from cython.
+    * ``&#39;numba&#39;`` : Runs the function through JIT compiled code from numba.
+    * ``None`` : Defaults to ``&#39;cython&#39;`` or globally setting ``compute.use_numba``
+
+    .. versionadded:: 1.1.0
+engine_kwargs : dict, default None
+    * For ``&#39;cython&#39;`` engine, there are no accepted ``engine_kwargs``
+    * For ``&#39;numba&#39;`` engine, the engine can accept ``nopython``, ``nogil``
+      and ``parallel`` dictionary keys. The values must either be ``True`` or
+      ``False``. The default ``engine_kwargs`` for the ``&#39;numba&#39;`` engine is
+      ``{&#39;nopython&#39;: True, &#39;nogil&#39;: False, &#39;parallel&#39;: False}`` and will be
+      applied to the function
+
+    .. versionadded:: 1.1.0
+**kwargs
+    Keyword arguments to be passed into func.
+
+Returns
+-------
+DataFrame
+
+See Also
+--------
+DataFrame.groupby.apply : Apply function func group-wise
+    and combine the results together.
+DataFrame.groupby.transform : Aggregate using one or more
+    operations over the specified axis.
+DataFrame.aggregate : Transforms the Series on each group
+    based on the given function.
+
+Notes
+-----
+When using ``engine=&#39;numba&#39;``, there will be no &quot;fall back&quot; behavior internally.
+The group data and group index will be passed as numpy arrays to the JITed
+user defined function, and no alternative execution attempts will be tried.
+
+Functions that mutate the passed object can produce unexpected
+behavior or errors and are not supported. See :ref:`gotchas.udf-mutation`
+for more details.
+
+.. versionchanged:: 1.3.0
+
+    The resulting dtype will reflect the return value of the passed ``func``,
+    see the examples below.
+
+Examples
+--------
+&gt;&gt;&gt; df = pd.DataFrame(
+...     {
+...         &quot;A&quot;: [1, 1, 2, 2],
+...         &quot;B&quot;: [1, 2, 3, 4],
+...         &quot;C&quot;: [0.362838, 0.227877, 1.267767, -0.562860],
+...     }
+... )
+
+&gt;&gt;&gt; df
+   A  B         C
+0  1  1  0.362838
+1  1  2  0.227877
+2  2  3  1.267767
+3  2  4 -0.562860
+
+The aggregation is for each column.
+
+&gt;&gt;&gt; df.groupby(&#39;A&#39;).agg(&#39;min&#39;)
+   B         C
+A
+1  1  0.227877
+2  3 -0.562860
+
+Multiple aggregations
+
+&gt;&gt;&gt; df.groupby(&#39;A&#39;).agg([&#39;min&#39;, &#39;max&#39;])
+    B             C
+  min max       min       max
+A
+1   1   2  0.227877  0.362838
+2   3   4 -0.562860  1.267767
+
+Select a column for aggregation
+
+&gt;&gt;&gt; df.groupby(&#39;A&#39;).B.agg([&#39;min&#39;, &#39;max&#39;])
+   min  max
+A
+1    1    2
+2    3    4
+
+User-defined function for aggregation
+
+&gt;&gt;&gt; df.groupby(&#39;A&#39;).agg(lambda x: sum(x) + 2)
+    B          C
+A
+1       5       2.590715
+2       9       2.704907
+
+Different aggregations per column
+
+&gt;&gt;&gt; df.groupby(&#39;A&#39;).agg({&#39;B&#39;: [&#39;min&#39;, &#39;max&#39;], &#39;C&#39;: &#39;sum&#39;})
+    B             C
+  min max       sum
+A
+1   1   2  0.590715
+2   3   4  0.704907
+
+To control the output names with different aggregations per column,
+pandas supports &quot;named aggregation&quot;
+
+&gt;&gt;&gt; df.groupby(&quot;A&quot;).agg(
+...     b_min=pd.NamedAgg(column=&quot;B&quot;, aggfunc=&quot;min&quot;),
+...     c_sum=pd.NamedAgg(column=&quot;C&quot;, aggfunc=&quot;sum&quot;))
+   b_min     c_sum
+A
+1      1  0.590715
+2      3  0.704907
+
+- The keywords are the *output* column names
+- The values are tuples whose first element is the column to select
+  and the second element is the aggregation to apply to that column.
+  Pandas provides the ``pandas.NamedAgg`` namedtuple with the fields
+  ``[&#39;column&#39;, &#39;aggfunc&#39;]`` to make it clearer what the arguments are.
+  As usual, the aggregation can be a callable or a string alias.
+
+See :ref:`groupby.aggregate.named` for more.
+
+.. versionchanged:: 1.3.0
+
+    The resulting dtype will reflect the return value of the aggregating function.
+
+&gt;&gt;&gt; df.groupby(&quot;A&quot;)[[&quot;B&quot;]].agg(lambda x: x.astype(float).min())
+      B
+A
+1   1.0
+2   3.0
+<span class=" -Color -Color-Red">File:</span>      /opt/conda/lib/python3.9/site-packages/pandas/core/groupby/generic.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1367,10 +2049,121 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> pd<span class=" -Color -Color-Blue">.</span>Series<span class=" -Color -Color-Blue">.</span>to_frame<span class=" -Color -Color-Blue">(</span>self<span class=" -Color -Color-Blue">,</span> name<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;Hashable&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">&lt;</span>no_default<span class=" -Color -Color-Blue">&gt;)</span> <span class=" -Color -Color-Blue">-&gt;</span> <span class=" -Color -Color-Blue">&#39;DataFrame&#39;</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Convert Series to DataFrame.
+
+Parameters
+----------
+name : object, optional
+    The passed name should substitute for the series name (if it has
+    one).
+
+Returns
+-------
+DataFrame
+    DataFrame representation of Series.
+
+Examples
+--------
+&gt;&gt;&gt; s = pd.Series([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;],
+...               name=&quot;vals&quot;)
+&gt;&gt;&gt; s.to_frame()
+  vals
+0    a
+1    b
+2    c
+<span class=" -Color -Color-Red">File:</span>      /opt/conda/lib/python3.9/site-packages/pandas/core/series.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>pd.Series.rename
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>
+pd<span class=" -Color -Color-Blue">.</span>Series<span class=" -Color -Color-Blue">.</span>rename<span class=" -Color -Color-Blue">(</span>
+    self<span class=" -Color -Color-Blue">,</span>
+    index<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;Renamer | Hashable | None&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    <span class=" -Color -Color-Blue">*,</span>
+    axis<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;Axis | None&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    copy<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
+    inplace<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
+    level<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;Level | None&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
+    errors<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;IgnoreRaise&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Blue">&#39;ignore&#39;,</span>
+<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-&gt;</span> <span class=" -Color -Color-Blue">&#39;Series | None&#39;</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+Alter Series index labels or name.
+
+Function / dict values must be unique (1-to-1). Labels not contained in
+a dict / Series will be left as-is. Extra labels listed don&#39;t throw an
+error.
+
+Alternatively, change ``Series.name`` with a scalar value.
+
+See the :ref:`user guide &lt;basics.rename&gt;` for more.
+
+Parameters
+----------
+index : scalar, hashable sequence, dict-like or function optional
+    Functions or dict-like are transformations to apply to
+    the index.
+    Scalar or hashable sequence-like will alter the ``Series.name``
+    attribute.
+axis : {0 or &#39;index&#39;}
+    Unused. Parameter needed for compatibility with DataFrame.
+copy : bool, default True
+    Also copy underlying data.
+inplace : bool, default False
+    Whether to return a new Series. If True the value of copy is ignored.
+level : int or level name, default None
+    In case of MultiIndex, only rename labels in the specified level.
+errors : {&#39;ignore&#39;, &#39;raise&#39;}, default &#39;ignore&#39;
+    If &#39;raise&#39;, raise `KeyError` when a `dict-like mapper` or
+    `index` contains labels that are not present in the index being transformed.
+    If &#39;ignore&#39;, existing keys will be renamed and extra keys will be ignored.
+
+Returns
+-------
+Series or None
+    Series with index labels or name altered or None if ``inplace=True``.
+
+See Also
+--------
+DataFrame.rename : Corresponding DataFrame method.
+Series.rename_axis : Set the name of the axis.
+
+Examples
+--------
+&gt;&gt;&gt; s = pd.Series([1, 2, 3])
+&gt;&gt;&gt; s
+0    1
+1    2
+2    3
+dtype: int64
+&gt;&gt;&gt; s.rename(&quot;my_name&quot;)  # scalar, changes Series.name
+0    1
+1    2
+2    3
+Name: my_name, dtype: int64
+&gt;&gt;&gt; s.rename(lambda x: x ** 2)  # function, changes labels
+0    1
+1    2
+4    3
+dtype: int64
+&gt;&gt;&gt; s.rename({1: 3, 2: 5})  # mapping, changes labels
+0    1
+3    2
+5    3
+dtype: int64
+<span class=" -Color -Color-Red">File:</span>      /opt/conda/lib/python3.9/site-packages/pandas/core/series.py
+<span class=" -Color -Color-Red">Type:</span>      function
 </pre></div>
 </div>
 </div>

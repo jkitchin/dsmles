@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Building custom estimators in sklearn &#8212; Data science and machine learning in science and engineering</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Decision Trees and Random Forests Examples" href="../08-random-forests/random-forests.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -363,7 +364,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="building-custom-estimators-in-sklearn">
-<h1>Building custom estimators in sklearn<a class="headerlink" href="#building-custom-estimators-in-sklearn" title="Permalink to this headline">#</a></h1>
+<h1>Building custom estimators in sklearn<a class="headerlink" href="#building-custom-estimators-in-sklearn" title="Permalink to this heading">#</a></h1>
 <p>It is possible to create your own estimators in sklearn. Doing this requires knowing some advanced Python programming skills. We have to create a <em>class</em> that inherits from the <code class="docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code> class to get Estimator capabilities, and <code class="docutils literal notranslate"><span class="pre">sklearn.base.RegressorMixin</span></code> to get Model capabilities like scoring. Then, we have to define <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> class methods. The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method has a required signature which takes the data, and returns the estimator. This is the function where we fit the parameters and store the result in the class. The function we want to fit is nonlinear in the parameters:</p>
 <p><span class="math notranslate nohighlight">\(k(T; k_0, E_A) = k_0 e^{-E_A / (RT)}\)</span>.</p>
 <p>So, we need to provide an initial guess to help find the fit. We derive an analytical guess for this from the data, and then use a nonlinear least squares routine to do the fitting.</p>
@@ -390,7 +391,7 @@ document.write(`
         <span class="k">return</span> <span class="n">err</span>
 
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        X is the temperature (in K)</span>
 <span class="sd">        y is the rate constants (in mol/s)</span>
 
@@ -425,8 +426,22 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns predictions for X.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns predictions for X.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arrhenius</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coefs_</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">leastsq</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">RegressorMixin</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">class</span> <span class="nc">ArrheniusRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">RegressorMixin</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span> <span class="c1"># J / mol / K</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
 </pre></div>
 </div>
 </div>
@@ -483,7 +498,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e6164c9859b34901e9f7bd7c71bab8294a1f4b140cea99ac360b025fc73a0249.png" src="../_images/e6164c9859b34901e9f7bd7c71bab8294a1f4b140cea99ac360b025fc73a0249.png" />
+<img alt="../_images/8594fc0222ebbd91d558ceba33d24e1e38cc797c3767ba0d6f32b4b4064891d3.png" src="../_images/8594fc0222ebbd91d558ceba33d24e1e38cc797c3767ba0d6f32b4b4064891d3.png" />
 </div>
 </div>
 <p>That is it. This is more work than a simple nonlinear regression with numpy arrays, but in theory this is compatible with the sklearn pipeline idea, and you get some functionality “for free” because of the inheritance.</p>

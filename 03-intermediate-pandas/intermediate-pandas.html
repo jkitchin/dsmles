@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Intermediate Pandas &#8212; Data science and machine learning in science and engineering</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Using Pandas DataFrames as a small database" href="../04-pandas-database/pandas-database.html" />
     <link rel="prev" title="Introduction to Pandas" href="../02-pandas-intro/pandas-intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -373,10 +374,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="intermediate-pandas">
-<h1>Intermediate Pandas<a class="headerlink" href="#intermediate-pandas" title="Permalink to this headline">#</a></h1>
+<h1>Intermediate Pandas<a class="headerlink" href="#intermediate-pandas" title="Permalink to this heading">#</a></h1>
 <p>Today we look at some ways to use Pandas DataFrames like databases.</p>
 <section id="revisiting-a-previous-example-with-batches-of-data">
-<h2>Revisiting a previous example with batches of data<a class="headerlink" href="#revisiting-a-previous-example-with-batches-of-data" title="Permalink to this headline">#</a></h2>
+<h2>Revisiting a previous example with batches of data<a class="headerlink" href="#revisiting-a-previous-example-with-batches-of-data" title="Permalink to this heading">#</a></h2>
 <p>We start with the example we looked at before. It is a dataset from a set of experiments. The experiments are grouped by the Day they were run on. We will use Pandas to do some analysis by the day.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -389,437 +390,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;p-t.dat&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>                  <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Run order&#39;</span><span class="p">,</span> <span class="s1">&#39;Day&#39;</span><span class="p">,</span> <span class="s1">&#39;Ambient Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>                         <span class="s1">&#39;Pressure&#39;</span><span class="p">,</span> <span class="s1">&#39;Fitted Value&#39;</span><span class="p">,</span> <span class="s1">&#39;Residual&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Run order</th>
-      <th>Day</th>
-      <th>Ambient Temperature</th>
-      <th>Temperature</th>
-      <th>Pressure</th>
-      <th>Fitted Value</th>
-      <th>Residual</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1</td>
-      <td>23.820</td>
-      <td>54.749</td>
-      <td>225.066</td>
-      <td>222.920</td>
-      <td>2.146</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>1</td>
-      <td>24.120</td>
-      <td>23.323</td>
-      <td>100.331</td>
-      <td>99.411</td>
-      <td>0.920</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>1</td>
-      <td>23.434</td>
-      <td>58.775</td>
-      <td>230.863</td>
-      <td>238.744</td>
-      <td>-7.881</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>1</td>
-      <td>23.993</td>
-      <td>25.854</td>
-      <td>106.160</td>
-      <td>109.359</td>
-      <td>-3.199</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>1</td>
-      <td>23.375</td>
-      <td>68.297</td>
-      <td>277.502</td>
-      <td>276.165</td>
-      <td>1.336</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>1</td>
-      <td>23.233</td>
-      <td>37.481</td>
-      <td>148.314</td>
-      <td>155.056</td>
-      <td>-6.741</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>7</td>
-      <td>1</td>
-      <td>24.162</td>
-      <td>49.542</td>
-      <td>197.562</td>
-      <td>202.456</td>
-      <td>-4.895</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>8</td>
-      <td>1</td>
-      <td>23.667</td>
-      <td>34.101</td>
-      <td>138.537</td>
-      <td>141.770</td>
-      <td>-3.232</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>9</td>
-      <td>1</td>
-      <td>24.056</td>
-      <td>33.901</td>
-      <td>137.969</td>
-      <td>140.983</td>
-      <td>-3.014</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>10</td>
-      <td>1</td>
-      <td>22.786</td>
-      <td>29.242</td>
-      <td>117.410</td>
-      <td>122.674</td>
-      <td>-5.263</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>11</td>
-      <td>2</td>
-      <td>23.785</td>
-      <td>39.506</td>
-      <td>164.442</td>
-      <td>163.013</td>
-      <td>1.429</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>12</td>
-      <td>2</td>
-      <td>22.987</td>
-      <td>43.004</td>
-      <td>181.044</td>
-      <td>176.759</td>
-      <td>4.285</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>13</td>
-      <td>2</td>
-      <td>23.799</td>
-      <td>53.226</td>
-      <td>222.179</td>
-      <td>216.933</td>
-      <td>5.246</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>14</td>
-      <td>2</td>
-      <td>23.661</td>
-      <td>54.467</td>
-      <td>227.010</td>
-      <td>221.813</td>
-      <td>5.198</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>15</td>
-      <td>2</td>
-      <td>23.852</td>
-      <td>57.549</td>
-      <td>232.496</td>
-      <td>233.925</td>
-      <td>-1.429</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>16</td>
-      <td>2</td>
-      <td>23.379</td>
-      <td>61.204</td>
-      <td>253.557</td>
-      <td>248.288</td>
-      <td>5.269</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>17</td>
-      <td>2</td>
-      <td>24.146</td>
-      <td>31.489</td>
-      <td>139.894</td>
-      <td>131.506</td>
-      <td>8.388</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>18</td>
-      <td>2</td>
-      <td>24.187</td>
-      <td>68.476</td>
-      <td>273.931</td>
-      <td>276.871</td>
-      <td>-2.940</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>19</td>
-      <td>2</td>
-      <td>24.159</td>
-      <td>51.144</td>
-      <td>207.969</td>
-      <td>208.753</td>
-      <td>-0.784</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>20</td>
-      <td>2</td>
-      <td>23.803</td>
-      <td>68.774</td>
-      <td>280.205</td>
-      <td>278.040</td>
-      <td>2.165</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>21</td>
-      <td>3</td>
-      <td>24.381</td>
-      <td>55.350</td>
-      <td>227.060</td>
-      <td>225.282</td>
-      <td>1.779</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>22</td>
-      <td>3</td>
-      <td>24.027</td>
-      <td>44.692</td>
-      <td>180.605</td>
-      <td>183.396</td>
-      <td>-2.791</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>23</td>
-      <td>3</td>
-      <td>24.342</td>
-      <td>50.995</td>
-      <td>206.229</td>
-      <td>208.167</td>
-      <td>-1.938</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>24</td>
-      <td>3</td>
-      <td>23.670</td>
-      <td>21.602</td>
-      <td>91.464</td>
-      <td>92.649</td>
-      <td>-1.186</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>25</td>
-      <td>3</td>
-      <td>24.246</td>
-      <td>54.673</td>
-      <td>223.869</td>
-      <td>222.622</td>
-      <td>1.247</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>26</td>
-      <td>3</td>
-      <td>25.082</td>
-      <td>41.449</td>
-      <td>172.910</td>
-      <td>170.651</td>
-      <td>2.259</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>27</td>
-      <td>3</td>
-      <td>24.575</td>
-      <td>35.451</td>
-      <td>152.073</td>
-      <td>147.075</td>
-      <td>4.998</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>28</td>
-      <td>3</td>
-      <td>23.803</td>
-      <td>42.989</td>
-      <td>169.427</td>
-      <td>176.703</td>
-      <td>-7.276</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>29</td>
-      <td>3</td>
-      <td>24.660</td>
-      <td>48.599</td>
-      <td>192.561</td>
-      <td>198.748</td>
-      <td>-6.188</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>30</td>
-      <td>3</td>
-      <td>24.097</td>
-      <td>21.448</td>
-      <td>94.448</td>
-      <td>92.042</td>
-      <td>2.406</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>31</td>
-      <td>4</td>
-      <td>22.816</td>
-      <td>56.982</td>
-      <td>222.794</td>
-      <td>231.697</td>
-      <td>-8.902</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>32</td>
-      <td>4</td>
-      <td>24.167</td>
-      <td>47.901</td>
-      <td>199.003</td>
-      <td>196.008</td>
-      <td>2.996</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>33</td>
-      <td>4</td>
-      <td>22.712</td>
-      <td>40.285</td>
-      <td>168.668</td>
-      <td>166.077</td>
-      <td>2.592</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>34</td>
-      <td>4</td>
-      <td>23.611</td>
-      <td>25.609</td>
-      <td>109.387</td>
-      <td>108.397</td>
-      <td>0.990</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>35</td>
-      <td>4</td>
-      <td>23.354</td>
-      <td>22.971</td>
-      <td>98.445</td>
-      <td>98.029</td>
-      <td>0.416</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>36</td>
-      <td>4</td>
-      <td>23.669</td>
-      <td>25.838</td>
-      <td>110.987</td>
-      <td>109.295</td>
-      <td>1.692</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>37</td>
-      <td>4</td>
-      <td>23.965</td>
-      <td>49.127</td>
-      <td>202.662</td>
-      <td>200.826</td>
-      <td>1.835</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>38</td>
-      <td>4</td>
-      <td>22.917</td>
-      <td>54.936</td>
-      <td>224.773</td>
-      <td>223.653</td>
-      <td>1.120</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>39</td>
-      <td>4</td>
-      <td>23.546</td>
-      <td>50.917</td>
-      <td>216.058</td>
-      <td>207.859</td>
-      <td>8.199</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>40</td>
-      <td>4</td>
-      <td>24.450</td>
-      <td>41.976</td>
-      <td>171.469</td>
-      <td>172.720</td>
-      <td>-1.251</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>The first aggregation we will look at is how to make groups of data that are related by values in a column.  We use the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> function (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby</a>), and specify a column to group on. The result is a <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object, which we next have to work with.</p>
 <div class="cell docutils container">
@@ -1190,13 +773,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8f897a015a24eda5cfb8a1707a4f040b307c5883cbbf53e6183e9a04af2595c7.png" src="../_images/8f897a015a24eda5cfb8a1707a4f040b307c5883cbbf53e6183e9a04af2595c7.png" />
+<img alt="../_images/971612646682b865c270c76367d9439a697c989684c33165a6630cff3c90b9ba.png" src="../_images/971612646682b865c270c76367d9439a697c989684c33165a6630cff3c90b9ba.png" />
 </div>
 </div>
 <p>the point of this is we cannot see a visual clustering of the groups by day. That is important, because if we did it could suggest something was different that day.</p>
 </section>
 <section id="combining-data-sets">
-<h2>Combining data sets<a class="headerlink" href="#combining-data-sets" title="Permalink to this headline">#</a></h2>
+<h2>Combining data sets<a class="headerlink" href="#combining-data-sets" title="Permalink to this heading">#</a></h2>
 <p>Siddhant Lambor provided from two experiments conducted to measure the properties of a worm-like micelles solution. He had carried out experiments on a rheometer to measure the viscosity of a worm-like micelles solution in a Couette cell geometry and a Cone and Plate geometry. Ideally, there should not be a difference as viscosity is intrinsic to the fluid. Analysis of this data will confirm if that is true. First, we read this data in from the two data files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2237,22 +1820,6 @@ memory usage: 540.0+ bytes
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Comparison of Cone and Plate with Couette Cell&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jkitchin/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py:6982: FutureWarning: In a future version, the Index constructor will not infer numeric dtypes when passed object-dtype sequences (matching Series behavior)
-  return Index(sequences[0], name=names)
-/Users/jkitchin/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py:6982: FutureWarning: In a future version, the Index constructor will not infer numeric dtypes when passed object-dtype sequences (matching Series behavior)
-  return Index(sequences[0], name=names)
-/Users/jkitchin/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py:6982: FutureWarning: In a future version, the Index constructor will not infer numeric dtypes when passed object-dtype sequences (matching Series behavior)
-  return Index(sequences[0], name=names)
-/Users/jkitchin/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py:6982: FutureWarning: In a future version, the Index constructor will not infer numeric dtypes when passed object-dtype sequences (matching Series behavior)
-  return Index(sequences[0], name=names)
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Comparison of Cone and Plate with Couette Cell&#39;)
-</pre></div>
-</div>
-<img alt="../_images/d37320f1d61f8b396aa3dc8e0cb9e9c3471a237f6e4a9381ba303f8a8eaee550.png" src="../_images/d37320f1d61f8b396aa3dc8e0cb9e9c3471a237f6e4a9381ba303f8a8eaee550.png" />
 </div>
 </div>
 <p>So, in fact we can see these two experiments are practically equivalent.</p>

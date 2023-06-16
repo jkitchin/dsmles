@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Intermediate scikit-learn &#8212; Data science and machine learning in science and engineering</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Nonlinear models in sklearn" href="../07-nonlinear-sklearn/nonlinear-sklearn.html" />
     <link rel="prev" title="Introduction to data-driven model development" href="../05-linear-regression/linear-regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -378,7 +379,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="intermediate-scikit-learn">
-<h1>Intermediate scikit-learn<a class="headerlink" href="#intermediate-scikit-learn" title="Permalink to this headline">#</a></h1>
+<h1>Intermediate scikit-learn<a class="headerlink" href="#intermediate-scikit-learn" title="Permalink to this heading">#</a></h1>
 <p>Today we examine a few important ideas in data science and machine learning. They are:</p>
 <ol class="arabic simple">
 <li><p>Data preprocessing. We mostly focus on how to scale data so that each feature has about the same scale.</p></li>
@@ -387,7 +388,7 @@ document.write(`
 <li><p>Automating the optimization of model parameters using cross-validation.</p></li>
 </ol>
 <section id="data-preprocessing">
-<h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this headline">#</a></h2>
+<h2>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this heading">#</a></h2>
 <p>When your features have varying orders of magnitude, it is often a good idea to standardize them. That makes each feature have a similar importance. Some algorithms even expect that the input features have been standardized (e.g. PCA, and many kinds of regularization). The two most common approaches are:</p>
 <ul class="simple">
 <li><p><strong>zero-mean, unit variance:</strong> You subtract the mean of each column, and normalize by the variance of the column</p></li>
@@ -410,7 +411,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/983af2a4b18f34fd5f55e000eba858df2995388dcd351869ce5b01a74449e95c.png" src="../_images/983af2a4b18f34fd5f55e000eba858df2995388dcd351869ce5b01a74449e95c.png" />
+<img alt="../_images/3ee59f5f6a995f230bcceecece0bbe4f3651ffe2fed7245aeb4fbb4d4ae8efd5.png" src="../_images/3ee59f5f6a995f230bcceecece0bbe4f3651ffe2fed7245aeb4fbb4d4ae8efd5.png" />
 </div>
 </div>
 <p>First, let’s make some columns. Instead of manually creating these, let’s leverage the capability of <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> to build the features for us. Here is an example of a second order polynomial.</p>
@@ -427,81 +428,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.        ,  1.8       ,  3.24      ],
-       [ 1.        ,  1.80416667,  3.25501736],
-       [ 1.        ,  1.80833333,  3.27006944],
-       [ 1.        ,  1.8125    ,  3.28515625],
-       [ 1.        ,  1.81666667,  3.30027778],
-       [ 1.        ,  1.82083333,  3.31543403],
-       [ 1.        ,  1.825     ,  3.330625  ],
-       [ 1.        ,  1.82916667,  3.34585069],
-       [ 1.        ,  1.83333333,  3.36111111],
-       [ 1.        ,  1.8375    ,  3.37640625],
-       [ 1.        ,  1.84166667,  3.39173611],
-       [ 1.        ,  1.84583333,  3.40710069],
-       [ 1.        ,  1.85      ,  3.4225    ],
-       [ 1.        ,  1.85416667,  3.43793403],
-       [ 1.        ,  1.85833333,  3.45340278],
-       [ 1.        ,  1.8625    ,  3.46890625],
-       [ 1.        ,  1.86666667,  3.48444444],
-       [ 1.        ,  1.87083333,  3.50001736],
-       [ 1.        ,  1.875     ,  3.515625  ],
-       [ 1.        ,  1.87916667,  3.53126736],
-       [ 1.        ,  1.88333333,  3.54694444],
-       [ 1.        ,  1.8875    ,  3.56265625],
-       [ 1.        ,  1.89166667,  3.57840278],
-       [ 1.        ,  1.89583333,  3.59418403],
-       [ 1.        ,  1.9       ,  3.61      ],
-       [ 1.        ,  2.3       ,  5.29      ],
-       [ 1.        ,  2.32083333,  5.38626736],
-       [ 1.        ,  2.34166667,  5.48340278],
-       [ 1.        ,  2.3625    ,  5.58140625],
-       [ 1.        ,  2.38333333,  5.68027778],
-       [ 1.        ,  2.40416667,  5.78001736],
-       [ 1.        ,  2.425     ,  5.880625  ],
-       [ 1.        ,  2.44583333,  5.98210069],
-       [ 1.        ,  2.46666667,  6.08444444],
-       [ 1.        ,  2.4875    ,  6.18765625],
-       [ 1.        ,  2.50833333,  6.29173611],
-       [ 1.        ,  2.52916667,  6.39668403],
-       [ 1.        ,  2.55      ,  6.5025    ],
-       [ 1.        ,  2.57083333,  6.60918403],
-       [ 1.        ,  2.59166667,  6.71673611],
-       [ 1.        ,  2.6125    ,  6.82515625],
-       [ 1.        ,  2.63333333,  6.93444444],
-       [ 1.        ,  2.65416667,  7.04460069],
-       [ 1.        ,  2.675     ,  7.155625  ],
-       [ 1.        ,  2.69583333,  7.26751736],
-       [ 1.        ,  2.71666667,  7.38027778],
-       [ 1.        ,  2.7375    ,  7.49390625],
-       [ 1.        ,  2.75833333,  7.60840278],
-       [ 1.        ,  2.77916667,  7.72376736],
-       [ 1.        ,  2.8       ,  7.84      ],
-       [ 1.        ,  4.        , 16.        ],
-       [ 1.        ,  4.025     , 16.200625  ],
-       [ 1.        ,  4.05      , 16.4025    ],
-       [ 1.        ,  4.075     , 16.605625  ],
-       [ 1.        ,  4.1       , 16.81      ],
-       [ 1.        ,  4.125     , 17.015625  ],
-       [ 1.        ,  4.15      , 17.2225    ],
-       [ 1.        ,  4.175     , 17.430625  ],
-       [ 1.        ,  4.2       , 17.64      ],
-       [ 1.        ,  4.225     , 17.850625  ],
-       [ 1.        ,  4.25      , 18.0625    ],
-       [ 1.        ,  4.275     , 18.275625  ],
-       [ 1.        ,  4.3       , 18.49      ],
-       [ 1.        ,  4.325     , 18.705625  ],
-       [ 1.        ,  4.35      , 18.9225    ],
-       [ 1.        ,  4.375     , 19.140625  ],
-       [ 1.        ,  4.4       , 19.36      ],
-       [ 1.        ,  4.425     , 19.580625  ],
-       [ 1.        ,  4.45      , 19.8025    ],
-       [ 1.        ,  4.475     , 20.025625  ],
-       [ 1.        ,  4.5       , 20.25      ],
-       [ 1.        ,  4.525     , 20.475625  ],
-       [ 1.        ,  4.55      , 20.7025    ],
-       [ 1.        ,  4.575     , 20.930625  ],
-       [ 1.        ,  4.6       , 21.16      ]])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
 </pre></div>
 </div>
 </div>
@@ -699,7 +635,7 @@ document.write(`
 </div>
 <p>There are other ways to do the scaling, and sometimes you have to be careful that you don’t do bad things. For example if you have very sparse data, it may not make sense to center it.</p>
 <section id="pipeline">
-<h3>Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">#</a></h3>
+<h3>Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this heading">#</a></h3>
 <p>These steps can be combined in what is called a <code class="docutils literal notranslate"><span class="pre">pipeline</span></code>. The idea is that data goes into the pipe and is transformed in a series of steps, and the results come out the end of the pipe. The code above can be condensed into this concept like this. Here we also perform a linear regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -740,14 +676,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9331bc379a0969e2417113ca451fd3bcbc1a49bf5bb59bb3a53603f88d7a45f9.png" src="../_images/9331bc379a0969e2417113ca451fd3bcbc1a49bf5bb59bb3a53603f88d7a45f9.png" />
+<img alt="../_images/5e8a9805c57fad006a6e4bbbee00ad7da3afb0e9fb2f6b36c254eb5dbfdbb0a8.png" src="../_images/5e8a9805c57fad006a6e4bbbee00ad7da3afb0e9fb2f6b36c254eb5dbfdbb0a8.png" />
 </div>
 </div>
 <p>The model sort of gets the right idea, but you can see there are issues with it. The local maximum near 3.7 is not real, and the increase in energy past d=4.5 is also not physically correct. We can work with different polynomial orders to see if that is fixable. The polynomial order is considered a <em>hyperparameter</em> here.</p>
 </section>
 </section>
 <section id="k-fold-validation-cross-validation">
-<h2>k-fold validation / cross-validation<a class="headerlink" href="#k-fold-validation-cross-validation" title="Permalink to this headline">#</a></h2>
+<h2>k-fold validation / cross-validation<a class="headerlink" href="#k-fold-validation-cross-validation" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">https://scikit-learn.org/stable/modules/cross_validation.html</a></p>
 <p>We have 75 data points, and the best thing to do in training would be to split the data into train and test sets. Last time we saw a way to that in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>. The problem with doing it once is that the results may depend on the specific set of data, and it would be nice to see several trials to make sure it doesn’t. You can code this yourself, but here is a better, more formalized way to do it. The idea is called <code class="docutils literal notranslate"><span class="pre">K-fold</span></code> validation, where you split the data into <code class="docutils literal notranslate"><span class="pre">k</span></code> folds that are splits into training and testing data. Then, we fit on k-1 of the folds, and test on the one left out. We do that for all the combinations of folds.</p>
 <div class="cell docutils container">
@@ -768,14 +704,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9987178217314675 -0.1947788773215664
-0.9978222474489707 0.8304794573169509
-0.996080562512599 0.8746369801021269
-0.9977170214426694 0.9454540341764711
-0.9968333195835345 -354.96692697896583
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.998717821731468 -0.19477887732063093
+0.9978222474489709 0.8304794573174061
+0.9960805625125984 0.8746369801023071
+0.9977170214426699 0.9454540341764682
+0.9968333195835346 -354.96692697913664
 </pre></div>
 </div>
-<img alt="../_images/767069e224bd9cc40132add81b617f7e07631e51fc1e3301b490afd5ba4d615d.png" src="../_images/767069e224bd9cc40132add81b617f7e07631e51fc1e3301b490afd5ba4d615d.png" />
+<img alt="../_images/f39c5509e10b539631c60acf332cdc9f123df61b88171514587cc66a0c747a67.png" src="../_images/f39c5509e10b539631c60acf332cdc9f123df61b88171514587cc66a0c747a67.png" />
 </div>
 </div>
 <p>You can see here that the results depend on the specific data set that is chosen. In every case, the score of the train data is ok, but for some models the test data is not as good. This is commonly observed, and it indicates over-fitting in the train data, and poor generalization in the test data.</p>
@@ -786,7 +722,7 @@ document.write(`
 
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> (+/- </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="mi">2</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> (+/- </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -800,7 +736,7 @@ Accuracy: -70.50 (+/- 284.47)
 </div>
 </section>
 <section id="hyperparameter-optimization">
-<h2>Hyperparameter optimization<a class="headerlink" href="#hyperparameter-optimization" title="Permalink to this headline">#</a></h2>
+<h2>Hyperparameter optimization<a class="headerlink" href="#hyperparameter-optimization" title="Permalink to this heading">#</a></h2>
 <p>The next goal we have is to figure out what the best polynomial to use might be. We will leverage <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> again to do this search for us. First, we get a list of parameters that we can change in our <code class="docutils literal notranslate"><span class="pre">pipe</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -809,7 +745,7 @@ Accuracy: -70.50 (+/- 284.47)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;memory&#39;, &#39;steps&#39;, &#39;verbose&#39;, &#39;poly&#39;, &#39;scale&#39;, &#39;linregress&#39;, &#39;poly__degree&#39;, &#39;poly__include_bias&#39;, &#39;poly__interaction_only&#39;, &#39;poly__order&#39;, &#39;scale__copy&#39;, &#39;scale__with_mean&#39;, &#39;scale__with_std&#39;, &#39;linregress__copy_X&#39;, &#39;linregress__fit_intercept&#39;, &#39;linregress__n_jobs&#39;, &#39;linregress__positive&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;memory&#39;, &#39;steps&#39;, &#39;verbose&#39;, &#39;poly&#39;, &#39;scale&#39;, &#39;linregress&#39;, &#39;poly__degree&#39;, &#39;poly__include_bias&#39;, &#39;poly__interaction_only&#39;, &#39;poly__order&#39;, &#39;scale__copy&#39;, &#39;scale__with_mean&#39;, &#39;scale__with_std&#39;, &#39;linregress__copy_X&#39;, &#39;linregress__fit_intercept&#39;, &#39;linregress__n_jobs&#39;, &#39;linregress__normalize&#39;, &#39;linregress__positive&#39;])
 </pre></div>
 </div>
 </div>
@@ -842,18 +778,18 @@ Accuracy: -70.50 (+/- 284.47)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00086312, 0.00076356, 0.000769  , 0.00078988, 0.00078802,
-        0.00078883, 0.00080643, 0.00082145, 0.00082769, 0.00084572,
-        0.00085502]),
- &#39;std_fit_time&#39;: array([9.67118627e-05, 6.55646758e-06, 5.15910481e-06, 2.57628899e-05,
-        8.47027093e-06, 6.17425869e-06, 7.16621367e-06, 1.58138930e-05,
-        9.68413890e-06, 1.46369591e-05, 6.03797111e-06]),
- &#39;mean_score_time&#39;: array([0.00026455, 0.0002543 , 0.00025892, 0.00025473, 0.00025449,
-        0.00025501, 0.00025616, 0.0002584 , 0.00025992, 0.0002656 ,
-        0.00026393]),
- &#39;std_score_time&#39;: array([1.12067892e-05, 6.73776135e-06, 1.02514444e-05, 5.98159858e-06,
-        6.41625106e-06, 3.45040369e-06, 2.34378924e-06, 1.44945947e-06,
-        9.34406182e-07, 9.33554122e-06, 1.48510089e-06]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00616555, 0.0057899 , 0.00552492, 0.00553412, 0.00556197,
+        0.00563121, 0.00576525, 0.00604467, 0.00583591, 0.00625091,
+        0.00589566]),
+ &#39;std_fit_time&#39;: array([0.00074243, 0.00033344, 0.00010137, 0.00014263, 0.00012472,
+        0.00021662, 0.00029389, 0.00023983, 0.00016329, 0.0003361 ,
+        0.0001307 ]),
+ &#39;mean_score_time&#39;: array([0.00205412, 0.00201645, 0.00210567, 0.00216141, 0.00208588,
+        0.00205078, 0.00212159, 0.00212736, 0.00208583, 0.00217457,
+        0.00215263]),
+ &#39;std_score_time&#39;: array([2.12623534e-04, 9.83030305e-05, 8.62171691e-05, 1.19249394e-04,
+        1.05984221e-04, 1.46631466e-04, 9.93096925e-05, 7.29563034e-05,
+        1.05222371e-04, 1.03021923e-04, 9.31976243e-05]),
  &#39;param_poly__degree&#39;: masked_array(data=[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
               mask=[False, False, False, False, False, False, False, False,
                     False, False, False],
@@ -882,15 +818,15 @@ Accuracy: -70.50 (+/- 284.47)
  &#39;split3_test_score&#39;: array([0.94674591, 0.9908384 , 0.99920836, 0.99998626, 0.99999984,
         0.99999994, 1.        , 1.        , 1.        , 1.        ,
         1.        ]),
- &#39;split4_test_score&#39;: array([-2.64962933e+03, -1.62101064e+03, -1.26483453e+03, -4.22085136e+02,
-        -1.08058475e+02, -3.69042686e+01, -5.39438256e+00, -5.74107340e-02,
-        -1.78024114e+01, -3.57026609e+00, -6.76725396e+01]),
- &#39;mean_test_score&#39;: array([-5.29614185e+02, -3.23434146e+02, -2.52169863e+02, -8.36170427e+01,
-        -2.08116962e+01, -6.58085384e+00, -2.78876513e-01,  7.88517853e-01,
-        -2.76048228e+00,  8.59467819e-02, -1.27345079e+01]),
- &#39;std_test_score&#39;: array([1.06000764e+03, 6.48788248e+02, 5.06332334e+02, 1.69234047e+02,
-        4.36233893e+01, 1.51617074e+01, 2.55775302e+00, 4.22964294e-01,
-        7.52096456e+00, 1.82810644e+00, 2.74690158e+01]),
+ &#39;split4_test_score&#39;: array([-2.64962933e+03, -1.62101064e+03, -1.26483453e+03, -4.22085134e+02,
+        -1.08058482e+02, -3.69041787e+01, -5.39397049e+00, -4.88892726e-02,
+        -1.78976613e+01, -3.93984156e+00, -6.89778575e+01]),
+ &#39;mean_test_score&#39;: array([-5.29614185e+02, -3.23434146e+02, -2.52169863e+02, -8.36170423e+01,
+        -2.08116977e+01, -6.58083586e+00, -2.78794100e-01,  7.90222145e-01,
+        -2.77953226e+00,  1.20316889e-02, -1.29955715e+01]),
+ &#39;std_test_score&#39;: array([1.06000764e+03, 6.48788248e+02, 5.06332334e+02, 1.69234046e+02,
+        4.36233923e+01, 1.51616714e+01, 2.55758820e+00, 4.19555709e-01,
+        7.55906453e+00, 1.97593662e+00, 2.79911430e+01]),
  &#39;rank_test_score&#39;: array([11, 10,  9,  8,  7,  5,  3,  1,  4,  2,  6], dtype=int32)}
 </pre></div>
 </div>
@@ -909,7 +845,7 @@ Accuracy: -70.50 (+/- 284.47)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6ef8a5606d74c6b6a5218522f9354a0e94366aa4923cb9b6ce4351e97e325a08.png" src="../_images/6ef8a5606d74c6b6a5218522f9354a0e94366aa4923cb9b6ce4351e97e325a08.png" />
+<img alt="../_images/2a18091b10a2430bbf860ec0fe03320a4fab41a5bb82437cff42b8fc108f2577.png" src="../_images/2a18091b10a2430bbf860ec0fe03320a4fab41a5bb82437cff42b8fc108f2577.png" />
 </div>
 </div>
 <p>We can also see here that this is a good compromise. Note, however, we still cannot reliably extrapolate with this model because it is still just a polynomial model, and it does not contain any physics.</p>
@@ -925,13 +861,13 @@ Accuracy: -70.50 (+/- 284.47)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/62d9f9746b330daeb3ca8aac367102b24d1d7451abd04dcebb47be5eae2beccb.png" src="../_images/62d9f9746b330daeb3ca8aac367102b24d1d7451abd04dcebb47be5eae2beccb.png" />
+<img alt="../_images/462f77a84841069f18715a82b89de5caa9f337a19a0899ff047b798cf68c3e0d.png" src="../_images/462f77a84841069f18715a82b89de5caa9f337a19a0899ff047b798cf68c3e0d.png" />
 </div>
 </div>
 <p><strong>Exercises</strong> Read more about these sklearn functions. How would you plot the fit for each polynomial degree?</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>We illustrated how to leverage <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> to do a single hyperparameter optimization here, the polynomial order. Typical machine learning methods have many hyperparameters. We could add new ones here if you include regularization, e.g Lasso, or Ridge would add one more hyperparameter, and Elastic net would add two. Neural networks have hyperparameters that include how many hidden layers, how many neurons per layer, and which activation functions to use. As the number of parameters grow, it is increasingly important to have automated methods for exploring and optimizing them, as well as principled methods for deciding which models are better.</p>
 </section>
 </section>

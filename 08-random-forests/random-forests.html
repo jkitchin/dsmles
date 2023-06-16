@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Decision Trees and Random Forests Examples &#8212; Data science and machine learning in science and engineering</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Building custom estimators in sklearn" href="../09-custom-estimators/custom-estimators.html" />
     <link rel="prev" title="Nonlinear models in sklearn" href="../07-nonlinear-sklearn/nonlinear-sklearn.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -390,7 +391,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="decision-trees-and-random-forests-examples">
-<h1>Decision Trees and Random Forests Examples<a class="headerlink" href="#decision-trees-and-random-forests-examples" title="Permalink to this headline">#</a></h1>
+<h1>Decision Trees and Random Forests Examples<a class="headerlink" href="#decision-trees-and-random-forests-examples" title="Permalink to this heading">#</a></h1>
 <p>Decision trees are ML algorithms which work on classification of the data based on values of the data features. This can be as simple as a ‘yes’ or ‘no’ entry in a feature column, or it can be a decision between many options.</p>
 <p><img alt="img" src="../_images/indecision-tree.png" /></p>
 <p>In trying to separate apples and oranges, we might ask is it red or green or orange? If it is red, we might subsequently ask if the skin is smooth (apple) or rough (a blood orange). You can have many levels of these decisions before you finally end at a conclusion about what you have.</p>
@@ -405,9 +406,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <section id="a-regression-example">
-<h2>A regression example<a class="headerlink" href="#a-regression-example" title="Permalink to this headline">#</a></h2>
+<h2>A regression example<a class="headerlink" href="#a-regression-example" title="Permalink to this heading">#</a></h2>
 <p>In engineering analysis, we are often trying to build models for <em>continuous</em> properties, which is a regression problem. In this example, we return to the data from the NIST web book ‘Thermophysical Properties of Fluid Systems’: <a class="reference external" href="https://webbook.nist.gov/chemistry/fluid/">https://webbook.nist.gov/chemistry/fluid/</a></p>
 <p>Specifically, the data used here contains the properties of water at isochoric conditions and a density of 1000 kg/m3, between 0C to 100C.</p>
 <p>We are interested in the pressure and temperature of water, which is taken from the data file below.</p>
@@ -426,7 +439,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/920bd049f00e410c385f65e5da608a8f68eecea41fb95f1cbe371d2416a9893d.png" src="../_images/920bd049f00e410c385f65e5da608a8f68eecea41fb95f1cbe371d2416a9893d.png" />
+<img alt="../_images/4626fc23e7c5beda8cd653e1d03e4c9a20547e2e1f5429f8fcb2642f34cd618b.png" src="../_images/4626fc23e7c5beda8cd653e1d03e4c9a20547e2e1f5429f8fcb2642f34cd618b.png" />
 </div>
 </div>
 <p>We will split this into train and test sets.</p>
@@ -482,7 +495,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R-Squared Score: 0.9996391359778751
 </pre></div>
 </div>
-<img alt="../_images/b5597cfb4f57f34301fd26e6e2b4c56a06138d2d2868aa08d9afabce5bdcdb62.png" src="../_images/b5597cfb4f57f34301fd26e6e2b4c56a06138d2d2868aa08d9afabce5bdcdb62.png" />
+<img alt="../_images/1f41bfd8f7c36e2bf4e3d8c5b63731fab6765ba36b70ef1e23450e44f8830129.png" src="../_images/1f41bfd8f7c36e2bf4e3d8c5b63731fab6765ba36b70ef1e23450e44f8830129.png" />
 </div>
 </div>
 <p>This looks like a good fit. But visually we are not able to see how a decision tree varies from any other regression approach. To see that, let us use a sparse data set, by taking a small number of points from the above data.</p>
@@ -500,7 +513,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/57239631c63e984807e9f12e9ee15148a1e8d1f282130c9ed0761011374081c1.png" src="../_images/57239631c63e984807e9f12e9ee15148a1e8d1f282130c9ed0761011374081c1.png" />
+<img alt="../_images/441a5e607a4b1b3acd2d6c70ad8fbbe8ae8a7408a2329577fab6386b480c666c.png" src="../_images/441a5e607a4b1b3acd2d6c70ad8fbbe8ae8a7408a2329577fab6386b480c666c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -534,7 +547,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R-Squared Score: 0.9812453324434975
 </pre></div>
 </div>
-<img alt="../_images/9c52e5ab608c3d02d0f26dd5eff892bb1ab3e2183856aca048a7a69a96362cb0.png" src="../_images/9c52e5ab608c3d02d0f26dd5eff892bb1ab3e2183856aca048a7a69a96362cb0.png" />
+<img alt="../_images/2d35dca339ab95c0630323e125fe6e4ffa2cfa662bcb79ec9896e63eafe9111d.png" src="../_images/2d35dca339ab95c0630323e125fe6e4ffa2cfa662bcb79ec9896e63eafe9111d.png" />
 </div>
 </div>
 <p>We can now see that a decision tree does not follow the function approximation approach to regression. The decision tree divides the data set into different regions by drawing boundaries (vertical lines in the steps) to separate each data point. This is based on the mean squared error criteria. A split is chosen which gives the lowest mean squared error.</p>
@@ -562,49 +575,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">InvocationException</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 14&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">export_graphviz</span><span class="p">(</span><span class="n">tree2</span><span class="p">,</span> <span class="n">out_file</span><span class="o">=</span><span class="n">dot_data</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>                 <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>                 <span class="n">special_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">pydotplus</span><span class="o">.</span><span class="n">graph_from_dot_data</span><span class="p">(</span><span class="n">dot_data</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="n">Image</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">create_png</span><span class="p">())</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pydotplus/graphviz.py:1797,</span> in <span class="ni">Dot.__init__.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(f, prog)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1792</span> <span class="c1"># Automatically creates all the methods enabling the creation</span>
-<span class="g g-Whitespace">   </span><span class="mi">1793</span> <span class="c1"># of output in any of the supported formats.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1794</span> <span class="k">for</span> <span class="n">frmt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">formats</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1795</span>     <span class="bp">self</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1796</span>         <span class="s1">&#39;create_&#39;</span> <span class="o">+</span> <span class="n">frmt</span><span class="p">,</span>
-<span class="ne">-&gt; </span><span class="mi">1797</span>         <span class="k">lambda</span> <span class="n">f</span><span class="o">=</span><span class="n">frmt</span><span class="p">,</span> <span class="n">prog</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prog</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">prog</span><span class="o">=</span><span class="n">prog</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1798</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1799</span>     <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;create_&#39;</span> <span class="o">+</span> <span class="n">frmt</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1800</span>     <span class="n">f</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1801</span>         <span class="sd">&#39;&#39;&#39;Refer to the docstring accompanying the&#39;&#39;&#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1802</span>         <span class="sd">&#39;&#39;&#39;&#39;create&#39; method for more information.&#39;&#39;&#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1803</span>     <span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pydotplus/graphviz.py:1959,</span> in <span class="ni">Dot.create</span><span class="nt">(self, prog, format)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1957</span>     <span class="bp">self</span><span class="o">.</span><span class="n">progs</span> <span class="o">=</span> <span class="n">find_graphviz</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1958</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">progs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1959</span>         <span class="k">raise</span> <span class="n">InvocationException</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1960</span>             <span class="s1">&#39;GraphViz</span><span class="se">\&#39;</span><span class="s1">s executables not found&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1962</span> <span class="k">if</span> <span class="n">prog</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">progs</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1963</span>     <span class="k">raise</span> <span class="n">InvocationException</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1964</span>         <span class="s1">&#39;GraphViz</span><span class="se">\&#39;</span><span class="s1">s executable &quot;</span><span class="si">%s</span><span class="s1">&quot; not found&#39;</span> <span class="o">%</span> <span class="n">prog</span><span class="p">)</span>
-
-<span class="ne">InvocationException</span>: GraphViz&#39;s executables not found
-</pre></div>
-</div>
-</div>
 </div>
 <p>As seen in the above image, the decision tree algorithm splits the data set based on a boundary which gives the minimum mean squared error. This process goes on until every data point is represented by an interval.</p>
 <p>Note from Siddhant : From a classification point of view, this can be overfitting as we often need to prune the tree by reducing the number of splits or by restricting the maximum depth of the tree. However, here we know that the data is non-linear and a decision tree boundary will group together unequal data points if we stop splitting the data.</p>
 </section>
 <section id="random-forest-regression">
-<h2>Random Forest regression<a class="headerlink" href="#random-forest-regression" title="Permalink to this headline">#</a></h2>
+<h2>Random Forest regression<a class="headerlink" href="#random-forest-regression" title="Permalink to this heading">#</a></h2>
 <p>A Random Forest algorithm uses multiple decision trees and determines the output either based on the mean or the median of all the individual outputs. Scikit-learn gives us the mean of all the trees.</p>
 <p>A Random Forest near a lake</p>
 <p><img alt="img" src="../_images/random-forest.png" /></p>
@@ -710,7 +686,7 @@ document.write(`
 <p>As we can see here, the accuracy of our model goes on increasing as we use more number of trees to predict the output, until we reach a threshold beyond which the accuracy stays almost constant.</p>
 </section>
 <section id="classification">
-<h2>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">#</a></h2>
+<h2>Classification<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h2>
 <p>The goal here is to predict whether a chemical species is in the supercritical fluid phase based on its temperature and pressure.</p>
 <p>Our training data consists of 3 features and 1 binary label. Two of these features are the temperature (K) and pressure (MPa), which are continuous variables. The third feature is a binary feature with Species = 1 being water and Species = 0 being Carbon dioxide. The label for each data point consists of the phase of the fluid. 1 indicates the species at the given temperature and pressure is in its supercritical phase and 0 indicates otherwise.</p>
 <div class="cell docutils container">
@@ -855,7 +831,7 @@ document.write(`
 </div>
 </div>
 <section id="random-forest-classifiers">
-<h3>Random forest classifiers<a class="headerlink" href="#random-forest-classifiers" title="Permalink to this headline">#</a></h3>
+<h3>Random forest classifiers<a class="headerlink" href="#random-forest-classifiers" title="Permalink to this heading">#</a></h3>
 <p>Let us see how using multiple trees help us in this case. We will be using the RandomForestClassifier class from scikit-learn.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -933,26 +909,26 @@ document.write(`
 </section>
 </section>
 <section id="mleng-aka-the-spaice">
-<h2>Mleng - AKA the spAIce<a class="headerlink" href="#mleng-aka-the-spaice" title="Permalink to this headline">#</a></h2>
+<h2>Mleng - AKA the spAIce<a class="headerlink" href="#mleng-aka-the-spaice" title="Permalink to this heading">#</a></h2>
 <p>There is much for to data science and machine learning than we have been able to cover this semester.</p>
 <section id="data-visualization">
-<h3>Data visualization<a class="headerlink" href="#data-visualization" title="Permalink to this headline">#</a></h3>
+<h3>Data visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h3>
 <p>This is one of the most critical capabilities in data science. We are very skilled at seeing patterns. Visualization is crucial for getting insight into the data, and in what the models mean. We focused primarily on matplotlib because it is pure Python. Many other approaches also involve Javascript, which is useful for graphics you can use in a browser, but which require knowledge of Javascript.</p>
 </section>
 <section id="feature-engineering">
-<h3>Feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">#</a></h3>
+<h3>Feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this heading">#</a></h3>
 <p>There are many efforts aimed at automating the search for features. These are often combinations of features, or transformed features. These methods all have to be augmented by regularization for feature selection.</p>
 <p>The SISSO method (<a class="reference external" href="https://arxiv.org/pdf/1710.03319.pdf">https://arxiv.org/pdf/1710.03319.pdf</a>) of feature engineering uses an algorithm to generate many (potentially billions) of features based on algebraic construction algorithms, with a heavy regularization to remove ones that are not helpful.</p>
 </section>
 <section id="so-many-other-kinds-of-models">
-<h3>So many other kinds of models<a class="headerlink" href="#so-many-other-kinds-of-models" title="Permalink to this headline">#</a></h3>
+<h3>So many other kinds of models<a class="headerlink" href="#so-many-other-kinds-of-models" title="Permalink to this heading">#</a></h3>
 <p>There are so many other models that are possible.</p>
 <section id="graph-convolution-models">
-<h4>Graph/convolution models<a class="headerlink" href="#graph-convolution-models" title="Permalink to this headline">#</a></h4>
+<h4>Graph/convolution models<a class="headerlink" href="#graph-convolution-models" title="Permalink to this heading">#</a></h4>
 <p>Convolutional models have functions that depend on several data points, and that develop features from them to fit the data. The original versions were used on images, where convolution filters were trained for classification. These ideas have been extended to graph representations of data, where the filters are convoluted over the connected nodes to develop features based on the neighbors of a point.</p>
 </section>
 <section id="symbolic-regression">
-<h4>Symbolic regression<a class="headerlink" href="#symbolic-regression" title="Permalink to this headline">#</a></h4>
+<h4>Symbolic regression<a class="headerlink" href="#symbolic-regression" title="Permalink to this heading">#</a></h4>
 <p>This is a method where instead of using flexible functions like neural networks where you fit the parameters, you instead use an algorithm to search for functions to generate equations. One approach to this is the ALAMO project from Prof. Sahinidis’ group, which searches for the best equations to fit data.</p>
 <ul class="simple">
 <li><p><strong>ALAMO:</strong> <a class="reference external" href="http://archimedes.cheme.cmu.edu/?q=alamo">http://archimedes.cheme.cmu.edu/?q=alamo</a></p></li>
@@ -961,16 +937,16 @@ document.write(`
 <p>There are many other approaches that leverage genetic programs, and decision trees for generating equations.</p>
 </section>
 <section id="reinforcement-learning">
-<h4>Reinforcement learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this headline">#</a></h4>
+<h4>Reinforcement learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this heading">#</a></h4>
 <p>This is a whole new class of machine learning models where instead of fitting models to reduce an error function, the models are trained to make decisions that maximize some kind of reward function (<a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">https://en.wikipedia.org/wiki/Reinforcement_learning</a>). There are not many engineering applications of this method yet.</p>
 </section>
 </section>
 <section id="train-test-and-validate">
-<h3>Train, test <em>and</em> validate<a class="headerlink" href="#train-test-and-validate" title="Permalink to this headline">#</a></h3>
+<h3>Train, test <em>and</em> validate<a class="headerlink" href="#train-test-and-validate" title="Permalink to this heading">#</a></h3>
 <p>We only focused on train/test splits for testing the hyperparameters <em>within a single model</em>. When you are testing many models, you can run the risk of finding a model that simply fits the test data the best. In this case it is common to split the data into three sets: train, test and validate. The validate set is only used at the end to make sure that we have not overfit to the test data.</p>
 </section>
 <section id="modern-machine-learning-frameworks">
-<h3>Modern machine learning frameworks<a class="headerlink" href="#modern-machine-learning-frameworks" title="Permalink to this headline">#</a></h3>
+<h3>Modern machine learning frameworks<a class="headerlink" href="#modern-machine-learning-frameworks" title="Permalink to this heading">#</a></h3>
 <p>PyTorch and TensorFlow are the two most common Python-based machine learning frameworks. These packages leverage automatic differentiation to let you build and train very flexible models. You might wonder why we didn’t learn more about these?</p>
 <p>They are much more complex to work with, and involve a different paradigm of programming. You have to pay attention to a whole new set of things. It is easier to pick out this style of machine learning <em>after</em> you know what the algorithms are, and how they work.</p>
 <p>Both of these are still rapidly developing, and believe it or not, a year ago it was the case that the version you start with at the beginning of a semester would be out of date by the end of the semester.</p>
