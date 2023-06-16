@@ -53,6 +53,40 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/jkitchin/dsmles");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -167,6 +201,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../07-nonlinear-sklearn/nonlinear-sklearn.html">Nonlinear models in sklearn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08-random-forests/random-forests.html">Decision Trees and Random Forests Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09-custom-estimators/custom-estimators.html">Building custom estimators in sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 </ul>
 
     </div>
@@ -399,31 +435,8 @@ document.write(`
 <p>For “small” data sets, i.e. not too many columns, this is a perfectly reasonable thing to do. For larger datasets, however, it can be tedious to create a lot of variable names, and it is also hard to remember what is in each column.</p>
 <p>Many tasks are pretty standard, e.g. read a data set, summarize and visualize it. It would be nice if we had a simple way to do this, with few lines of code, since those lines will be the same every time.</p>
 <p>The <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> library was developed to address all these issues. From the website: “<strong>pandas</strong> is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.”</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> jupyter_black
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-                <script type="application/javascript" id="jupyter_black">
-                (function() {
-                    if (window.IPython === undefined) {
-                        return
-                    }
-                    var msg = "WARNING: it looks like you might have loaded " +
-                        "jupyter_black in a non-lab notebook with " +
-                        "`is_lab=True`. Please double check, and if " +
-                        "loading with `%load_ext` please review the README!"
-                    console.log(msg)
-                    alert(msg)
-                })()
-                </script>
-                </div></div>
-</div>
 <section id="review-of-the-numpy-array-way">
-<h2>Review of the numpy array way<a class="headerlink" href="#review-of-the-numpy-array-way" title="Permalink to this heading">#</a></h2>
+<span id="index-0"></span><h2>Review of the numpy array way<a class="headerlink" href="#review-of-the-numpy-array-way" title="Permalink to this heading">#</a></h2>
 <p>Let’s review what we learned already.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -465,7 +478,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="s2">&quot;raman.txt&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wavenumber&quot;</span><span class="p">,</span> <span class="s2">&quot;intensity&quot;</span><span class="p">]</span>

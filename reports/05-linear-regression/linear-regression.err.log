@@ -20,11 +20,9 @@ from sklearn.model_selection import train_test_split
 X = np.array([T**3, T**2, T, T**0]).T
 y = P
 
-(X_train, X_test,
- y_train, y_test) = train_test_split(X, y,
-                                     test_size=0.2,
-                                     shuffle=True,
-                                     random_state=42)
+(X_train, X_test, y_train, y_test) = train_test_split(
+    X, y, test_size=0.2, shuffle=True, random_state=42
+)
 ------------------
 
 

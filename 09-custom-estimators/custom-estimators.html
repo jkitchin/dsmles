@@ -53,6 +53,40 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/jkitchin/dsmles");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -66,6 +100,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '09-custom-estimators/custom-estimators';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Summary" href="../summary.html" />
     <link rel="prev" title="Decision Trees and Random Forests Examples" href="../08-random-forests/random-forests.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -168,6 +203,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../07-nonlinear-sklearn/nonlinear-sklearn.html">Nonlinear models in sklearn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08-random-forests/random-forests.html">Decision Trees and Random Forests Examples</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Building custom estimators in sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 </ul>
 
     </div>
@@ -365,7 +402,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="building-custom-estimators-in-sklearn">
 <h1>Building custom estimators in sklearn<a class="headerlink" href="#building-custom-estimators-in-sklearn" title="Permalink to this heading">#</a></h1>
-<p>It is possible to create your own estimators in sklearn. Doing this requires knowing some advanced Python programming skills. We have to create a <em>class</em> that inherits from the <code class="docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code> class to get Estimator capabilities, and <code class="docutils literal notranslate"><span class="pre">sklearn.base.RegressorMixin</span></code> to get Model capabilities like scoring. Then, we have to define <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> class methods. The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method has a required signature which takes the data, and returns the estimator. This is the function where we fit the parameters and store the result in the class. The function we want to fit is nonlinear in the parameters:</p>
+<p id="index-0">It is possible to create your own estimators in sklearn. Doing this requires knowing some advanced Python programming skills. We have to create a <em>class</em> that inherits from the <code class="docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code> class to get Estimator capabilities, and <code class="docutils literal notranslate"><span class="pre">sklearn.base.RegressorMixin</span></code> to get Model capabilities like scoring. Then, we have to define <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> class methods. The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method has a required signature which takes the data, and returns the estimator. This is the function where we fit the parameters and store the result in the class. The function we want to fit is nonlinear in the parameters:</p>
 <p><span class="math notranslate nohighlight">\(k(T; k_0, E_A) = k_0 e^{-E_A / (RT)}\)</span>.</p>
 <p>So, we need to provide an initial guess to help find the fit. We derive an analytical guess for this from the data, and then use a nonlinear least squares routine to do the fitting.</p>
 <p>Second, we need a predict function, which simply evaluates our model for new temperatures.</p>
@@ -544,6 +581,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Decision Trees and Random Forests Examples</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../summary.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Summary</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   

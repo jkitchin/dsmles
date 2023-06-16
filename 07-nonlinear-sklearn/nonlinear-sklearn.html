@@ -53,6 +53,40 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/jkitchin/dsmles");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -167,6 +201,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Nonlinear models in sklearn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08-random-forests/random-forests.html">Decision Trees and Random Forests Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09-custom-estimators/custom-estimators.html">Building custom estimators in sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 </ul>
 
     </div>
@@ -384,7 +420,7 @@ document.write(`
 <p>Nonlinear models are harder to fit, harder to interpret, and more complex than linear models. You should think hard about whether a nonlinear model is the right next step forward. Some alternatives include using better features with linear models.</p>
 <section id="neural-networks">
 <h2>Neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this heading">#</a></h2>
-<p>Neural networks are very old in concept. Originally the started as an approach to model neurons in an attempt to build programs that could simulate a brain. This did not work. Since then, we have come to understand much more about what these models are, and how they are related to other models.</p>
+<p id="index-0">Neural networks are very old in concept. Originally the started as an approach to model neurons in an attempt to build programs that could simulate a brain. This did not work. Since then, we have come to understand much more about what these models are, and how they are related to other models.</p>
 <p><a class="reference external" href="https://scikit-learn.org/stable/modules/neural_networks_supervised.html">https://scikit-learn.org/stable/modules/neural_networks_supervised.html</a></p>
 <p>Let’s dive in and see an example straight away. I do not emphasize the importance of train-test splitting of the data in this example, but it is still an important thing to consider in real applications. We will use the same data you used before from last class. You should run this block several times to see what happens.</p>
 <div class="cell docutils container">
@@ -547,7 +583,7 @@ document.write(`
 </section>
 <section id="gaussian-process-regression">
 <h2>Gaussian Process Regression<a class="headerlink" href="#gaussian-process-regression" title="Permalink to this heading">#</a></h2>
-<p>In sklearn: <a class="reference external" href="https://scikit-learn.org/stable/modules/gaussian_process.html">https://scikit-learn.org/stable/modules/gaussian_process.html</a></p>
+<p id="index-1">In sklearn: <a class="reference external" href="https://scikit-learn.org/stable/modules/gaussian_process.html">https://scikit-learn.org/stable/modules/gaussian_process.html</a></p>
 <p>So far, we have considered models where conceptually we get a set of parameters that represent the “best” curve that fits the data. These are called <em>parametric</em> models. We can see from the neural network discussion above though that there could be an infinite number of curves that effectively fit the data well. In the so-called Bayesian perspective on this, we could consider a <em>distribution</em> of functions then, instead of a single function. Then, instead of a single prediction value, we will get a distribution of predicted values from the distribution of functions. These models are called <em>non-parametric</em>, because they don’t have fitting parameters in the same sense, they only have hyperparameters that affect the distribution of functions.</p>
 <p>The approach we will consider here is called <a class="reference external" href="http://www.gaussianprocess.org/gpml/">Gaussian process regression</a>. We will take a practical perspective with an emphasis on using it, rather than a deep understanding of the theoretical foundations. You can find all of that in this <a class="reference external" href="http://www.gaussianprocess.org/gpml/">book</a>.</p>
 <p>The core idea in GPR is that if we have some data that represents a function we can predict new values by computing a similarity metric between the new inputs and the known inputs, and use those to compute a weighted sum of known outputs as a prediction for the new output.</p>

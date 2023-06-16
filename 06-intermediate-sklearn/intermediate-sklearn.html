@@ -53,6 +53,40 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/jkitchin/dsmles");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -167,6 +201,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../07-nonlinear-sklearn/nonlinear-sklearn.html">Nonlinear models in sklearn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../08-random-forests/random-forests.html">Decision Trees and Random Forests Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09-custom-estimators/custom-estimators.html">Building custom estimators in sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../summary.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
 </ul>
 
     </div>
@@ -395,7 +431,7 @@ document.write(`
 <li><p><strong>min-max:</strong> you scale the column so that the minimum value maps to a constant (often 0 or -1), and the maximum value maps to a constant (often 1).</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> provides a <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html">preprocessing</a> module to make this “simple”.</p>
-<p>We will explore this with this data set which represents the energy of a Cu dimer as a function of the distance between the two atoms. Our goal is to develop a model that fits this. We know some physics about this system, and that is as the atoms approach each other, they should strongly repel each other, and the energy would go to infinity, and as the atoms get far apart, they cannot interact, so the energy should go to a constant. You might think the energy should go to zero,, but this depends on what reference system the energy zero is defined for. The zero in this system is defined as the minimum energy for <em>bulk</em> Cu in an fcc unit cell. So, this system levels out at an energy that is much higher than that.</p>
+<p id="index-0">We will explore this with this data set which represents the energy of a Cu dimer as a function of the distance between the two atoms. Our goal is to develop a model that fits this. We know some physics about this system, and that is as the atoms approach each other, they should strongly repel each other, and the energy would go to infinity, and as the atoms get far apart, they cannot interact, so the energy should go to a constant. You might think the energy should go to zero,, but this depends on what reference system the energy zero is defined for. The zero in this system is defined as the minimum energy for <em>bulk</em> Cu in an fcc unit cell. So, this system levels out at an energy that is much higher than that.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
@@ -415,7 +451,7 @@ document.write(`
 </div>
 </div>
 <p>First, let’s make some columns. Instead of manually creating these, let’s leverage the capability of <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> to build the features for us. Here is an example of a second order polynomial.</p>
-<div class="cell docutils container">
+<div class="cell docutils container" id="index-1">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -443,7 +479,7 @@ document.write(`
 </div>
 </div>
 <p>You can see that there are some orders of magnitude variation across the columns. We can use standard methods in sklearn to scale these features. This is the <em>zero-mean and unit-variance</em> approach.</p>
-<div class="cell docutils container">
+<div class="cell docutils container" id="index-2">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
 
@@ -637,7 +673,7 @@ document.write(`
 <section id="pipeline">
 <h3>Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this heading">#</a></h3>
 <p>These steps can be combined in what is called a <code class="docutils literal notranslate"><span class="pre">pipeline</span></code>. The idea is that data goes into the pipe and is transformed in a series of steps, and the results come out the end of the pipe. The code above can be condensed into this concept like this. Here we also perform a linear regression.</p>
-<div class="cell docutils container">
+<div class="cell docutils container" id="index-3">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
@@ -684,7 +720,7 @@ document.write(`
 </section>
 <section id="k-fold-validation-cross-validation">
 <h2>k-fold validation / cross-validation<a class="headerlink" href="#k-fold-validation-cross-validation" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">https://scikit-learn.org/stable/modules/cross_validation.html</a></p>
+<p id="index-4"><a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">https://scikit-learn.org/stable/modules/cross_validation.html</a></p>
 <p>We have 75 data points, and the best thing to do in training would be to split the data into train and test sets. Last time we saw a way to that in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>. The problem with doing it once is that the results may depend on the specific set of data, and it would be nice to see several trials to make sure it doesn’t. You can code this yourself, but here is a better, more formalized way to do it. The idea is called <code class="docutils literal notranslate"><span class="pre">K-fold</span></code> validation, where you split the data into <code class="docutils literal notranslate"><span class="pre">k</span></code> folds that are splits into training and testing data. Then, we fit on k-1 of the folds, and test on the one left out. We do that for all the combinations of folds.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -716,7 +752,7 @@ document.write(`
 </div>
 <p>You can see here that the results depend on the specific data set that is chosen. In every case, the score of the train data is ok, but for some models the test data is not as good. This is commonly observed, and it indicates over-fitting in the train data, and poor generalization in the test data.</p>
 <p>A common metric for judging the fit is called the cross-validation score. This is obtained by averaging the score across all the folds. We would like this score to be a minimum for our model.</p>
-<div class="cell docutils container">
+<div class="cell docutils container" id="index-5">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
 
