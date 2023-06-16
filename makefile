@@ -9,3 +9,9 @@ clean:
 
 deploy:
 	ghp-import -n -p -f dsmles/_build/html
+
+gh:
+	open https://github.com/jkitchin/dsmles
+
+web:
+	open https://kitchingroup.cheme.cmu.edu/dsmles

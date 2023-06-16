@@ -2,6 +2,8 @@
 
 This cookiecutter creates a simple boilerplate for a Jupyter Book.
 
+[![deploy](https://github.com/jkitchin/dsmles/actions/workflows/deploy.yml/badge.svg)](https://github.com/jkitchin/dsmles/actions/workflows/deploy.yml)
+
 ## Usage
 
 ### Building the book
@@ -10,11 +12,11 @@ If you'd like to develop and/or build the Data science and machine learning in s
 
 1. Clone this repository
 2. Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
-3. (Optional) Edit the books source files located in the `ddsmles/` directory
-4. Run `jupyter-book clean ddsmles/` to remove any existing builds
-5. Run `jupyter-book build ddsmles/`
+3. (Optional) Edit the books source files located in the `dsmles/` directory
+4. Run `jupyter-book clean dsmles/` to remove any existing builds
+5. Run `jupyter-book build dsmles/`
 
-A fully-rendered HTML version of the book will be built in `ddsmles/_build/html/`.
+A fully-rendered HTML version of the book will be built in `dsmles/_build/html/`.
 
 ### Hosting the book
 
