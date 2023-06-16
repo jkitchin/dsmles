@@ -452,18 +452,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;energy&#39;</span><span class="p">]</span>
-<span class="ne">---&gt; </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPRegressor</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">model</span> <span class="o">=</span> <span class="n">MLPRegressor</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;tanh&#39;</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
-</pre></div>
-</div>
+<img alt="../_images/84ae5380061a144e54481ccddd2f8665ecf13587d51ea898da8adb2c3870da40.png" src="../_images/84ae5380061a144e54481ccddd2f8665ecf13587d51ea898da8adb2c3870da40.png" />
 </div>
 </div>
 <p>Some notes:</p>
@@ -494,7 +483,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8af98e385696134d3656e5feedf31cf03eced4fe39bb9078f999149e06424e03.png" src="../_images/8af98e385696134d3656e5feedf31cf03eced4fe39bb9078f999149e06424e03.png" />
+<img alt="../_images/17509d480ad316dd1aaca8be759335886d705be3a253062dd65e3fdfde8be176.png" src="../_images/17509d480ad316dd1aaca8be759335886d705be3a253062dd65e3fdfde8be176.png" />
 </div>
 </div>
 <p>Let’s take a look under the hood here to see what is happening.</p>
@@ -515,10 +504,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-2.93194455, -0.97809671,  3.11612058]]),
- array([[ 7.34209165],
-        [-3.16138406],
-        [ 5.42783907]])]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[2.11409852e-04, 3.18909367e+00, 8.72481429e-01]]),
+ array([[-6.09968078],
+        [-5.31945745],
+        [ 3.58261497]])]
 </pre></div>
 </div>
 </div>
@@ -531,7 +520,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([ 4.64810634,  2.47518696, -0.15304765]), array([5.70280737])]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([-0.68539511, -5.36337698, -2.10342994]), array([5.12404758])]
 </pre></div>
 </div>
 </div>
@@ -549,7 +538,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06fe60beed9cb4cc89b1ee567f78006503b9c473d1e94f372dcd0be4189ab09d.png" src="../_images/06fe60beed9cb4cc89b1ee567f78006503b9c473d1e94f372dcd0be4189ab09d.png" />
+<img alt="../_images/8e5f4574a3ea142c9a23c2dc8f55ca9ab193fa34ceb9f8081c22e9c1070db65b.png" src="../_images/8e5f4574a3ea142c9a23c2dc8f55ca9ab193fa34ceb9f8081c22e9c1070db65b.png" />
 </div>
 </div>
 <p>It should be evident that this NN is just a small nonlinear model, with 10 free parameters. It might not be a surprise then that it has a lot of flexibility to fit arbitrary data.</p>
@@ -563,7 +552,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/de1a9739e67afdb391ac71d97ba67fcb08233a4ccffaa43f593dd44040dbe0eb.png" src="../_images/de1a9739e67afdb391ac71d97ba67fcb08233a4ccffaa43f593dd44040dbe0eb.png" />
+<img alt="../_images/06c617178a3eda0e1748795063d2364c87d4eeef0b524bebce7f13b2fed6c657.png" src="../_images/06c617178a3eda0e1748795063d2364c87d4eeef0b524bebce7f13b2fed6c657.png" />
 </div>
 </div>
 <p>A newer function is called ReLU, which is a piece wise linear function. This function does not saturate, but for negative inputs, the function is zero and its derivative is zero. Neurons that get negative values are called “dead” neurons because they don’t contribute to the output.</p>
@@ -763,7 +752,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/97e121cc451e8e6c5b11a94c2f654c9811642ec5e8af4959f84f62aeecf9c9ab.png" src="../_images/97e121cc451e8e6c5b11a94c2f654c9811642ec5e8af4959f84f62aeecf9c9ab.png" />
+<img alt="../_images/6a21a136cc2284bdf7848f0b418fbb442b993cc33f692403128bc85b7e60cbb1.png" src="../_images/6a21a136cc2284bdf7848f0b418fbb442b993cc33f692403128bc85b7e60cbb1.png" />
 </div>
 </div>
 <p>As with other <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> models, we can simply import the library. We do that here, and look at the options.</p>
@@ -774,249 +763,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span>
-GaussianProcessRegressor<span class=" -Color -Color-Blue">(</span>
-    kernel<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
-    <span class=" -Color -Color-Blue">*,</span>
-    alpha<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">1e-10</span><span class=" -Color -Color-Blue">,</span>
-    optimizer<span class=" -Color -Color-Blue">=&#39;fmin_l_bfgs_b&#39;,</span>
-    n_restarts_optimizer<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span>
-    normalize_y<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
-    copy_X_train<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
-    random_state<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
-<span class=" -Color -Color-Blue">)</span>
-<span class=" -Color -Color-Red">Docstring:</span>     
-Gaussian process regression (GPR).
-
-The implementation is based on Algorithm 2.1 of [1]_.
-
-In addition to standard scikit-learn estimator API,
-:class:`GaussianProcessRegressor`:
-
-   * allows prediction without prior fitting (based on the GP prior)
-   * provides an additional method `sample_y(X)`, which evaluates samples
-     drawn from the GPR (prior or posterior) at given inputs
-   * exposes a method `log_marginal_likelihood(theta)`, which can be used
-     externally for other ways of selecting hyperparameters, e.g., via
-     Markov chain Monte Carlo.
-
-Read more in the :ref:`User Guide &lt;gaussian_process&gt;`.
-
-.. versionadded:: 0.18
-
-Parameters
-----------
-kernel : kernel instance, default=None
-    The kernel specifying the covariance function of the GP. If None is
-    passed, the kernel ``ConstantKernel(1.0, constant_value_bounds=&quot;fixed&quot;)
-    * RBF(1.0, length_scale_bounds=&quot;fixed&quot;)`` is used as default. Note that
-    the kernel hyperparameters are optimized during fitting unless the
-    bounds are marked as &quot;fixed&quot;.
-
-alpha : float or ndarray of shape (n_samples,), default=1e-10
-    Value added to the diagonal of the kernel matrix during fitting.
-    This can prevent a potential numerical issue during fitting, by
-    ensuring that the calculated values form a positive definite matrix.
-    It can also be interpreted as the variance of additional Gaussian
-    measurement noise on the training observations. Note that this is
-    different from using a `WhiteKernel`. If an array is passed, it must
-    have the same number of entries as the data used for fitting and is
-    used as datapoint-dependent noise level. Allowing to specify the
-    noise level directly as a parameter is mainly for convenience and
-    for consistency with :class:`~sklearn.linear_model.Ridge`.
-
-optimizer : &quot;fmin_l_bfgs_b&quot; or callable, default=&quot;fmin_l_bfgs_b&quot;
-    Can either be one of the internally supported optimizers for optimizing
-    the kernel&#39;s parameters, specified by a string, or an externally
-    defined optimizer passed as a callable. If a callable is passed, it
-    must have the signature::
-
-        def optimizer(obj_func, initial_theta, bounds):
-            # * &#39;obj_func&#39;: the objective function to be minimized, which
-            #   takes the hyperparameters theta as a parameter and an
-            #   optional flag eval_gradient, which determines if the
-            #   gradient is returned additionally to the function value
-            # * &#39;initial_theta&#39;: the initial value for theta, which can be
-            #   used by local optimizers
-            # * &#39;bounds&#39;: the bounds on the values of theta
-            ....
-            # Returned are the best found hyperparameters theta and
-            # the corresponding value of the target function.
-            return theta_opt, func_min
-
-    Per default, the L-BFGS-B algorithm from `scipy.optimize.minimize`
-    is used. If None is passed, the kernel&#39;s parameters are kept fixed.
-    Available internal optimizers are: `{&#39;fmin_l_bfgs_b&#39;}`.
-
-n_restarts_optimizer : int, default=0
-    The number of restarts of the optimizer for finding the kernel&#39;s
-    parameters which maximize the log-marginal likelihood. The first run
-    of the optimizer is performed from the kernel&#39;s initial parameters,
-    the remaining ones (if any) from thetas sampled log-uniform randomly
-    from the space of allowed theta-values. If greater than 0, all bounds
-    must be finite. Note that `n_restarts_optimizer == 0` implies that one
-    run is performed.
-
-normalize_y : bool, default=False
-    Whether or not to normalize the target values `y` by removing the mean
-    and scaling to unit-variance. This is recommended for cases where
-    zero-mean, unit-variance priors are used. Note that, in this
-    implementation, the normalisation is reversed before the GP predictions
-    are reported.
-
-    .. versionchanged:: 0.23
-
-copy_X_train : bool, default=True
-    If True, a persistent copy of the training data is stored in the
-    object. Otherwise, just a reference to the training data is stored,
-    which might cause predictions to change if the data is modified
-    externally.
-
-random_state : int, RandomState instance or None, default=None
-    Determines random number generation used to initialize the centers.
-    Pass an int for reproducible results across multiple function calls.
-    See :term:`Glossary &lt;random_state&gt;`.
-
-Attributes
-----------
-X_train_ : array-like of shape (n_samples, n_features) or list of object
-    Feature vectors or other representations of training data (also
-    required for prediction).
-
-y_train_ : array-like of shape (n_samples,) or (n_samples, n_targets)
-    Target values in training data (also required for prediction).
-
-kernel_ : kernel instance
-    The kernel used for prediction. The structure of the kernel is the
-    same as the one passed as parameter but with optimized hyperparameters.
-
-L_ : array-like of shape (n_samples, n_samples)
-    Lower-triangular Cholesky decomposition of the kernel in ``X_train_``.
-
-alpha_ : array-like of shape (n_samples,)
-    Dual coefficients of training data points in kernel space.
-
-log_marginal_likelihood_value_ : float
-    The log-marginal-likelihood of ``self.kernel_.theta``.
-
-n_features_in_ : int
-    Number of features seen during :term:`fit`.
-
-    .. versionadded:: 0.24
-
-feature_names_in_ : ndarray of shape (`n_features_in_`,)
-    Names of features seen during :term:`fit`. Defined only when `X`
-    has feature names that are all strings.
-
-    .. versionadded:: 1.0
-
-See Also
---------
-GaussianProcessClassifier : Gaussian process classification (GPC)
-    based on Laplace approximation.
-
-References
-----------
-.. [1] `Rasmussen, Carl Edward.
-   &quot;Gaussian processes in machine learning.&quot;
-   Summer school on machine learning. Springer, Berlin, Heidelberg, 2003
-   &lt;http://www.gaussianprocess.org/gpml/chapters/RW.pdf&gt;`_.
-
-Examples
---------
-&gt;&gt;&gt; from sklearn.datasets import make_friedman2
-&gt;&gt;&gt; from sklearn.gaussian_process import GaussianProcessRegressor
-&gt;&gt;&gt; from sklearn.gaussian_process.kernels import DotProduct, WhiteKernel
-&gt;&gt;&gt; X, y = make_friedman2(n_samples=500, noise=0, random_state=0)
-&gt;&gt;&gt; kernel = DotProduct() + WhiteKernel()
-&gt;&gt;&gt; gpr = GaussianProcessRegressor(kernel=kernel,
-...         random_state=0).fit(X, y)
-&gt;&gt;&gt; gpr.score(X, y)
-0.3680...
-&gt;&gt;&gt; gpr.predict(X[:2,:], return_std=True)
-(array([653.0..., 592.1...]), array([316.6..., 316.6...]))
-<span class=" -Color -Color-Red">File:</span>           /opt/conda/lib/python3.9/site-packages/sklearn/gaussian_process/_gpr.py
-<span class=" -Color -Color-Red">Type:</span>           type
-<span class=" -Color -Color-Red">Subclasses:</span>     
-</pre></div>
-</div>
-</div>
 </div>
 <p>We also need to import the kernel function. We use a standard Gaussian kernel, known here as a Radial Basis Function, or RBF.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.gaussian_process.kernels</span> <span class="kn">import</span> <span class="n">RBF</span>
 <span class="o">?</span>RBF
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span> RBF<span class=" -Color -Color-Blue">(</span>length_scale<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">1.0</span><span class=" -Color -Color-Blue">,</span> length_scale_bounds<span class=" -Color -Color-Blue">=(</span><span class=" -Color -Color-Cyan">1e-05</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Cyan">100000.0</span><span class=" -Color -Color-Blue">))</span>
-<span class=" -Color -Color-Red">Docstring:</span>     
-Radial basis function kernel (aka squared-exponential kernel).
-
-The RBF kernel is a stationary kernel. It is also known as the
-&quot;squared exponential&quot; kernel. It is parameterized by a length scale
-parameter :math:`l&gt;0`, which can either be a scalar (isotropic variant
-of the kernel) or a vector with the same number of dimensions as the inputs
-X (anisotropic variant of the kernel). The kernel is given by:
-
-.. math::
-    k(x_i, x_j) = \exp\left(- \frac{d(x_i, x_j)^2}{2l^2} \right)
-
-where :math:`l` is the length scale of the kernel and
-:math:`d(\cdot,\cdot)` is the Euclidean distance.
-For advice on how to set the length scale parameter, see e.g. [1]_.
-
-This kernel is infinitely differentiable, which implies that GPs with this
-kernel as covariance function have mean square derivatives of all orders,
-and are thus very smooth.
-See [2]_, Chapter 4, Section 4.2, for further details of the RBF kernel.
-
-Read more in the :ref:`User Guide &lt;gp_kernels&gt;`.
-
-.. versionadded:: 0.18
-
-Parameters
-----------
-length_scale : float or ndarray of shape (n_features,), default=1.0
-    The length scale of the kernel. If a float, an isotropic kernel is
-    used. If an array, an anisotropic kernel is used where each dimension
-    of l defines the length-scale of the respective feature dimension.
-
-length_scale_bounds : pair of floats &gt;= 0 or &quot;fixed&quot;, default=(1e-5, 1e5)
-    The lower and upper bound on &#39;length_scale&#39;.
-    If set to &quot;fixed&quot;, &#39;length_scale&#39; cannot be changed during
-    hyperparameter tuning.
-
-References
-----------
-.. [1] `David Duvenaud (2014). &quot;The Kernel Cookbook:
-    Advice on Covariance functions&quot;.
-    &lt;https://www.cs.toronto.edu/~duvenaud/cookbook/&gt;`_
-
-.. [2] `Carl Edward Rasmussen, Christopher K. I. Williams (2006).
-    &quot;Gaussian Processes for Machine Learning&quot;. The MIT Press.
-    &lt;http://www.gaussianprocess.org/gpml/&gt;`_
-
-Examples
---------
-&gt;&gt;&gt; from sklearn.datasets import load_iris
-&gt;&gt;&gt; from sklearn.gaussian_process import GaussianProcessClassifier
-&gt;&gt;&gt; from sklearn.gaussian_process.kernels import RBF
-&gt;&gt;&gt; X, y = load_iris(return_X_y=True)
-&gt;&gt;&gt; kernel = 1.0 * RBF(1.0)
-&gt;&gt;&gt; gpc = GaussianProcessClassifier(kernel=kernel,
-...         random_state=0).fit(X, y)
-&gt;&gt;&gt; gpc.score(X, y)
-0.9866...
-&gt;&gt;&gt; gpc.predict_proba(X[:2,:])
-array([[0.8354..., 0.03228..., 0.1322...],
-       [0.7906..., 0.0652..., 0.1441...]])
-<span class=" -Color -Color-Red">File:</span>           /opt/conda/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py
-<span class=" -Color -Color-Red">Type:</span>           ABCMeta
-<span class=" -Color -Color-Red">Subclasses:</span>     Matern
 </pre></div>
 </div>
 </div>
@@ -1056,7 +808,7 @@ array([[0.8354..., 0.03228..., 0.1322...],
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimized kernel parameters: {&#39;length_scale&#39;: 9.999999999999997e-06, &#39;length_scale_bounds&#39;: (1e-05, 100000.0)}
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/sklearn/gaussian_process/kernels.py:420: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/sklearn/gaussian_process/kernels.py:420: ConvergenceWarning: The optimal value found for dimension 0 of parameter length_scale is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
   warnings.warn(
 </pre></div>
 </div>
@@ -1086,7 +838,7 @@ array([[0.8354..., 0.03228..., 0.1322...],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/85170e489f846b6b512ebd8dc5ae4631638cbcb91b9b7fa92ddb3a75ffa8a920.png" src="../_images/85170e489f846b6b512ebd8dc5ae4631638cbcb91b9b7fa92ddb3a75ffa8a920.png" />
+<img alt="../_images/7e0db4d4b864901064aa61487b694491efb4913955d18e140760dfc65f319466.png" src="../_images/7e0db4d4b864901064aa61487b694491efb4913955d18e140760dfc65f319466.png" />
 </div>
 </div>
 <p>This model does not work well. We need to work on the model hyperparameters.</p>
@@ -1106,7 +858,7 @@ array([[0.8354..., 0.03228..., 0.1322...],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimized kernel parameters: {&#39;length_scale&#39;: 0.3475165861659721, &#39;length_scale_bounds&#39;: (0.1, 1.0)}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimized kernel parameters: {&#39;length_scale&#39;: 0.34751658616597214, &#39;length_scale_bounds&#39;: (0.1, 1.0)}
 </pre></div>
 </div>
 </div>
@@ -1134,7 +886,7 @@ array([[0.8354..., 0.03228..., 0.1322...],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/87c9e8ffa29b0cc19ff0c8df2ab267d3b88d2b49643eda20b379ae325df4b020.png" src="../_images/87c9e8ffa29b0cc19ff0c8df2ab267d3b88d2b49643eda20b379ae325df4b020.png" />
+<img alt="../_images/205c5e8522b179826579e25e2e651fa7b7d051774da3114c05aa552af7f2d8e6.png" src="../_images/205c5e8522b179826579e25e2e651fa7b7d051774da3114c05aa552af7f2d8e6.png" />
 </div>
 </div>
 <p>As we can see now, this is a much better model. With the uncertainty regions along the function, we would know which areas would require more data and can target gathering data (in this case through experiments) only in the regions of high uncertainty. The final acceptable uncertainty in the model is upto the user to decide.</p>
@@ -1162,7 +914,7 @@ array([[0.8354..., 0.03228..., 0.1322...],
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/eeb8b52b3fee8ebecb69ab34d0147ae4b9b4dc679771e9778938f2cb4914786f.png" src="../_images/eeb8b52b3fee8ebecb69ab34d0147ae4b9b4dc679771e9778938f2cb4914786f.png" />
+<img alt="../_images/e58d530057877534cf5bee4e8de43955d4190c43be231cb3927749863d583d06.png" src="../_images/e58d530057877534cf5bee4e8de43955d4190c43be231cb3927749863d583d06.png" />
 </div>
 </div>
 <p>The RBF is a generic kernel that always works when you have enough data. It is similar to using tanh in a neural network, which also always works when you have enough data.</p>

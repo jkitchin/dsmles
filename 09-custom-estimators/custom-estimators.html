@@ -468,20 +468,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">leastsq</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">RegressorMixin</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">class</span> <span class="nc">ArrheniusRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">RegressorMixin</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span> <span class="c1"># J / mol / K</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Overall, it is not too complex, but requires you to know how to build a class that inherits from two other classes. That is an advanced topic.</p>
 <p>Once it is done though, we can use it as easily as all the other models.</p>
@@ -535,7 +521,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8594fc0222ebbd91d558ceba33d24e1e38cc797c3767ba0d6f32b4b4064891d3.png" src="../_images/8594fc0222ebbd91d558ceba33d24e1e38cc797c3767ba0d6f32b4b4064891d3.png" />
+<img alt="../_images/23b6a80d8558335c26253ac0d237f35d8354217c4c1fe6fa4aeb08076015f6ec.png" src="../_images/23b6a80d8558335c26253ac0d237f35d8354217c4c1fe6fa4aeb08076015f6ec.png" />
 </div>
 </div>
 <p>That is it. This is more work than a simple nonlinear regression with numpy arrays, but in theory this is compatible with the sklearn pipeline idea, and you get some functionality “for free” because of the inheritance.</p>

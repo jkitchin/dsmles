@@ -22,7 +22,7 @@ for mlc, mw in MW.iteritems():
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mAttributeError[0m                            Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1959/1960597735.py[0m in [0;36m?[0;34m()[0m
+[0;32m/tmp/ipykernel_2268/1960597735.py[0m in [0;36m?[0;34m()[0m
 [0;32m----> 1[0;31m [0;32mfor[0m [0mmlc[0m[0;34m,[0m [0mmw[0m [0;32min[0m [0mMW[0m[0;34m.[0m[0miteritems[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m     [0mprint[0m[0;34m([0m[0;34mf'The molecular weight of {mlc} is {mw} gm/mol'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 

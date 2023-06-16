@@ -588,18 +588,6 @@ of Fluid Systems’: <a class="reference external" href="https://webbook.nist.go
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">T</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">T</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="o">**</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">y</span> <span class="o">=</span> <span class="n">P</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Let’s see what we got, first let’s look at the shapes.</p>
 <div class="cell docutils container">
@@ -637,7 +625,7 @@ of Fluid Systems’: <a class="reference external" href="https://webbook.nist.go
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a08cb7ea9ee463873b7e6da97a52f591af389b9113e798d44a8ff3353df8ae57.png" src="../_images/a08cb7ea9ee463873b7e6da97a52f591af389b9113e798d44a8ff3353df8ae57.png" />
+<img alt="../_images/c78a067604261f5263bf7a369d8a4bd17b6b6566730a9a13810e7aa28cf7873b.png" src="../_images/c78a067604261f5263bf7a369d8a4bd17b6b6566730a9a13810e7aa28cf7873b.png" />
 </div>
 </div>
 <p>You should see the same thing because we used a random seed. If you set it to a different value, you will get a different set of points. It might seem odd that you always get the same random numbers but:</p>
@@ -688,7 +676,7 @@ of Fluid Systems’: <a class="reference external" href="https://webbook.nist.go
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/000da17adc342cacf1da99bedad6357a2073f8b35627336a4d3f0b0acb7e251f.png" src="../_images/000da17adc342cacf1da99bedad6357a2073f8b35627336a4d3f0b0acb7e251f.png" />
+<img alt="../_images/e220f9b0a8f8f250905811dad472b79e87db5598fefab3fbda06701a97337a1f.png" src="../_images/e220f9b0a8f8f250905811dad472b79e87db5598fefab3fbda06701a97337a1f.png" />
 </div>
 </div>
 <p>That fit looks good, and the score indicates it is very good.</p>
@@ -718,7 +706,7 @@ of Fluid Systems’: <a class="reference external" href="https://webbook.nist.go
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ba9717e8221334e3dfe65cd4f91e0e44595c910d8bafc4de0107b1644260f63a.png" src="../_images/ba9717e8221334e3dfe65cd4f91e0e44595c910d8bafc4de0107b1644260f63a.png" />
+<img alt="../_images/661c227a3b8bd49414662e0aca75b9bf9e3bd72872b7bc6b0c268bfcbfc1db0c.png" src="../_images/661c227a3b8bd49414662e0aca75b9bf9e3bd72872b7bc6b0c268bfcbfc1db0c.png" />
 </div>
 </div>
 <p>Within the data range, it is reasonable though. Let’s examine the residual errors.</p>
@@ -739,7 +727,7 @@ of Fluid Systems’: <a class="reference external" href="https://webbook.nist.go
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9c1e496682ae924dde33eb480fbf3e921a2b0868e39932360173eb5f1575543d.png" src="../_images/9c1e496682ae924dde33eb480fbf3e921a2b0868e39932360173eb5f1575543d.png" />
+<img alt="../_images/353ad1f5e5b015e316655e3b1369e838e90116aba2f9b0d3f781a00aa357c784.png" src="../_images/353ad1f5e5b015e316655e3b1369e838e90116aba2f9b0d3f781a00aa357c784.png" />
 </div>
 </div>
 <p>As before, we see non-random, temperature dependent distributions of the errors, indicating they are systematic, and the model is still inadequate to fully model this data.</p>
@@ -765,175 +753,6 @@ of Fluid Systems’: <a class="reference external" href="https://webbook.nist.go
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>linear_model.Lasso
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span>
-linear_model<span class=" -Color -Color-Blue">.</span>Lasso<span class=" -Color -Color-Blue">(</span>
-    alpha<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">1.0</span><span class=" -Color -Color-Blue">,</span>
-    <span class=" -Color -Color-Blue">*,</span>
-    fit_intercept<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
-    normalize<span class=" -Color -Color-Blue">=&#39;deprecated&#39;,</span>
-    precompute<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
-    copy_X<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">True</span><span class=" -Color -Color-Blue">,</span>
-    max_iter<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">1000</span><span class=" -Color -Color-Blue">,</span>
-    tol<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">0.0001</span><span class=" -Color -Color-Blue">,</span>
-    warm_start<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
-    positive<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">False</span><span class=" -Color -Color-Blue">,</span>
-    random_state<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
-    selection<span class=" -Color -Color-Blue">=&#39;cyclic&#39;,</span>
-<span class=" -Color -Color-Blue">)</span>
-<span class=" -Color -Color-Red">Docstring:</span>     
-Linear Model trained with L1 prior as regularizer (aka the Lasso).
-
-The optimization objective for Lasso is::
-
-    (1 / (2 * n_samples)) * ||y - Xw||^2_2 + alpha * ||w||_1
-
-Technically the Lasso model is optimizing the same objective function as
-the Elastic Net with ``l1_ratio=1.0`` (no L2 penalty).
-
-Read more in the :ref:`User Guide &lt;lasso&gt;`.
-
-Parameters
-----------
-alpha : float, default=1.0
-    Constant that multiplies the L1 term, controlling regularization
-    strength. `alpha` must be a non-negative float i.e. in `[0, inf)`.
-
-    When `alpha = 0`, the objective is equivalent to ordinary least
-    squares, solved by the :class:`LinearRegression` object. For numerical
-    reasons, using `alpha = 0` with the `Lasso` object is not advised.
-    Instead, you should use the :class:`LinearRegression` object.
-
-fit_intercept : bool, default=True
-    Whether to calculate the intercept for this model. If set
-    to False, no intercept will be used in calculations
-    (i.e. data is expected to be centered).
-
-normalize : bool, default=False
-    This parameter is ignored when ``fit_intercept`` is set to False.
-    If True, the regressors X will be normalized before regression by
-    subtracting the mean and dividing by the l2-norm.
-    If you wish to standardize, please use
-    :class:`~sklearn.preprocessing.StandardScaler` before calling ``fit``
-    on an estimator with ``normalize=False``.
-
-    .. deprecated:: 1.0
-        ``normalize`` was deprecated in version 1.0 and will be removed in
-        1.2.
-
-precompute : bool or array-like of shape (n_features, n_features),                 default=False
-    Whether to use a precomputed Gram matrix to speed up
-    calculations. The Gram matrix can also be passed as argument.
-    For sparse input this option is always ``False`` to preserve sparsity.
-
-copy_X : bool, default=True
-    If ``True``, X will be copied; else, it may be overwritten.
-
-max_iter : int, default=1000
-    The maximum number of iterations.
-
-tol : float, default=1e-4
-    The tolerance for the optimization: if the updates are
-    smaller than ``tol``, the optimization code checks the
-    dual gap for optimality and continues until it is smaller
-    than ``tol``, see Notes below.
-
-warm_start : bool, default=False
-    When set to True, reuse the solution of the previous call to fit as
-    initialization, otherwise, just erase the previous solution.
-    See :term:`the Glossary &lt;warm_start&gt;`.
-
-positive : bool, default=False
-    When set to ``True``, forces the coefficients to be positive.
-
-random_state : int, RandomState instance, default=None
-    The seed of the pseudo random number generator that selects a random
-    feature to update. Used when ``selection`` == &#39;random&#39;.
-    Pass an int for reproducible output across multiple function calls.
-    See :term:`Glossary &lt;random_state&gt;`.
-
-selection : {&#39;cyclic&#39;, &#39;random&#39;}, default=&#39;cyclic&#39;
-    If set to &#39;random&#39;, a random coefficient is updated every iteration
-    rather than looping over features sequentially by default. This
-    (setting to &#39;random&#39;) often leads to significantly faster convergence
-    especially when tol is higher than 1e-4.
-
-Attributes
-----------
-coef_ : ndarray of shape (n_features,) or (n_targets, n_features)
-    Parameter vector (w in the cost function formula).
-
-dual_gap_ : float or ndarray of shape (n_targets,)
-    Given param alpha, the dual gaps at the end of the optimization,
-    same shape as each observation of y.
-
-sparse_coef_ : sparse matrix of shape (n_features, 1) or             (n_targets, n_features)
-    Readonly property derived from ``coef_``.
-
-intercept_ : float or ndarray of shape (n_targets,)
-    Independent term in decision function.
-
-n_iter_ : int or list of int
-    Number of iterations run by the coordinate descent solver to reach
-    the specified tolerance.
-
-n_features_in_ : int
-    Number of features seen during :term:`fit`.
-
-    .. versionadded:: 0.24
-
-feature_names_in_ : ndarray of shape (`n_features_in_`,)
-    Names of features seen during :term:`fit`. Defined only when `X`
-    has feature names that are all strings.
-
-    .. versionadded:: 1.0
-
-See Also
---------
-lars_path : Regularization path using LARS.
-lasso_path : Regularization path using Lasso.
-LassoLars : Lasso Path along the regularization parameter usingLARS algorithm.
-LassoCV : Lasso alpha parameter by cross-validation.
-LassoLarsCV : Lasso least angle parameter algorithm by cross-validation.
-sklearn.decomposition.sparse_encode : Sparse coding array estimator.
-
-Notes
------
-The algorithm used to fit the model is coordinate descent.
-
-To avoid unnecessary memory duplication the X argument of the fit method
-should be directly passed as a Fortran-contiguous numpy array.
-
-Regularization improves the conditioning of the problem and
-reduces the variance of the estimates. Larger values specify stronger
-regularization. Alpha corresponds to `1 / (2C)` in other linear
-models such as :class:`~sklearn.linear_model.LogisticRegression` or
-:class:`~sklearn.svm.LinearSVC`. If an array is passed, penalties are
-assumed to be specific to the targets. Hence they must correspond in
-number.
-
-The precise stopping criteria based on `tol` are the following: First, check that
-that maximum coordinate update, i.e. :math:`\max_j |w_j^{new} - w_j^{old}|`
-is smaller than `tol` times the maximum absolute coefficient, :math:`\max_j |w_j|`.
-If so, then additionally check whether the dual gap is smaller than `tol` times
-:math:`||y||_2^2 / n_{      ext{samples}}`.
-
-Examples
---------
-&gt;&gt;&gt; from sklearn import linear_model
-&gt;&gt;&gt; clf = linear_model.Lasso(alpha=0.1)
-&gt;&gt;&gt; clf.fit([[0,0], [1, 1], [2, 2]], [0, 1, 2])
-Lasso(alpha=0.1)
-&gt;&gt;&gt; print(clf.coef_)
-[0.85 0.  ]
-&gt;&gt;&gt; print(clf.intercept_)
-0.15...
-<span class=" -Color -Color-Red">File:</span>           /opt/conda/lib/python3.9/site-packages/sklearn/linear_model/_coordinate_descent.py
-<span class=" -Color -Color-Red">Type:</span>           ABCMeta
-<span class=" -Color -Color-Red">Subclasses:</span>     MultiTaskElasticNet
 </pre></div>
 </div>
 </div>
@@ -974,7 +793,7 @@ Lasso(alpha=0.1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9016b0af0aebf7ba2e608f2ca0eda90f68fb1efe0d89b5f32716532b2fc632b2.png" src="../_images/9016b0af0aebf7ba2e608f2ca0eda90f68fb1efe0d89b5f32716532b2fc632b2.png" />
+<img alt="../_images/1b70f21c0bb0311d8617d4200901ad84612c16429c6e050b1e23c7738600ded4.png" src="../_images/1b70f21c0bb0311d8617d4200901ad84612c16429c6e050b1e23c7738600ded4.png" />
 </div>
 </div>
 <p>Now we have to figure out how to find an appropriate value for α. First, let’s see how α affects the parameters. It is useful to search across a broad range of values, so we use a logspace to look at α=1e-15 to α=100.</p>
@@ -1142,7 +961,7 @@ Lasso(alpha=0.1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4837e3d2a15e5fbbdad9ff7c2197265e3a5d46bdfa9fd9a0c2bbc4ea4ead52cd.png" src="../_images/4837e3d2a15e5fbbdad9ff7c2197265e3a5d46bdfa9fd9a0c2bbc4ea4ead52cd.png" />
+<img alt="../_images/85585a316087888822f233eec3f5248df758cf18b6e67fe63bfcf7c52a5b178b.png" src="../_images/85585a316087888822f233eec3f5248df758cf18b6e67fe63bfcf7c52a5b178b.png" />
 </div>
 </div>
 <p>There are still a few loose ends here. These results apply specifically to the train-test split we used, and that was chosen randomly. We would expect to get (slightly at least) different results with different choices. This is also a common machine learning problem, and next we will consider how to do many different fits with different train/test splits with a method called K-fold validation.</p>

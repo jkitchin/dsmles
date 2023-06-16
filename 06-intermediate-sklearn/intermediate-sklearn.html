@@ -464,16 +464,81 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.        ,  1.8       ,  3.24      ],
+       [ 1.        ,  1.80416667,  3.25501736],
+       [ 1.        ,  1.80833333,  3.27006944],
+       [ 1.        ,  1.8125    ,  3.28515625],
+       [ 1.        ,  1.81666667,  3.30027778],
+       [ 1.        ,  1.82083333,  3.31543403],
+       [ 1.        ,  1.825     ,  3.330625  ],
+       [ 1.        ,  1.82916667,  3.34585069],
+       [ 1.        ,  1.83333333,  3.36111111],
+       [ 1.        ,  1.8375    ,  3.37640625],
+       [ 1.        ,  1.84166667,  3.39173611],
+       [ 1.        ,  1.84583333,  3.40710069],
+       [ 1.        ,  1.85      ,  3.4225    ],
+       [ 1.        ,  1.85416667,  3.43793403],
+       [ 1.        ,  1.85833333,  3.45340278],
+       [ 1.        ,  1.8625    ,  3.46890625],
+       [ 1.        ,  1.86666667,  3.48444444],
+       [ 1.        ,  1.87083333,  3.50001736],
+       [ 1.        ,  1.875     ,  3.515625  ],
+       [ 1.        ,  1.87916667,  3.53126736],
+       [ 1.        ,  1.88333333,  3.54694444],
+       [ 1.        ,  1.8875    ,  3.56265625],
+       [ 1.        ,  1.89166667,  3.57840278],
+       [ 1.        ,  1.89583333,  3.59418403],
+       [ 1.        ,  1.9       ,  3.61      ],
+       [ 1.        ,  2.3       ,  5.29      ],
+       [ 1.        ,  2.32083333,  5.38626736],
+       [ 1.        ,  2.34166667,  5.48340278],
+       [ 1.        ,  2.3625    ,  5.58140625],
+       [ 1.        ,  2.38333333,  5.68027778],
+       [ 1.        ,  2.40416667,  5.78001736],
+       [ 1.        ,  2.425     ,  5.880625  ],
+       [ 1.        ,  2.44583333,  5.98210069],
+       [ 1.        ,  2.46666667,  6.08444444],
+       [ 1.        ,  2.4875    ,  6.18765625],
+       [ 1.        ,  2.50833333,  6.29173611],
+       [ 1.        ,  2.52916667,  6.39668403],
+       [ 1.        ,  2.55      ,  6.5025    ],
+       [ 1.        ,  2.57083333,  6.60918403],
+       [ 1.        ,  2.59166667,  6.71673611],
+       [ 1.        ,  2.6125    ,  6.82515625],
+       [ 1.        ,  2.63333333,  6.93444444],
+       [ 1.        ,  2.65416667,  7.04460069],
+       [ 1.        ,  2.675     ,  7.155625  ],
+       [ 1.        ,  2.69583333,  7.26751736],
+       [ 1.        ,  2.71666667,  7.38027778],
+       [ 1.        ,  2.7375    ,  7.49390625],
+       [ 1.        ,  2.75833333,  7.60840278],
+       [ 1.        ,  2.77916667,  7.72376736],
+       [ 1.        ,  2.8       ,  7.84      ],
+       [ 1.        ,  4.        , 16.        ],
+       [ 1.        ,  4.025     , 16.200625  ],
+       [ 1.        ,  4.05      , 16.4025    ],
+       [ 1.        ,  4.075     , 16.605625  ],
+       [ 1.        ,  4.1       , 16.81      ],
+       [ 1.        ,  4.125     , 17.015625  ],
+       [ 1.        ,  4.15      , 17.2225    ],
+       [ 1.        ,  4.175     , 17.430625  ],
+       [ 1.        ,  4.2       , 17.64      ],
+       [ 1.        ,  4.225     , 17.850625  ],
+       [ 1.        ,  4.25      , 18.0625    ],
+       [ 1.        ,  4.275     , 18.275625  ],
+       [ 1.        ,  4.3       , 18.49      ],
+       [ 1.        ,  4.325     , 18.705625  ],
+       [ 1.        ,  4.35      , 18.9225    ],
+       [ 1.        ,  4.375     , 19.140625  ],
+       [ 1.        ,  4.4       , 19.36      ],
+       [ 1.        ,  4.425     , 19.580625  ],
+       [ 1.        ,  4.45      , 19.8025    ],
+       [ 1.        ,  4.475     , 20.025625  ],
+       [ 1.        ,  4.5       , 20.25      ],
+       [ 1.        ,  4.525     , 20.475625  ],
+       [ 1.        ,  4.55      , 20.7025    ],
+       [ 1.        ,  4.575     , 20.930625  ],
+       [ 1.        ,  4.6       , 21.16      ]])
 </pre></div>
 </div>
 </div>
@@ -712,7 +777,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5e8a9805c57fad006a6e4bbbee00ad7da3afb0e9fb2f6b36c254eb5dbfdbb0a8.png" src="../_images/5e8a9805c57fad006a6e4bbbee00ad7da3afb0e9fb2f6b36c254eb5dbfdbb0a8.png" />
+<img alt="../_images/c8fc75fbc4dedb6abfc99649fe8fe18385846e129aa2866cd940ba269751265d.png" src="../_images/c8fc75fbc4dedb6abfc99649fe8fe18385846e129aa2866cd940ba269751265d.png" />
 </div>
 </div>
 <p>The model sort of gets the right idea, but you can see there are issues with it. The local maximum near 3.7 is not real, and the increase in energy past d=4.5 is also not physically correct. We can work with different polynomial orders to see if that is fixable. The polynomial order is considered a <em>hyperparameter</em> here.</p>
@@ -740,14 +805,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.998717821731468 -0.19477887732063093
-0.9978222474489709 0.8304794573174061
-0.9960805625125984 0.8746369801023071
-0.9977170214426699 0.9454540341764682
-0.9968333195835346 -354.96692697913664
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9987178217314684 -0.19477887732053212
+0.9978222474489704 0.8304794573174219
+0.9960805625126001 0.8746369801020826
+0.9977170214426699 0.9454540341764189
+0.9968333195835344 -354.96692697872504
 </pre></div>
 </div>
-<img alt="../_images/f39c5509e10b539631c60acf332cdc9f123df61b88171514587cc66a0c747a67.png" src="../_images/f39c5509e10b539631c60acf332cdc9f123df61b88171514587cc66a0c747a67.png" />
+<img alt="../_images/a0fb56276c08abfe46e43394e799d1507bc473581ac4d3f152db236e5b7a92bd.png" src="../_images/a0fb56276c08abfe46e43394e799d1507bc473581ac4d3f152db236e5b7a92bd.png" />
 </div>
 </div>
 <p>You can see here that the results depend on the specific data set that is chosen. In every case, the score of the train data is ok, but for some models the test data is not as good. This is commonly observed, and it indicates over-fitting in the train data, and poor generalization in the test data.</p>
@@ -781,7 +846,7 @@ Accuracy: -70.50 (+/- 284.47)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;memory&#39;, &#39;steps&#39;, &#39;verbose&#39;, &#39;poly&#39;, &#39;scale&#39;, &#39;linregress&#39;, &#39;poly__degree&#39;, &#39;poly__include_bias&#39;, &#39;poly__interaction_only&#39;, &#39;poly__order&#39;, &#39;scale__copy&#39;, &#39;scale__with_mean&#39;, &#39;scale__with_std&#39;, &#39;linregress__copy_X&#39;, &#39;linregress__fit_intercept&#39;, &#39;linregress__n_jobs&#39;, &#39;linregress__normalize&#39;, &#39;linregress__positive&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;memory&#39;, &#39;steps&#39;, &#39;verbose&#39;, &#39;poly&#39;, &#39;scale&#39;, &#39;linregress&#39;, &#39;poly__degree&#39;, &#39;poly__include_bias&#39;, &#39;poly__interaction_only&#39;, &#39;poly__order&#39;, &#39;scale__copy&#39;, &#39;scale__with_mean&#39;, &#39;scale__with_std&#39;, &#39;linregress__copy_X&#39;, &#39;linregress__fit_intercept&#39;, &#39;linregress__n_jobs&#39;, &#39;linregress__positive&#39;])
 </pre></div>
 </div>
 </div>
@@ -814,18 +879,18 @@ Accuracy: -70.50 (+/- 284.47)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00616555, 0.0057899 , 0.00552492, 0.00553412, 0.00556197,
-        0.00563121, 0.00576525, 0.00604467, 0.00583591, 0.00625091,
-        0.00589566]),
- &#39;std_fit_time&#39;: array([0.00074243, 0.00033344, 0.00010137, 0.00014263, 0.00012472,
-        0.00021662, 0.00029389, 0.00023983, 0.00016329, 0.0003361 ,
-        0.0001307 ]),
- &#39;mean_score_time&#39;: array([0.00205412, 0.00201645, 0.00210567, 0.00216141, 0.00208588,
-        0.00205078, 0.00212159, 0.00212736, 0.00208583, 0.00217457,
-        0.00215263]),
- &#39;std_score_time&#39;: array([2.12623534e-04, 9.83030305e-05, 8.62171691e-05, 1.19249394e-04,
-        1.05984221e-04, 1.46631466e-04, 9.93096925e-05, 7.29563034e-05,
-        1.05222371e-04, 1.03021923e-04, 9.31976243e-05]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mean_fit_time&#39;: array([0.00162015, 0.00162754, 0.00160089, 0.00160975, 0.00161161,
+        0.00162377, 0.00164328, 0.00164609, 0.00191898, 0.00174828,
+        0.00168066]),
+ &#39;std_fit_time&#39;: array([5.55306711e-05, 5.86410064e-05, 1.34232836e-05, 1.32517842e-05,
+        1.07098517e-05, 1.71274172e-05, 1.44573692e-05, 1.56751105e-05,
+        2.44788497e-04, 9.76472856e-05, 7.96532174e-06]),
+ &#39;mean_score_time&#39;: array([0.00055571, 0.00056171, 0.00058179, 0.00057678, 0.00056071,
+        0.00058436, 0.00056624, 0.00057406, 0.00064697, 0.00064039,
+        0.00059309]),
+ &#39;std_score_time&#39;: array([2.05938455e-05, 1.01039982e-05, 1.50271052e-05, 9.64744216e-06,
+        9.01386206e-06, 1.13212429e-05, 9.86373133e-06, 1.39375186e-05,
+        9.27791556e-05, 1.33859580e-04, 3.75721054e-05]),
  &#39;param_poly__degree&#39;: masked_array(data=[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
               mask=[False, False, False, False, False, False, False, False,
                     False, False, False],
@@ -854,15 +919,15 @@ Accuracy: -70.50 (+/- 284.47)
  &#39;split3_test_score&#39;: array([0.94674591, 0.9908384 , 0.99920836, 0.99998626, 0.99999984,
         0.99999994, 1.        , 1.        , 1.        , 1.        ,
         1.        ]),
- &#39;split4_test_score&#39;: array([-2.64962933e+03, -1.62101064e+03, -1.26483453e+03, -4.22085134e+02,
-        -1.08058482e+02, -3.69041787e+01, -5.39397049e+00, -4.88892726e-02,
-        -1.78976613e+01, -3.93984156e+00, -6.89778575e+01]),
- &#39;mean_test_score&#39;: array([-5.29614185e+02, -3.23434146e+02, -2.52169863e+02, -8.36170423e+01,
-        -2.08116977e+01, -6.58083586e+00, -2.78794100e-01,  7.90222145e-01,
-        -2.77953226e+00,  1.20316889e-02, -1.29955715e+01]),
- &#39;std_test_score&#39;: array([1.06000764e+03, 6.48788248e+02, 5.06332334e+02, 1.69234046e+02,
-        4.36233923e+01, 1.51616714e+01, 2.55758820e+00, 4.19555709e-01,
-        7.55906453e+00, 1.97593662e+00, 2.79911430e+01]),
+ &#39;split4_test_score&#39;: array([-2.64962933e+03, -1.62101064e+03, -1.26483453e+03, -4.22085125e+02,
+        -1.08058538e+02, -3.69035081e+01, -5.39377770e+00, -1.14906102e-02,
+        -1.77793670e+01, -4.13085698e+00, -7.03769755e+01]),
+ &#39;mean_test_score&#39;: array([-5.29614185e+02, -3.23434146e+02, -2.52169863e+02, -8.36170405e+01,
+        -2.08117088e+01, -6.58070174e+00, -2.78755542e-01,  7.97701878e-01,
+        -2.75587339e+00, -2.61713963e-02, -1.32753951e+01]),
+ &#39;std_test_score&#39;: array([1.06000764e+03, 6.48788248e+02, 5.06332335e+02, 1.69234042e+02,
+        4.36234144e+01, 1.51614032e+01, 2.55751108e+00, 4.04596244e-01,
+        7.51174678e+00, 2.05234279e+00, 2.85507902e+01]),
  &#39;rank_test_score&#39;: array([11, 10,  9,  8,  7,  5,  3,  1,  4,  2,  6], dtype=int32)}
 </pre></div>
 </div>
@@ -881,7 +946,7 @@ Accuracy: -70.50 (+/- 284.47)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2a18091b10a2430bbf860ec0fe03320a4fab41a5bb82437cff42b8fc108f2577.png" src="../_images/2a18091b10a2430bbf860ec0fe03320a4fab41a5bb82437cff42b8fc108f2577.png" />
+<img alt="../_images/2b742807e8f7a5052ed473bf3ae1a25d4c5d35c48ec9c336cfbd5cea2fb9972e.png" src="../_images/2b742807e8f7a5052ed473bf3ae1a25d4c5d35c48ec9c336cfbd5cea2fb9972e.png" />
 </div>
 </div>
 <p>We can also see here that this is a good compromise. Note, however, we still cannot reliably extrapolate with this model because it is still just a polynomial model, and it does not contain any physics.</p>
@@ -897,7 +962,7 @@ Accuracy: -70.50 (+/- 284.47)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/462f77a84841069f18715a82b89de5caa9f337a19a0899ff047b798cf68c3e0d.png" src="../_images/462f77a84841069f18715a82b89de5caa9f337a19a0899ff047b798cf68c3e0d.png" />
+<img alt="../_images/f2c9805a204f50dfd2640630f6248ea36c65f20f4a8f873a0fb00655dd7f8088.png" src="../_images/f2c9805a204f50dfd2640630f6248ea36c65f20f4a8f873a0fb00655dd7f8088.png" />
 </div>
 </div>
 <p><strong>Exercises</strong> Read more about these sklearn functions. How would you plot the fit for each polynomial degree?</p>
