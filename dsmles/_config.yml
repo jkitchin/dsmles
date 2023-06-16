@@ -35,3 +35,11 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  comments:
+    utterances:
+      repo: "https://github.com/jkitchin/dsmles"
+      
+      
+parse:
+  myst_substitutions:
+    pycse: "[pycse](https://kitchingroup.cheme.cmu.edu/pycse)"

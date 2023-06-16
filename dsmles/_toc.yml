@@ -14,3 +14,5 @@ chapters:
 - file: 07-nonlinear-sklearn/nonlinear-sklearn.ipynb
 - file: 08-random-forests/random-forests.ipynb
 - file: 09-custom-estimators/custom-estimators.ipynb
+- file: summary.md
+- file: genindex.md
