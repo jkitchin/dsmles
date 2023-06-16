@@ -1246,71 +1246,171 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/compat/_optional.py:142,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">142</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/importlib/__init__.py:127,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
-<span class="g g-Whitespace">    </span><span class="mi">126</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="ne">--&gt; </span><span class="mi">127</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1014,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
-
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:991,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
-
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:973,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;xlrd&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">couette</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;couette.xls&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>                    <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Flow sweep - 1&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>                    <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># sheet name is case sensitive, excel file name is not</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">couette</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/io/excel/_base.py:478,</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">    </span><span class="mi">476</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">477</span>     <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="ne">--&gt; </span><span class="mi">478</span>     <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">479</span> <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">480</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">481</span>         <span class="s2">&quot;Engine should not be specified when passing &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">482</span>         <span class="s2">&quot;an ExcelFile - ExcelFile already has the engine set&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">483</span>     <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/io/excel/_base.py:1513,</span> in <span class="ni">ExcelFile.__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1510</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
-<span class="g g-Whitespace">   </span><span class="mi">1511</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span> <span class="o">=</span> <span class="n">storage_options</span>
-<span class="ne">-&gt; </span><span class="mi">1513</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engines</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/io/excel/_xlrd.py:34,</span> in <span class="ni">XlrdReader.__init__</span><span class="nt">(self, filepath_or_buffer, storage_options)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span><span class="sd"> Reader using xlrd engine.</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span><span class="sd"> {storage_options}</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;Install xlrd &gt;= 2.0.1 for xls Excel support&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">34</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;xlrd&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="n">err_msg</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/compat/_optional.py:145,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">145</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span>     <span class="k">return</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">148</span> <span class="c1"># Handle submodules: if we have submodule, grab parent module from sys.modules</span>
-
-<span class="ne">ImportError</span>: Missing optional dependency &#39;xlrd&#39;. Install xlrd &gt;= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Stress</th>
+      <th>Shear rate</th>
+      <th>Viscosity</th>
+      <th>Step time</th>
+      <th>Temperature</th>
+      <th>Normal stress</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Pa</td>
+      <td>1/s</td>
+      <td>Pa.s</td>
+      <td>s</td>
+      <td>°C</td>
+      <td>Pa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.009981</td>
+      <td>0.04953</td>
+      <td>0.201504</td>
+      <td>35.1469</td>
+      <td>25.001</td>
+      <td>-0.001263</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.015817</td>
+      <td>0.079875</td>
+      <td>0.198028</td>
+      <td>70.1689</td>
+      <td>25.001</td>
+      <td>-0.000835</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.025071</td>
+      <td>0.127313</td>
+      <td>0.196926</td>
+      <td>105.253</td>
+      <td>25</td>
+      <td>-0.000913</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.039734</td>
+      <td>0.204094</td>
+      <td>0.194685</td>
+      <td>140.26</td>
+      <td>25</td>
+      <td>-0.001132</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.062977</td>
+      <td>0.327253</td>
+      <td>0.192442</td>
+      <td>175.313</td>
+      <td>25</td>
+      <td>-0.002026</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.099806</td>
+      <td>0.530364</td>
+      <td>0.188183</td>
+      <td>210.32</td>
+      <td>24.998</td>
+      <td>-0.002429</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.158165</td>
+      <td>0.875494</td>
+      <td>0.180658</td>
+      <td>245.373</td>
+      <td>25</td>
+      <td>-0.001837</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.250637</td>
+      <td>1.49135</td>
+      <td>0.168061</td>
+      <td>280.426</td>
+      <td>25.002</td>
+      <td>-0.001655</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.397131</td>
+      <td>2.64707</td>
+      <td>0.150027</td>
+      <td>315.433</td>
+      <td>25.001</td>
+      <td>-0.001889</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.629111</td>
+      <td>5.00904</td>
+      <td>0.125595</td>
+      <td>350.501</td>
+      <td>25.003</td>
+      <td>-0.002233</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0.996153</td>
+      <td>10.3993</td>
+      <td>0.09579</td>
+      <td>385.508</td>
+      <td>24.996</td>
+      <td>-0.001807</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1.57528</td>
+      <td>24.5624</td>
+      <td>0.064134</td>
+      <td>420.608</td>
+      <td>24.998</td>
+      <td>-0.001823</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2.47652</td>
+      <td>67.2972</td>
+      <td>0.0368</td>
+      <td>455.63</td>
+      <td>25.003</td>
+      <td>-0.00182</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>3.75092</td>
+      <td>210.991</td>
+      <td>0.017778</td>
+      <td>490.668</td>
+      <td>25</td>
+      <td>-0.002939</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>We can drop the row at index 0, it just has the units in it. With this syntax, we have to save the resulting DataFrame back into the variable, or it will not be changed.</p>
 <div class="cell docutils container">
@@ -2174,6 +2274,12 @@ memory usage: 540.0+ bytes
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Comparison of Cone and Plate with Couette Cell&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Comparison of Cone and Plate with Couette Cell&#39;)
+</pre></div>
+</div>
+<img alt="../_images/b31a230580ee6b0cc57cb2b8bc49e5a01800802c4208d4b1055217c9e359a719.png" src="../_images/b31a230580ee6b0cc57cb2b8bc49e5a01800802c4208d4b1055217c9e359a719.png" />
 </div>
 </div>
 <p>So, in fact we can see these two experiments are practically equivalent.</p>

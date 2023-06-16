@@ -452,7 +452,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/84ae5380061a144e54481ccddd2f8665ecf13587d51ea898da8adb2c3870da40.png" src="../_images/84ae5380061a144e54481ccddd2f8665ecf13587d51ea898da8adb2c3870da40.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/sklearn/neural_network/_multilayer_perceptron.py:541: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+  self.n_iter_ = _check_optimize_result(&quot;lbfgs&quot;, opt_res, self.max_iter)
+</pre></div>
+</div>
+<img alt="../_images/ec356e3f76e67d987c6c3e45895fc382c014a9c4f4d66865152a7eb76e5e397e.png" src="../_images/ec356e3f76e67d987c6c3e45895fc382c014a9c4f4d66865152a7eb76e5e397e.png" />
 </div>
 </div>
 <p>Some notes:</p>
@@ -483,7 +491,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/17509d480ad316dd1aaca8be759335886d705be3a253062dd65e3fdfde8be176.png" src="../_images/17509d480ad316dd1aaca8be759335886d705be3a253062dd65e3fdfde8be176.png" />
+<img alt="../_images/31a28751b11733efc3bb7207e0e11bc45abddcb40ae7a050a1c9eb00a3d6f7c3.png" src="../_images/31a28751b11733efc3bb7207e0e11bc45abddcb40ae7a050a1c9eb00a3d6f7c3.png" />
 </div>
 </div>
 <p>Let’s take a look under the hood here to see what is happening.</p>
@@ -504,10 +512,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[2.11409852e-04, 3.18909367e+00, 8.72481429e-01]]),
- array([[-6.09968078],
-        [-5.31945745],
-        [ 3.58261497]])]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[2.18697452, 2.90038489, 0.8103607 ]]),
+ array([[ 4.09546801],
+        [-6.55254673],
+        [ 4.23675954]])]
 </pre></div>
 </div>
 </div>
@@ -520,7 +528,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([-0.68539511, -5.36337698, -2.10342994]), array([5.12404758])]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([ 1.04283348, -4.76204233, -1.81910874]), array([5.27001053])]
 </pre></div>
 </div>
 </div>
@@ -538,7 +546,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8e5f4574a3ea142c9a23c2dc8f55ca9ab193fa34ceb9f8081c22e9c1070db65b.png" src="../_images/8e5f4574a3ea142c9a23c2dc8f55ca9ab193fa34ceb9f8081c22e9c1070db65b.png" />
+<img alt="../_images/b1d73e7bbef109d6c3018006898645ffa7206567c877564bbffeaece99eb5c76.png" src="../_images/b1d73e7bbef109d6c3018006898645ffa7206567c877564bbffeaece99eb5c76.png" />
 </div>
 </div>
 <p>It should be evident that this NN is just a small nonlinear model, with 10 free parameters. It might not be a surprise then that it has a lot of flexibility to fit arbitrary data.</p>
