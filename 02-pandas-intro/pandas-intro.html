@@ -1,54 +1,44 @@
 
-
 <!DOCTYPE html>
 
-
-<html lang="en" >
-
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction to Pandas &#8212; Data science and machine learning in science and engineering</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-  </script>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -88,347 +78,399 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '02-pandas-intro/pandas-intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Intermediate Pandas" href="../03-intermediate-pandas/intermediate-pandas.html" />
     <link rel="prev" title="Introduction to data files" href="../01-numpy/numpy.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
 
-  
-  
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
-  
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
-  
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-  
-
-<a class="navbar-brand logo" href="../intro.html">
-  
-  
-  
-  
-    
-    
       
-    
-    
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
-                    Data science and machine learning in engineering and science
-                </a>
-            </li>
-        </ul>
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../00-introduction/introduction.html">Data science and machine learning in engineering and science</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../01-numpy/numpy.html">Introduction to data files</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../03-intermediate-pandas/intermediate-pandas.html">Intermediate Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04-pandas-database/pandas-database.html">Using Pandas DataFrames as a small database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05-linear-regression/linear-regression.html">Introduction to data-driven model development</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06-intermediate-sklearn/intermediate-sklearn.html">Intermediate scikit-learn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07-nonlinear-sklearn/nonlinear-sklearn.html">Nonlinear models in sklearn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-random-forests/random-forests.html">Decision Trees and Random Forests Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09-custom-estimators/custom-estimators.html">Building custom estimators in sklearn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../summary.html">Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data science and machine learning in science and engineering</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Data science and machine learning in engineering and science
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-introduction/introduction.html">
+   Data science and machine learning in engineering and science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-numpy/numpy.html">
+   Introduction to data files
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction to Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-intermediate-pandas/intermediate-pandas.html">
+   Intermediate Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-pandas-database/pandas-database.html">
+   Using Pandas DataFrames as a small database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-linear-regression/linear-regression.html">
+   Introduction to data-driven model development
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-intermediate-sklearn/intermediate-sklearn.html">
+   Intermediate scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-nonlinear-sklearn/nonlinear-sklearn.html">
+   Nonlinear models in sklearn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08-random-forests/random-forests.html">
+   Decision Trees and Random Forests Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09-custom-estimators/custom-estimators.html">
+   Building custom estimators in sklearn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../summary.html">
+   Summary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   Index
+  </a>
+ </li>
 </ul>
 
     </div>
-</nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
 
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
 
-      </div>
-      
-      <main id="main-content" class="bd-main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</label></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/jkitchin/dsmles" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/jkitchin/dsmles/issues/new?title=Issue%20on%20page%20%2F02-pandas-intro/pandas-intro.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
 </div>
 
 
+          
 
 
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../_sources/02-pandas-intro/pandas-intro.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
-
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
-</div></div>
-      
-    </div>
-  
-</div>
-</div>
-              
-              
-
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction to Pandas</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
-            <div>
-                <h2> Contents </h2>
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/02-pandas-intro/pandas-intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jkitchin/dsmles"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jkitchin/dsmles/issues/new?title=Issue%20on%20page%20%2F02-pandas-intro/pandas-intro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jkitchin/dsmles/main?urlpath=tree/dsmles/02-pandas-intro/pandas-intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
             </div>
-            <nav aria-label="Page">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-the-numpy-array-way">Review of the numpy array way</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-with-pandas">Now, with Pandas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-and-visualization">Dataframes and visualization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-data-in-pandas">Reading data in Pandas</a></li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-of-the-numpy-array-way">
+   Review of the numpy array way
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#now-with-pandas">
+   Now, with Pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas">
+   Pandas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframes-and-visualization">
+     Dataframes and visualization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-data-in-pandas">
+     Reading data in Pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#another-real-life-example">
+   Another real-life example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-the-data">
+     Visualizing the data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-a-column">
+       Plot a column
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-distributions-of-a-column">
+       Plot distributions of a column
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-column-correlations">
+       Plot column correlations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-parts-of-a-pandas-dataframe">
+     Getting parts of a Pandas DataFrame
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operating-on-columns-in-the-dataframe">
+     Operating on columns in the DataFrame
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-real-life-example">Another real-life example</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-data">Visualizing the data</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-column">Plot a column</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-distributions-of-a-column">Plot distributions of a column</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-column-correlations">Plot column correlations</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-parts-of-a-pandas-dataframe">Getting parts of a Pandas DataFrame</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-on-columns-in-the-dataframe">Operating on columns in the DataFrame</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-</ul>
+
             </nav>
         </div>
     </div>
 </div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Pandas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-of-the-numpy-array-way">
+   Review of the numpy array way
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#now-with-pandas">
+   Now, with Pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas">
+   Pandas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframes-and-visualization">
+     Dataframes and visualization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-data-in-pandas">
+     Reading data in Pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#another-real-life-example">
+   Another real-life example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-the-data">
+     Visualizing the data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-a-column">
+       Plot a column
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-distributions-of-a-column">
+       Plot distributions of a column
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-column-correlations">
+       Plot column correlations
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-parts-of-a-pandas-dataframe">
+     Getting parts of a Pandas DataFrame
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operating-on-columns-in-the-dataframe">
+     Operating on columns in the DataFrame
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
 
-              
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
                 
-<div id="searchbox"></div>
-                <article class="bd-article" role="main">
-                  
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pandas">
-<h1>Introduction to Pandas<a class="headerlink" href="#introduction-to-pandas" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-pandas">
+<h1>Introduction to Pandas<a class="headerlink" href="#introduction-to-pandas" title="Permalink to this headline">¶</a></h1>
 <p>Before we jump into Pandas, let us review what we have considered so far.</p>
 <p>First, we learned how to read data from files into numpy arrays. We learned how to use variables to store that data, and to either slice the array into a few variables, or use slices themselves for something. We also learned how to make a <em>record</em> array that enabled us to access columns of the array by a <em>name</em>.</p>
 <p>When we loaded a json file, we got a <em>dictionary</em> data structure, which also allowed us to access data by a <em>name</em>.</p>
@@ -436,8 +478,8 @@ document.write(`
 <p>For “small” data sets, i.e. not too many columns, this is a perfectly reasonable thing to do. For larger datasets, however, it can be tedious to create a lot of variable names, and it is also hard to remember what is in each column.</p>
 <p>Many tasks are pretty standard, e.g. read a data set, summarize and visualize it. It would be nice if we had a simple way to do this, with few lines of code, since those lines will be the same every time.</p>
 <p>The <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> library was developed to address all these issues. From the website: “<strong>pandas</strong> is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.”</p>
-<section id="review-of-the-numpy-array-way">
-<span id="index-0"></span><h2>Review of the numpy array way<a class="headerlink" href="#review-of-the-numpy-array-way" title="Permalink to this heading">#</a></h2>
+<div class="section" id="review-of-the-numpy-array-way">
+<span id="index-0"></span><h2>Review of the numpy array way<a class="headerlink" href="#review-of-the-numpy-array-way" title="Permalink to this headline">¶</a></h2>
 <p>Let’s review what we learned already.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -458,12 +500,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f73928426b31817b30c6712d6d42938bd20f9e06981e58aca82e06bf07862e05.png" src="../_images/f73928426b31817b30c6712d6d42938bd20f9e06981e58aca82e06bf07862e05.png" />
+<img alt="../_images/pandas-intro_4_0.png" src="../_images/pandas-intro_4_0.png" />
 </div>
 </div>
-</section>
-<section id="now-with-pandas">
-<h2>Now, with Pandas<a class="headerlink" href="#now-with-pandas" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="now-with-pandas">
+<h2>Now, with Pandas<a class="headerlink" href="#now-with-pandas" title="Permalink to this headline">¶</a></h2>
 <p>We will unpack this code shortly. For now, look how short it is to create this plot. Note that we have condensed all the code in the example above basically into three lines of code. That is pretty remarkable, but should give you some pause. We now have to learn how to use such a dense syntax!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -477,7 +519,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b5f0ef4c81bdcbd6b6635758e20afab1cf079872866478c1c1be16b9031fd0ab.png" src="../_images/b5f0ef4c81bdcbd6b6635758e20afab1cf079872866478c1c1be16b9031fd0ab.png" />
+<img alt="../_images/pandas-intro_7_0.png" src="../_images/pandas-intro_7_0.png" />
 </div>
 </div>
 <p>And to summarize.</p>
@@ -548,9 +590,9 @@ document.write(`
 </div>
 <p>What is the benefit of this dense syntax? Because it is so short, it is faster to type (at least, when you know what to type). That means it is also faster for you to read.</p>
 <p>The downside is that it is like learning a whole new language within Python, and a new mental model for how the data is stored and accessed. You have to decide if it is worthwhile doing that. If you do this a lot, it is probably worthwhile.</p>
-</section>
-<section id="pandas">
-<h2>Pandas<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="pandas">
+<h2>Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h2>
 <p>The main object we will work with is called a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -744,8 +786,8 @@ Name: intensity, dtype: float64
 </div>
 </div>
 <p>In summary, we can think of a dataframe as a hybrid array/dictionary where we have an index which is like the independent variable, and a set of columns that are like dependent variables. You can access the columns like a dictionary.</p>
-<section id="dataframes-and-visualization">
-<h3>Dataframes and visualization<a class="headerlink" href="#dataframes-and-visualization" title="Permalink to this heading">#</a></h3>
+<div class="section" id="dataframes-and-visualization">
+<h3>Dataframes and visualization<a class="headerlink" href="#dataframes-and-visualization" title="Permalink to this headline">¶</a></h3>
 <p>Dataframes also provide easy access to <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">visualization</a>. The simplest method is to just call the plot method on a dataframe. Note this automatically makes the plot with labels and a legend. If there are many columns, you will have a curve for each one of them. We will see that later.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -754,12 +796,12 @@ Name: intensity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c044f982ee9c0818408c9d378ca36ddbd93d4a1e45ea02e26ef6feb51b518f8a.png" src="../_images/c044f982ee9c0818408c9d378ca36ddbd93d4a1e45ea02e26ef6feb51b518f8a.png" />
+<img alt="../_images/pandas-intro_31_0.png" src="../_images/pandas-intro_31_0.png" />
 </div>
 </div>
-</section>
-<section id="reading-data-in-pandas">
-<h3>Reading data in Pandas<a class="headerlink" href="#reading-data-in-pandas" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="reading-data-in-pandas">
+<h3>Reading data in Pandas<a class="headerlink" href="#reading-data-in-pandas" title="Permalink to this headline">¶</a></h3>
 <p>Let’s get back to how we got the data into Pandas. Let’s retrieve the data file we used before with several columns in it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1266,7 +1308,7 @@ Order  Day  Temperature  Temperature  Pressure    Value    Residual
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/eeea03fedaadc228fcb23a8ae31640c507521e56814530b0293cf2bcbd69076a.png" src="../_images/eeea03fedaadc228fcb23a8ae31640c507521e56814530b0293cf2bcbd69076a.png" />
+<img alt="../_images/pandas-intro_40_0.png" src="../_images/pandas-intro_40_0.png" />
 </div>
 </div>
 <p>The default is to plot each column vs the index, which is not that helpful for us. Say we just want to plot the pressure vs. the temperature.</p>
@@ -1277,7 +1319,7 @@ Order  Day  Temperature  Temperature  Pressure    Value    Residual
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8bad9e5acf5fd59af43f5cc3e2bee0da77956f9d7dfba9146b073ba7e22a4aa6.png" src="../_images/8bad9e5acf5fd59af43f5cc3e2bee0da77956f9d7dfba9146b073ba7e22a4aa6.png" />
+<img alt="../_images/pandas-intro_42_0.png" src="../_images/pandas-intro_42_0.png" />
 </div>
 </div>
 <p>We can add multiple plots to a figure, but we have to tell the subsequent calls which axes to put them on. To do that, save the first one, and pass it as an argument in subsequent plots.  That also allows you to fine-tune the plot appearance, e.g. add a y-label. See the <a class="reference external" href="https://matplotlib.org/contents.html">matplotlib documentation</a> to learn how to set all of these.</p>
@@ -1291,17 +1333,17 @@ Order  Day  Temperature  Temperature  Pressure    Value    Residual
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/13de11e1ac70d0001bc84ca0eb3ae558ea45700f4a9bb0743bd3a5bb0d4f4f95.png" src="../_images/13de11e1ac70d0001bc84ca0eb3ae558ea45700f4a9bb0743bd3a5bb0d4f4f95.png" />
+<img alt="../_images/pandas-intro_44_0.png" src="../_images/pandas-intro_44_0.png" />
 </div>
 </div>
 <p>It is a reasonable question to ask if this is simpler than what we did before using arrays, variables and plotting commands. Dataframes are increasingly common in data science, and are the data structure used in many data science/machine learning projects.</p>
-</section>
-</section>
-<section id="another-real-life-example">
-<h2>Another real-life example<a class="headerlink" href="#another-real-life-example" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="another-real-life-example">
+<h2>Another real-life example<a class="headerlink" href="#another-real-life-example" title="Permalink to this headline">¶</a></h2>
 <p>LAMMPS is a molecular simulation code used to run molecular dynamics. It outputs a text file that is somewhat challenging to read. There are variable numbers of time steps that depend on how the simulation was setup.</p>
 <p>Start by downloading and opening this file. It is a molecular dynamics trajectory at constant volume, where the pressure, temperature and energy fluctuate.</p>
-<p>Open this file <a class="reference download internal" download="" href="../_downloads/4d873fa6b80f316d3c5a9bd37c55b029/log1.lammps"><span class="xref download myst">log1.lammps</span></a>to get a sense for what is in it. The data starts around:</p>
+<p>Open this file <span class="xref myst">log1.lammps</span>to get a sense for what is in it. The data starts around:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>timestep 0.005
 run ${runSteps}
 run 500000
@@ -1352,7 +1394,7 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2141/86227813.py:1: ParserWarning: Length of header or names does not match length of data. This leads to a loss of data with index_col=False.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2205/86227813.py:1: ParserWarning: Length of header or names does not match length of data. This leads to a loss of data with index_col=False.
   df = pd.read_csv(
 </pre></div>
 </div>
@@ -1583,10 +1625,10 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 <p>2501 rows × 14 columns</p>
 </div></div></div>
 </div>
-<section id="visualizing-the-data">
-<h3>Visualizing the data<a class="headerlink" href="#visualizing-the-data" title="Permalink to this heading">#</a></h3>
-<section id="plot-a-column">
-<h4>Plot a column<a class="headerlink" href="#plot-a-column" title="Permalink to this heading">#</a></h4>
+<div class="section" id="visualizing-the-data">
+<h3>Visualizing the data<a class="headerlink" href="#visualizing-the-data" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="plot-a-column">
+<h4>Plot a column<a class="headerlink" href="#plot-a-column" title="Permalink to this headline">¶</a></h4>
 <p>The effort was worth it though; look how easy it is to plot the data!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1595,7 +1637,7 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1e04054a6f1ffafb1b301a9f4b7101b9c567f41c0a06784fde7e6437c9ad068d.png" src="../_images/1e04054a6f1ffafb1b301a9f4b7101b9c567f41c0a06784fde7e6437c9ad068d.png" />
+<img alt="../_images/pandas-intro_54_0.png" src="../_images/pandas-intro_54_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1610,12 +1652,12 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2388092034d0e4553fd55051edc2896cc95ff807434b2ab35ce98acdb3b8e086.png" src="../_images/2388092034d0e4553fd55051edc2896cc95ff807434b2ab35ce98acdb3b8e086.png" />
+<img alt="../_images/pandas-intro_55_0.png" src="../_images/pandas-intro_55_0.png" />
 </div>
 </div>
-</section>
-<section id="plot-distributions-of-a-column">
-<h4>Plot distributions of a column<a class="headerlink" href="#plot-distributions-of-a-column" title="Permalink to this heading">#</a></h4>
+</div>
+<div class="section" id="plot-distributions-of-a-column">
+<h4>Plot distributions of a column<a class="headerlink" href="#plot-distributions-of-a-column" title="Permalink to this headline">¶</a></h4>
 <p>We can look at histograms of properties as easily.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1624,12 +1666,12 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/21f848a5c259552ede1c46151519092a963a0732a76b9df92407fdd05987095d.png" src="../_images/21f848a5c259552ede1c46151519092a963a0732a76b9df92407fdd05987095d.png" />
+<img alt="../_images/pandas-intro_58_0.png" src="../_images/pandas-intro_58_0.png" />
 </div>
 </div>
-</section>
-<section id="plot-column-correlations">
-<h4>Plot column correlations<a class="headerlink" href="#plot-column-correlations" title="Permalink to this heading">#</a></h4>
+</div>
+<div class="section" id="plot-column-correlations">
+<h4>Plot column correlations<a class="headerlink" href="#plot-column-correlations" title="Permalink to this headline">¶</a></h4>
 <p>This is just the beginning of using Pandas. Suppose we want to see which columns are correlated (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.corr.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.corr.html</a>). With variables this would be tedious.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1638,10 +1680,10 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/037111320276c1b9568e447192ac6047d824304753998d15a7f1e6c918646c55.png" src="../_images/037111320276c1b9568e447192ac6047d824304753998d15a7f1e6c918646c55.png" />
+<img alt="../_images/pandas-intro_61_0.png" src="../_images/pandas-intro_61_0.png" />
 </div>
 </div>
-<p>It can be helpful to see what these correlations mean. Here we plot all the columns against each other. Note, it is not possible to plot a column against itself with Pandas (I think this is a bug <a class="github reference external" href="https://github.com/pandas-dev/pandas/issues/22088">pandas-dev/pandas#22088</a>), so here I use matplotlib functions for the plotting. This should be symmetric, so I only plot the upper triangle.</p>
+<p>It can be helpful to see what these correlations mean. Here we plot all the columns against each other. Note, it is not possible to plot a column against itself with Pandas (I think this is a bug <a class="reference external" href="https://github.com/pandas-dev/pandas/issues/22088">https://github.com/pandas-dev/pandas/issues/22088</a>), so here I use matplotlib functions for the plotting. This should be symmetric, so I only plot the upper triangle.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">keys</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
@@ -1660,13 +1702,13 @@ Loop time of 1288.02 on 1 procs for 500000 steps with 500 atoms
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ed1457bdfd4008a07da9e437d7b021b0c2323ac534c42faf68e94bf04698e66b.png" src="../_images/ed1457bdfd4008a07da9e437d7b021b0c2323ac534c42faf68e94bf04698e66b.png" />
+<img alt="../_images/pandas-intro_63_0.png" src="../_images/pandas-intro_63_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="getting-parts-of-a-pandas-dataframe">
-<h3>Getting parts of a Pandas DataFrame<a class="headerlink" href="#getting-parts-of-a-pandas-dataframe" title="Permalink to this heading">#</a></h3>
+</div>
+</div>
+<div class="section" id="getting-parts-of-a-pandas-dataframe">
+<h3>Getting parts of a Pandas DataFrame<a class="headerlink" href="#getting-parts-of-a-pandas-dataframe" title="Permalink to this headline">¶</a></h3>
 <p>We have seen how to get a column from a DataFrame like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2228,9 +2270,9 @@ Name: Press, dtype: float64
 </div>
 </div>
 </div>
-</section>
-<section id="operating-on-columns-in-the-dataframe">
-<h3>Operating on columns in the DataFrame<a class="headerlink" href="#operating-on-columns-in-the-dataframe" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="operating-on-columns-in-the-dataframe">
+<h3>Operating on columns in the DataFrame<a class="headerlink" href="#operating-on-columns-in-the-dataframe" title="Permalink to this headline">¶</a></h3>
 <p>Some functions just work across the columns. For example, DataFrames have statistics functions like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2880,15 +2922,15 @@ Length: 2501, dtype: object
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>Pandas is a multipurpose data science tool. In many ways it is like a numpy array, and in many ways it is different. In some ways it is like a dictionary.</p>
 <p>The similarities include the ability to do some indexing and slicing. This is only a partial similarity though.</p>
 <p>The differences include integrated plotting.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -2902,7 +2944,7 @@ Length: 2501, dtype: object
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./02-pandas-intro"
         },
         predefinedOutput: true
@@ -2910,123 +2952,44 @@ Length: 2501, dtype: object
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
-
-              
-              
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="../01-numpy/numpy.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to data files</p>
-      </div>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../01-numpy/numpy.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to data files</p>
+        </div>
     </a>
-    <a class="right-next"
-       href="../03-intermediate-pandas/intermediate-pandas.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="../03-intermediate-pandas/intermediate-pandas.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Intermediate Pandas</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
-</div></div>
-  
-</div>
-
-                </footer>
-              
-            </div>
-            
-            
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-the-numpy-array-way">Review of the numpy array way</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-with-pandas">Now, with Pandas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes-and-visualization">Dataframes and visualization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-data-in-pandas">Reading data in Pandas</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#another-real-life-example">Another real-life example</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-data">Visualizing the data</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-column">Plot a column</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-distributions-of-a-column">Plot distributions of a column</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-column-correlations">Plot column correlations</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-parts-of-a-pandas-dataframe">Getting parts of a Pandas DataFrame</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-on-columns-in-the-dataframe">Operating on columns in the DataFrame</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By John Kitchin
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  <p class="copyright">
-    
-      © Copyright 2023.
-      <br/>
-    
-  </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </footer>
-        
-
-      </main>
     </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By John Kitchin<br/>
+    
+        &copy; Copyright 2023.<br/>
+  </p>
+</footer>
+</main>
 
-  <footer class="bd-footer">
-  </footer>
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
   </body>
 </html>
