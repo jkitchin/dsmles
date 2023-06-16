@@ -418,9 +418,21 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;p-t.dat&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                 <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Run order&#39;</span><span class="p">,</span> <span class="s1">&#39;Day&#39;</span><span class="p">,</span> <span class="s1">&#39;Ambient Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;Pressure&#39;</span><span class="p">,</span> <span class="s1">&#39;Fitted Value&#39;</span><span class="p">,</span> <span class="s1">&#39;Residual&#39;</span><span class="p">])</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;p-t.dat&quot;</span><span class="p">,</span>
+    <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span>
+    <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;Run order&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Day&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Ambient Temperature&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Pressure&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Fitted Value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Residual&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -861,7 +873,7 @@ document.write(`
 <p>The first aggregation we will look at is how to make groups of data that are related by values in a column.  We use the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> function (<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html#pandas.DataFrame.groupby</a>), and specify a column to group on. The result is a <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object, which we next have to work with.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Day&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Day&quot;</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1220,9 +1232,9 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
-    <span class="n">group</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Pressure&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure&#39;</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">day</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+    <span class="n">group</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="s2">&quot;Pressure&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Pressure&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1237,9 +1249,9 @@ document.write(`
 <p>Siddhant Lambor provided from two experiments conducted to measure the properties of a worm-like micelles solution. He had carried out experiments on a rheometer to measure the viscosity of a worm-like micelles solution in a Couette cell geometry and a Cone and Plate geometry. Ideally, there should not be a difference as viscosity is intrinsic to the fluid. Analysis of this data will confirm if that is true. First, we read this data in from the two data files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">couette</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;couette.xls&#39;</span><span class="p">,</span>
-                   <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Flow sweep - 1&#39;</span><span class="p">,</span>
-                   <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># sheet name is case sensitive, excel file name is not</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">couette</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
+    <span class="s2">&quot;couette.xls&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Flow sweep - 1&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>  <span class="c1"># sheet name is case sensitive, excel file name is not</span>
 
 <span class="n">couette</span>
 </pre></div>
@@ -1581,7 +1593,7 @@ document.write(`
 <p>There is a second file called cp.xls we want to combine with this. Here, we combine the drop function all into one line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conePlate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;cp.xls&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Flow sweep - 1&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conePlate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;cp.xls&quot;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Flow sweep - 1&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">conePlate</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1666,7 +1678,7 @@ document.write(`
 <p>For this analysis, we are only interested in the shear rate, stress and viscosity values. Let us drop the other columns. We do that by the names, and specify inplace=True, which modifies the DataFrame itself.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conePlate</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Step time&#39;</span><span class="p">,</span> <span class="s1">&#39;Normal stress&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conePlate</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="s2">&quot;Step time&quot;</span><span class="p">,</span> <span class="s2">&quot;Normal stress&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># if we do not use inplace=True, the data frame will not be changed. It would by default create a new data frame</span>
 <span class="c1"># and we would have to assign a different variable to capture this change.</span>
 <span class="n">conePlate</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -1735,7 +1747,9 @@ document.write(`
 <p>We also do that for the couette data. Here we did not use <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>, so we have to save the result back into the variable to get the change.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">couette</span> <span class="o">=</span> <span class="n">couette</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Step time&#39;</span><span class="p">,</span> <span class="s1">&#39;Normal stress&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># without using inplace = True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">couette</span> <span class="o">=</span> <span class="n">couette</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="s2">&quot;Step time&quot;</span><span class="p">,</span> <span class="s2">&quot;Normal stress&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>  <span class="c1"># without using inplace = True</span>
 <span class="n">couette</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1845,7 +1859,7 @@ memory usage: 540.0+ bytes
 <p>We could proceed to analyze the DataFrames separately, but instead, we will combine them into one DataFrame. Before doing that, we need to add a column to each one so we know which data set is which. Simply assigning a value to a new column name will do that.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">couette</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;couette&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">couette</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;couette&quot;</span>
 <span class="n">couette</span>
 </pre></div>
 </div>
@@ -1980,7 +1994,7 @@ memory usage: 540.0+ bytes
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conePlate</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cone&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conePlate</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;cone&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -2243,28 +2257,49 @@ memory usage: 540.0+ bytes
 <p>Finally, we are ready for the visualization. We will group the DataFrame and then make plots for each group. Here we illustrate several new arguments, including loglog plots, secondary axes, colored tick labels, and multiple legends.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;cone&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Shear rate&#39;</span><span class="p">,</span> <span class="s1">&#39;Viscosity&#39;</span><span class="p">,</span>
-                               <span class="n">logx</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;b.-&#39;</span><span class="p">,</span>
-                               <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CP viscosity&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">&quot;cone&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s2">&quot;Shear rate&quot;</span><span class="p">,</span> <span class="s2">&quot;Viscosity&quot;</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;b.-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CP viscosity&quot;</span>
+<span class="p">)</span>
 
-<span class="n">g</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;couette&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Shear rate&#39;</span><span class="p">,</span> <span class="s1">&#39;Viscosity&#39;</span><span class="p">,</span> <span class="n">logx</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                            <span class="n">style</span><span class="o">=</span><span class="s1">&#39;g.-&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Couette viscosity&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">&quot;couette&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s2">&quot;Shear rate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Viscosity&quot;</span><span class="p">,</span>
+    <span class="n">logx</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;g.-&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Couette viscosity&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;cone&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Shear rate&#39;</span><span class="p">,</span> <span class="s1">&#39;Stress&#39;</span><span class="p">,</span> <span class="n">secondary_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                               <span class="n">logx</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;r.-&#39;</span><span class="p">,</span>
-                               <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CP stress&quot;</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">&quot;cone&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s2">&quot;Shear rate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Stress&quot;</span><span class="p">,</span>
+    <span class="n">secondary_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">logx</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;r.-&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CP stress&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="n">g</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;couette&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Shear rate&#39;</span><span class="p">,</span> <span class="s1">&#39;Stress&#39;</span><span class="p">,</span> <span class="n">secondary_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                            <span class="n">logx</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">logy</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;y.&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
-                            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Couette Stress&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">&quot;couette&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s2">&quot;Shear rate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Stress&quot;</span><span class="p">,</span>
+    <span class="n">secondary_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">logx</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;y.&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Couette Stress&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="c1"># Setting y axis labels</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Viscosity (Pa.s)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
-<span class="p">[</span><span class="n">ticklabel</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ticklabel</span> <span class="ow">in</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()]</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Viscosity (Pa.s)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">ticklabel</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ticklabel</span> <span class="ow">in</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()]</span>
 
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Stress (Pa)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="p">[</span><span class="n">ticklabel</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ticklabel</span> <span class="ow">in</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()]</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Stress (Pa)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">ticklabel</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ticklabel</span> <span class="ow">in</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()]</span>
 
 <span class="c1"># setting legend locations</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>

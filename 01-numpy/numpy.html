@@ -430,7 +430,7 @@ document.write(`
 <section id="loading-data-from-a-text-file">
 <h2>Loading data from a text file<a class="headerlink" href="#loading-data-from-a-text-file" title="Permalink to this heading">#</a></h2>
 <p>Usually, data will be in a file, and we need to read it in. There are <em>many</em> data formats to get familiar with, and <em>many</em> ways to read them in. Let’s start by looking at data from a Raman spectrometer.</p>
-<p>In this directory there is a file called 01-raman.txt. The file name suggests it is Raman data, but only because of its name. The extension <em>suggests</em> this is text data, but does not tell us the format.</p>
+<p>In this directory there is a file called <a class="reference download internal" download="" href="../_downloads/d8b3ee855c71e44c15adac4ddc3e9144/raman.txt"><span class="xref download myst">raman.txt</span></a>. The file name suggests it is Raman data, but only because of its name. The extension <em>suggests</em> this is text data, but does not tell us the format.</p>
 <p><em>You cannot in general rely on the extension to tell you what format a file is in. That is an advertisement, and only a convention that is used. You can rename a file and its extension at any time and not change the data.</em></p>
 <p>It is not obvious what is in the file. Unless you made the file, or someone has told you what is in it, the only thing you can do is inspect the file manually. Let’s look at the number of lines and the first 10 lines here.</p>
 <p>We do that by opening the file, reading the lines and then closing the file. We print the number of lines and the first 10 here. The first ten lines are a list.</p>
@@ -593,7 +593,7 @@ Outside: True
 <li><p><strong>seaborn gallery:</strong> <a class="reference external" href="https://seaborn.pydata.org/examples/index.html">https://seaborn.pydata.org/examples/index.html</a></p></li>
 </ul>
 <p>There are many other plotting libraries, e.g. <a class="reference external" href="https://plot.ly/">plotly</a> and <a class="reference external" href="https://altair-viz.github.io/gallery/index.html#gallery-category-interactive-charts">altair</a> that are more suitable for web graphics. These have much more complex APIs and it takes a long time to get familiar with them.</p>
-<p>We will start simple. Let’s start by telling the notebook how to use matplotlib and then load it. The line starting with a % is called a <a class="reference external" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">magic command</a>, and it is only valid in Jupyter-Python, or a jupyter notebook. It is <em>not</em> valid Python. It tells the Jupyter kernel how to handle plots, and in this case we are telling it to put the plot inline as a PNG image in the notebook.</p>
+<p>We will start simple. We start by importing matplotlib.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -746,7 +746,7 @@ Outside: True
 <p>The data in the previous example was loaded from a tab-delimited text file. There are many other kinds of files you might have to read from.</p>
 <section id="simple-delimited-text-files">
 <h3>Simple delimited text files<a class="headerlink" href="#simple-delimited-text-files" title="Permalink to this heading">#</a></h3>
-<p>In a delimited text file, the data is represented in each line, with the values separated by a <em>delimiter</em>. In the tab-delimited data, tab characters are the separators. The other common delimiter is a comma, and these files are often called comma-separated value (CSV) files. For now, we limit the discussion to files containing numbers that are separated by commas.</p>
+<p>In a delimited text file, the data is represented in each line, with the values separated by a <em>delimiter</em>. In the tab-delimited data, tab characters are the separators. The other common delimiter is a comma, and these files are often called comma-separated value (CSV) files. For now, we limit the discussion to files containing numbers that are separated by commas. <a class="reference download internal" download="" href="../_downloads/361bab138ae51a616d803a655883c5a6/raman.csv"><span class="xref download myst">raman.csv</span></a> is a CSV file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;raman.csv&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -801,7 +801,7 @@ Outside: True
 </section>
 <section id="more-complex-delimited-files">
 <h3>More complex delimited files<a class="headerlink" href="#more-complex-delimited-files" title="Permalink to this heading">#</a></h3>
-<p>This data is located at <a class="reference external" href="https://www.itl.nist.gov/div898/handbook/datasets/MODEL-4_4_4.DAT">https://www.itl.nist.gov/div898/handbook/datasets/MODEL-4_4_4.DAT</a>. There is a copy of the file in this directory.</p>
+<p>This data is located at <a class="reference external" href="https://www.itl.nist.gov/div898/handbook/datasets/MODEL-4_4_4.DAT">https://www.itl.nist.gov/div898/handbook/datasets/MODEL-4_4_4.DAT</a>. There is a copy of the file in this directory <a class="reference download internal" download="" href="../_downloads/9d888a11946eb4276fdcf8727ef56099/p-t.dat"><span class="xref download myst">here</span></a>.</p>
 <p>If we examine the first few lines of this file, it appears that the first two lines are considered headers that tell you what is in the file. We need to skip these when reading the data. Also, each line appears as a string, with the values lining up in columns. This is sometimes called a fixed delimiter file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1014,7 +1014,7 @@ Order  Day  Temperature  Temperature  Pressure    Value    Residual
 </section>
 <section id="json-data">
 <h3>json data<a class="headerlink" href="#json-data" title="Permalink to this heading">#</a></h3>
-<p>json (javascript object notation) is another convenient data format (<a class="reference external" href="https://www.json.org/json-en.html">https://www.json.org/json-en.html</a>). This data format stores data in a “key=value” format, and when you load it, you get a dictionary of the data. Let’s see the first few characters of this file. Why the first few characters? A json file may be only one line as defined by newlines.</p>
+<p>json (javascript object notation) is another convenient data format (<a class="reference external" href="https://www.json.org/json-en.html">https://www.json.org/json-en.html</a>). This data format stores data in a “key=value” format, and when you load it, you get a dictionary of the data. Let’s see the first few characters of this file. Why the first few characters? A json file may be only one line as defined by newlines. <a class="reference download internal" download="" href="../_downloads/dfab361a9e40d3298325087cfc8e85f8/raman.json"><span class="xref download myst">Here</span></a> is the json file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;raman.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>

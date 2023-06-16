@@ -430,12 +430,12 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">dtypes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;symbol&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;atomic mass&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">)])</span>
+<span class="n">dtypes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s2">&quot;symbol&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;atomic mass&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">)])</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="p">)</span>
 
 <span class="n">elements</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">elements</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">chemical_symbols</span>
-<span class="n">elements</span><span class="p">[</span><span class="s1">&#39;atomic mass&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">atomic_masses</span>
+<span class="n">elements</span><span class="p">[</span><span class="s2">&quot;symbol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">chemical_symbols</span>
+<span class="n">elements</span><span class="p">[</span><span class="s2">&quot;atomic mass&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ase</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">atomic_masses</span>
 <span class="n">elements</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -505,8 +505,8 @@ memory usage: 2.0+ KB
 <p>We can do some things with python variables like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sym</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span>
-<span class="n">elements</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;symbol == @sym&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sym</span> <span class="o">=</span> <span class="s2">&quot;H&quot;</span>
+<span class="n">elements</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;symbol == @sym&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -546,7 +546,7 @@ memory usage: 2.0+ KB
 <p>Although, f-strings also work for this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sym</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sym</span> <span class="o">=</span> <span class="s2">&quot;H&quot;</span>
 <span class="n">elements</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;symbol == &quot;</span><span class="si">{</span><span class="n">sym</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -587,7 +587,7 @@ memory usage: 2.0+ KB
 <p>The atomic mass is trickier to work with because it has a space in it. We have to use back-ticks to “quote” this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`atomic mass` &lt; 4&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`atomic mass` &lt; 4&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -636,12 +636,13 @@ memory usage: 2.0+ KB
 <p>Next, let’s build the molecule database. This will be a table where each row  corresponds to an atom in a molecule. We will be able to get the atoms in a molecule by aggregating these on a <code class="docutils literal notranslate"><span class="pre">Molecule-ID</span></code>. We build this table up row by row, by first getting a molecule, and then iterating over each atom in the molecule. It is conventional to use an integer for an ID, but we will just use the molecular formula in this example. That has some limitations for larger databases (e.g. isomers have different properties, but the same molecular formula), but we will not have that problem here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Atom symbol&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">,</span> <span class="s2">&quot;Atom symbol&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">])</span>
 
 <span class="kn">from</span> <span class="nn">ase.build</span> <span class="kn">import</span> <span class="n">molecule</span>
+
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">for</span> <span class="n">mlc</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;H2O&#39;</span><span class="p">,</span> <span class="s1">&#39;NH3&#39;</span><span class="p">,</span> <span class="s1">&#39;CH4&#39;</span><span class="p">]:</span>
+<span class="k">for</span> <span class="n">mlc</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;H2O&quot;</span><span class="p">,</span> <span class="s2">&quot;NH3&quot;</span><span class="p">,</span> <span class="s2">&quot;CH4&quot;</span><span class="p">]:</span>
     <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">molecule</span><span class="p">(</span><span class="n">mlc</span><span class="p">):</span>
         <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mlc</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">z</span><span class="p">]</span>
         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -781,7 +782,7 @@ memory usage: 2.0+ KB
 <p>Ok, now we are ready to do some queries. First, let’s see what molecules we have in our database. We want the unique values of the ‘Molecule-ID’ column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -797,7 +798,7 @@ memory usage: 2.0+ KB
 <p>Now, how do we find molecules that have 3 H atoms? We need to do some grouping. First, we select the H rows, and then we group by the Molecule-ID Then, we need a count of each sub group. I prefer the <code class="docutils literal notranslate"><span class="pre">size</span></code> function for this over <code class="docutils literal notranslate"><span class="pre">count</span></code>. <code class="docutils literal notranslate"><span class="pre">size</span></code> returns a Series, while <code class="docutils literal notranslate"><span class="pre">count</span></code> seems to return a DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="n">tf</span>
 </pre></div>
 </div>
@@ -833,7 +834,7 @@ dtype: int64
 <p>Getting the molecular weight requires us to combine information from two DataFrames. To do this, we need to merge them, aligning the rows on a common key. That key is the <code class="docutils literal notranslate"><span class="pre">Atom</span> <span class="pre">symbol</span></code> in the molecule DataFrame, and <code class="docutils literal notranslate"><span class="pre">symbol</span></code> in the elements DataFrame. Then we have to do the right grouping, and use the sum aggregation method on each group.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Atom symbol&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;symbol&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;Atom symbol&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;symbol&quot;</span><span class="p">)</span>
 <span class="n">mf</span>
 </pre></div>
 </div>
@@ -994,7 +995,7 @@ dtype: int64
 <p>Now, we group by the <code class="docutils literal notranslate"><span class="pre">Molecule-ID</span></code>, select the <code class="docutils literal notranslate"><span class="pre">atomic</span> <span class="pre">mass</span></code> column, and aggregate with the sum.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MW</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">)[</span><span class="s1">&#39;atomic mass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MW</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">)[</span><span class="s2">&quot;atomic mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">MW</span>
 </pre></div>
 </div>
@@ -1013,7 +1014,7 @@ Name: atomic mass, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">mlc</span><span class="p">,</span> <span class="n">mw</span> <span class="ow">in</span> <span class="n">MW</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The molecular weight of </span><span class="si">{</span><span class="n">mlc</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">mw</span><span class="si">}</span><span class="s1"> gm/mol&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The molecular weight of </span><span class="si">{</span><span class="n">mlc</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">mw</span><span class="si">}</span><span class="s2"> gm/mol&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1032,7 +1033,7 @@ The molecular weight of NH3 is 17.031 gm/mol
 <p>So far, we have mostly seen sequential commands in Pandas</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 <span class="n">tf</span><span class="p">[</span><span class="n">tf</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1048,7 +1049,9 @@ dtype: int64
 <p>The <code class="docutils literal notranslate"><span class="pre">query</span></code> lets us chain these all into one line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+    <span class="s2">&quot;`Atom symbol` == 3&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1099,11 +1102,12 @@ dtype: int64
 <p>It is common to see this syntax where parentheses allow us to separate these into multiple lines. This may enhance readability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
- <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
- <span class="o">.</span><span class="n">count</span><span class="p">()</span>
- <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1155,11 +1159,11 @@ dtype: int64
 <p>Here is another example of chaining to get the molecular weight of water.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span>
-          <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;Atom symbol&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;symbol&#39;</span><span class="p">)</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">)[</span><span class="s1">&#39;atomic mass&#39;</span><span class="p">]</span>
- <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
- <span class="p">[</span><span class="s1">&#39;H2O&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;Atom symbol&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;symbol&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">)[</span><span class="s2">&quot;atomic mass&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s2">&quot;H2O&quot;</span><span class="p">]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1175,11 +1179,12 @@ dtype: int64
 <p>Pandas offers many ways to do what appear to be the same thing, but they are not. For example, this works:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
- <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
- <span class="o">.</span><span class="n">count</span><span class="p">()</span>
- <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1230,22 +1235,23 @@ dtype: int64
 <p>And this doesn’t.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
- <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
- <span class="o">.</span><span class="n">size</span><span class="p">()</span>
- <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipykernel_2214/770950900.py</span> in <span class="ni">?</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">(</span><span class="n">df</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>  <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>  <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>  <span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="nn">/tmp/ipykernel_2183/4122089245.py</span> in <span class="ni">?</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.8.17/x64/lib/python3.8/site-packages/pandas/core/generic.py</span> in <span class="ni">?</span><span class="nt">(self, name)</span>
 <span class="g g-Whitespace">   </span><span class="mi">5985</span>             <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessors</span>
@@ -1262,13 +1268,14 @@ dtype: int64
 <p>The problem is the <code class="docutils literal notranslate"><span class="pre">size</span></code> function here returns Series, and you cannot query a series. We can get back to this with some acrobatics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
- <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
- <span class="o">.</span><span class="n">size</span><span class="p">()</span>  <span class="c1"># This is a series</span>
- <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;counts&#39;</span><span class="p">)</span> <span class="c1"># we give the Series a name</span>
- <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span> <span class="c1"># Convert to dataframe so we can query</span>
- <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;counts == 3&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">size</span><span class="p">()</span>  <span class="c1"># This is a series</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;counts&quot;</span><span class="p">)</span>  <span class="c1"># we give the Series a name</span>
+    <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>  <span class="c1"># Convert to dataframe so we can query</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;counts == 3&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1312,11 +1319,12 @@ dtype: int64
 <p>It is also challenging that there are many ways to do the same thing. For example, here we solve this problem in a different way that has a subtly different syntax. You cannot just cut and paste bits of code between these two examples without knowing what each one does.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span>
- <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">])</span>
- <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;Atom symbol&#39;</span> <span class="p">:</span><span class="s1">&#39;size&#39;</span><span class="p">})</span> <span class="c1"># Now this is dataframe</span>
- <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == 3&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Atom symbol&quot;</span><span class="p">:</span> <span class="s2">&quot;size&quot;</span><span class="p">})</span>  <span class="c1"># Now this is dataframe</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;`Atom symbol` == 3&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1374,9 +1382,7 @@ dtype: int64
 <p>Getting help on the <code class="docutils literal notranslate"><span class="pre">agg</span></code> command is a little trickier. There are several <code class="docutils literal notranslate"><span class="pre">agg</span></code> functions, so we want to make sure we get the one that is relevant to the result from a <code class="docutils literal notranslate"><span class="pre">groupby</span></code> call. First, we get the type of things that is returned:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span>
- <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Molecule-ID&#39;</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;`Atom symbol` == &quot;H&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Molecule-ID&quot;</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
