@@ -38,6 +38,7 @@ html:
   comments:
     utterances:
       repo: jkitchin/dsmles
+    hypothesis: true
       
       
 parse:
