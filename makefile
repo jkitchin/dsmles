@@ -15,3 +15,6 @@ gh:
 
 web:
 	open https://kitchingroup.cheme.cmu.edu/dsmles
+
+pdf:
+	jupyter-book build dsmles/ --builder pdfhtml
